@@ -1,0 +1,129 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
+<script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
+<script src="Leaflet.draw/dist/leaflet.draw.js"></script>
+<script src="wicket.js"></script>
+<script src="wicket-leaflet.js"></script>
+<link rel="stylesheet" type="text/css" href="Leaflet.draw/dist/leaflet.draw.css">
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<style type="text/css">
+body{font:12px/1.231 arial,helvetica,clean,sans-serif;}
+</style>
+
+<!--More info on using custom base layers in Google Maps v3: http://code.google.com/apis/maps/documentation/v3/overlays.html#BaseMapTypes-->
+<script type="text/javascript">
+  var latitude, longitude;
+  var coords;
+  var map;
+
+  function compareToGeofences(x, y) 
+  {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange=function()
+    {
+      if (xmlhttp.readyState==4 && xmlhttp.status==200)
+      {
+        console.log(xmlhttp.responseText);
+      }
+    }
+    xmlhttp.open("GET","http://folk.ntnu.no/adrianto/compareToGeofences.php?x=" + x + "&y=" + y,true);
+    xmlhttp.send();
+  }
+  function storeGeofence(polygonCoords) 
+  {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange=function()
+    {
+      if (xmlhttp.readyState==4 && xmlhttp.status==200)
+      {
+        console.log(xmlhttp.responseText);
+      }
+    }
+    xmlhttp.open("GET","http://folk.ntnu.no/adrianto/storeGeofence.php?x=" + polygonCoords,true);
+    xmlhttp.send();
+  }
+
+  function initialize() {
+  	var topografiskLayer = L.tileLayer("http://{s}.statkart.no/gatekeeper/gk/gk.open_gmaps?layers=topo2&zoom={z}&x={x}&y={y}",
+  	{subdomains: ["opencache", "opencache2", "opencache3"], maxZoom: 20});
+
+   	var osmLayer = L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      {subdomains: "abc", maxZoom: 20});
+      var mapSettings = {layers: [topografiskLayer], attributionControl: false};
+      map = L.map('map',mapSettings);
+  	var baseMaps =
+    	{
+  	    "Statkart Topografisk": topografiskLayer,
+  	    "OpenStreetMap": osmLayer
+      };
+    L.control.layers(baseMaps).addTo(map);
+
+
+
+      // Initialise the FeatureGroup to store editable layers
+    var drawnItems = new L.FeatureGroup();
+    map.addLayer(drawnItems);
+
+    // Initialise the draw control and pass it the FeatureGroup of editable layers
+    var drawControl = new L.Control.Draw({
+        edit: {
+          featureGroup: drawnItems,
+          edit: false
+        },
+        draw: {
+          polyline: false,
+          rectangle: false,
+          circle: false,
+          marker: false,
+          polygon: {
+            allowIntersection: false,
+            showArea: true
+          }
+        }
+    });
+    L.drawLocal.draw.toolbar.buttons.polygon = 'Avgrens et område med punkter';
+    // L.drawLocal.draw.handlers.polygon.tooltip.start = 'Sett førse punkt';
+    map.addControl(drawControl);
+    navigator.geolocation.getCurrentPosition(getUserPosition)
+    map.on('click', onMapClick);
+
+    map.on('draw:created', function (e) {
+    var type = e.layerType,
+        layer = e.layer;
+
+    var wkt = new Wkt.Wkt();
+    wkt.fromObject(layer);
+    console.log(wkt.components);
+    storeGeofence(wkt.write());
+    document.getElementById('polygonCoords').innerHTML=wkt.write();
+    drawnItems.addLayer(layer);
+});
+  }
+  function getUserPosition(position) {
+    coords =[];
+    coords.push(position.coords.latitude);
+    coords.push(position.coords.longitude);
+  	
+    L.marker(coords).addTo(map).bindPopup('Du er her!').openPopup();
+    map.setView(coords, 13);
+  }
+  var popup = L.popup();
+
+  function onMapClick(e) {
+    popup
+        .setLatLng(e.latlng)
+        .setContent("You clicked the map at " + e.latlng.toString())
+        .openOn(map);
+  }
+
+</script>
+
+
+</head>
+<body onload="initialize()">
+  <div id="map" style="width:600px; height:400px"></div> 
+  <p id="polygonCoords"></p>
+</body>
+</html>

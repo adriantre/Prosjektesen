@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>HTML GeoLocation Test</title>
+<script type="text/javascript">
+var watchID=0;
+
+function startLocationTracking(){
+	if (navigator.geolocation) {
+		alert("Your Browser supports GeoLocation");
+		watchID = navigator.geolocation.watchPosition(showCurrentLocation,errorHandler,{enableHighAccuracy: true});
+	} else {
+		alert("Your Browser does not support GeoLocation.");
+	}
+}
+
+function showCurrentLocation(position){
+	document.getElementById("mylocation").innerHTML = "Tracking your position --> Current Latitude : " + position.coords.latitude + " , Longitude : " + position.coords.longitude;
+}
+
+function errorHandler(error){
+	  alert("Error while retrieving current position. Error code: " + error.code + ",Message: " + error.message);
+}
+
+function stopLocationTracking(){
+	if (watchID > 0) {
+		navigator.geolocation.clearWatch(watchID);
+		alert("Stopped Tracking Location");
+	}
+}
+
+</script>
+</head>
+<body>
+<div id="main">
+	<div id="mylocation"></div>
+	<input type="button" value="Start Tracking Me" onclick="startLocationTracking()"/>
+	<input type="button" value="Stop Tracking Me" onclick="stopLocationTracking()"/>
+</div>
+</body>
+</html>
