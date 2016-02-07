@@ -14,7 +14,7 @@ if ($conn === false) {
   exit;
 }
 
-$result = pg_query($conn, "SELECT point_id AS id, ST_AsText(location::geometry) AS location FROM points;");
+$result = pg_insert($conn, $table, $newValues);
 if (!$result) {
   echo "ERROR: Can not return values from DB.\n";
   var_dump(pg_last_error($conn));
