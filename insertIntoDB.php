@@ -10,16 +10,27 @@
 	exit;
 }
  
-  $json_object = json_encode($input);
- 
-  $array = array();
- 
-  $table = $json_object->table;
-  foreach ($json_object->data as $column)
-  {
-    $array[$column->column] = $column->data;
-  }
- 
-  pg_insert($conn, $table, $array);
-  pg_query($conn, "select * from public.user;");
+	$json_object = json_encode($input);
+
+	$array = array();
+
+	$table = $json_object->table;
+	foreach ($json_object->data as $column)
+	{
+		$array[$column->column] = $column->data;
+	}
+
+	pg_insert($conn, $table, $array);
+
+	$result = pg_query($conn, "select * from public.user;");
+	if (!$result) {
+			echo "An error asd occurred.\n";
+		 	var_dump(pg_last_error($conn));
+			exit;
+	}
+
+	while ($row = pg_fetch_row($result))
+	{
+			echo $row[1] . "\n";
+	}
 ?>
