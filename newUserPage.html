@@ -3,54 +3,59 @@
     var xmlhttp = new XMLHttpRequest();
     var url = 'http://folk.ntnu.no/adrianto/insertIntoDB.php';
  
-    var user_name = 'adriantre';
-    var email = 'adriantre@stud.ntnu.no';
-    var password = 'password';
+    var user_name = "adriantre";
+    var email = "adriantre@stud.ntnu.no";
+    var password = "password";
  
-    xmlhttp.open('POST', url, true);
- 
-    xmlhttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
- 
-    xmlhttp.onreadystatechange = function()
+    function insertIntoDB()
     {
-      if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
-      {
-        // Denne koden kalles når xmlhttp.send() er ferdig med å jobbe. Dette er en sånn fancy callback-funksjon.
-        // Hvis fila "insertIntoDB.php" skriver ut noe etter at den er ferdig med å oppdatere databasen, kan dere lese ut det her f.eks.
-        // Men dere trenger i utgangspunktet ikke å gjøre noe her.
-      }
+        xmlhttp.open('POST', url, true);
+     
+        xmlhttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+     
+        xmlhttp.onreadystatechange = function()
+        {
+          if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+          {
+            // Denne koden kalles når xmlhttp.send() er ferdig med å jobbe. Dette er en sånn fancy callback-funksjon.
+            // Hvis fila "insertIntoDB.php" skriver ut noe etter at den er ferdig med å oppdatere databasen, kan dere lese ut det her f.eks.
+            // Men dere trenger i utgangspunktet ikke å gjøre noe her.
+          }
+        }
+     
+        var user = {
+            'table': 'public.user',
+            'user': [
+                {
+                    'column': 'user_id',
+                    'data': "DEFAULT"
+                },
+                {
+                    'column': 'user_name',
+                    'data': user_name
+                },
+                {
+                    'column': 'email',
+                    'data': email
+                },
+                {
+                    'column': 'current_location',
+                    'data': null
+                },
+                {
+                    'column': 'password',
+                    'data': password
+                },
+                {
+                    'column': 'geomessage',
+                    'data': null
+                }
+            ]
+        };
     }
  
-    var user = {
-      'table': 'public.user',
-      'user': [
-        {
-            'column': 'user_id',
-            'data': "DEFAULT"
-        },
-        {
-            'column': 'user_name',
-            'data': "Testesen"
-        },
-        {
-            'column': 'email',
-            'data': "test@test.no"
-        },
-        {
-            'column': 'current_location',
-            'data': null
-        },
-        {
-            'column': 'password',
-            'data': "pass"
-        },
-        {
-            'column': 'geomessage',
-            'data': null
-        }
-      ]
-    };
- 
     xmlhttp.send(JSON.stringify(user));
+<body onload="insertIntoDB()">
+</body>
 </script>
 </html>
