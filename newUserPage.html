@@ -1,14 +1,15 @@
 <html>
+<meta charset="UTF-8">
 <script>
+
     var xmlhttp = new XMLHttpRequest();
     var url = 'http://folk.ntnu.no/adrianto/insertIntoDB.php';
  
     var user_name = "adriantre";
     var email = "adriantre@stud.ntnu.no";
-    var password = "password";
- 
-    function insertIntoDB()
-    {
+    var password = "password";     
+
+    function insertUserIntoDB() {
         xmlhttp.open('POST', url, true);
      
         xmlhttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
@@ -52,10 +53,13 @@
                 }
             ]
         };
+        var usertext = JSON.stringify(user)
+        getElementById('uservalues').innerHTML=usertext;
+        xmlhttp.send(usertext);
     }
- 
-    xmlhttp.send(JSON.stringify(user));
-<body onload="insertIntoDB()">
-</body>
 </script>
+<body>
+    <p id="uservalues">Opprett ny bruker:</p>
+    <button type="button" onclick="insertUserIntoDB()">Trykk her for å oprette bruker!</button>
+</body>
 </html>
