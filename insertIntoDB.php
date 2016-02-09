@@ -10,7 +10,7 @@
 	exit;
 }
  
-	$json_object = json_encode($input);
+	$json_object = json_decode($input);
 
 	$array = array();
 
