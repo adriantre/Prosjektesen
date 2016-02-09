@@ -15,9 +15,9 @@
 	$array = array();
 
 	$table = $json_object->table;
-	foreach ($json_object->data as $column)
+	foreach ($json_object->user as $column)
 	{
-		$array[$column->column] => $column->data;
+		$array[$column->column] = $column->data;
 	}
 
 	pg_insert($conn, $table, $array);
