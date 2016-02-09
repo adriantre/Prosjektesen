@@ -5,11 +5,12 @@
     var xmlhttp = new XMLHttpRequest();
     var url = 'http://folk.ntnu.no/adrianto/insertIntoDB.php';
  
-    var user_name = "adriantre";
-    var email = "adriantre@stud.ntnu.no";
-    var password = "password";     
 
     function insertUserIntoDB() {
+
+        var user_name = document.getElementById("user_name").value;
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;    
         xmlhttp.open('POST', url, true);
      
         xmlhttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
@@ -54,12 +55,19 @@
             ]
         };
         var usertext = JSON.stringify(user)
-        getElementById('uservalues').innerHTML=usertext;
+        document.getElementById("uservalues").innerHTML=usertext;
         xmlhttp.send(usertext);
     }
 </script>
 <body>
-    <p id="uservalues">Opprett ny bruker:</p>
-    <button type="button" onclick="insertUserIntoDB()">Trykk her for å oprette bruker!</button>
+    <h1>Opprett ny bruker</h1>
+    <p>Username</p>
+    <input id="user_name"><br />
+    <p>Email</p>
+    <input id="email"><br />
+    <p>Password</p>
+    <input id="password"><br />
+    <button type="button" onclick="insertUserIntoDB()">Trykk her for å opprette bruker!</button>
+    <p id="uservalues">Ingen bruker opprettet enda</p>
 </body>
 </html>
