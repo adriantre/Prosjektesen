@@ -3,7 +3,7 @@
 
 	$conn = pg_connect("host=92.62.34.78 port=5432 dbname=adrianto user=adrianto password=kalende");
 	pg_set_error_verbosity($conn, PGSQL_ERRORS_VERBOSE);
-	
+	echo "Hei";
 	if ($conn === false) {
 		echo "An error occurred connecting to the database.\n";
 		var_dump(pg_last_error($conn));
@@ -15,7 +15,7 @@
 	$array = array();
 
 	$table = $json_object->table;
-	foreach ($json_object->user as $column)
+	foreach ($json_object->data as $column)
 	{
 		$array[$column->column] = $column->data;
 	}

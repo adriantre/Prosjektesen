@@ -2,8 +2,8 @@
 <meta charset="UTF-8">
 <script>
 
-    // var xmlhttp = new XMLHttpRequest();
-    // var url = 'http://folk.ntnu.no/adrianto/insertIntoDB.php/';
+    var xmlhttp = new XMLHttpRequest();
+    var url = 'http://folk.ntnu.no/adrianto/insertIntoDB.php/';
  
 
     function insertUserIntoDB() {
@@ -19,6 +19,7 @@
         {
           if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
           {
+            document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
             // Denne koden kalles når xmlhttp.send() er ferdig med å jobbe. Dette er en sånn fancy callback-funksjon.
             // Hvis fila "insertIntoDB.php" skriver ut noe etter at den er ferdig med å oppdatere databasen, kan dere lese ut det her f.eks.
             // Men dere trenger i utgangspunktet ikke å gjøre noe her.
@@ -27,7 +28,7 @@
      
         var user = {
             'table': 'public.user',
-            'user': [
+            'data': [
                 {
                     'column': 'user_id',
                     'data': "DEFAULT"
@@ -54,32 +55,11 @@
                 }
             ]
         };
-        // var usertext = JSON.stringify(user);
-        // document.getElementById("uservalues").innerHTML=usertext;
-        // xmlhttp.send(usertext);
-    
-    <?php
+        var usertext = JSON.stringify(user);
+        document.getElementById("uservalues").innerHTML=usertext;
+        xmlhttp.send(usertext);
 
-        $conn = pg_connect("host=92.62.34.78 port=5432 dbname=adrianto user=adrianto password=kalende");
-        pg_set_error_verbosity($conn, PGSQL_ERRORS_VERBOSE);
-        
-        if ($conn === false) {
-            echo "An error occurred connecting to the database.\n";
-            var_dump(pg_last_error($conn));
-            exit;
-         }
-        echo "Hei";
 
-        $array = array();
-
-        $table = $user->table;
-        foreach ($user->user as $column)
-        {
-            $array[$column->column] = $column->data;
-        }
-        echo implode("|",$array);
-        pg_insert($conn, $table, $array);
-    ?>
     }
 </script>
 <body>
@@ -91,6 +71,7 @@
     <p>Password</p>
     <input id="password"><br />
     <button type="button" onclick="insertUserIntoDB()">Trykk her for å opprette bruker!</button>
-    <p id="uservalues">Ingen bruker opprettet enda</p>
+    <p id="uservalues">Ingen bruker opprettet enda</p><br />
+    <p id="txtHint"></p>
 </body>
 </html>
