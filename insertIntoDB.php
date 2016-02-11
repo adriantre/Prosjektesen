@@ -9,7 +9,7 @@
 		var_dump(pg_last_error($conn));
 	exit;
 }
- 
+ 	echo "Hei";
 	$json_object = json_decode($input);
 
 	$array = array();
@@ -20,7 +20,7 @@
 		$array[$column->column] = $column->data;
 	}
 
-	
+
 	echo implode("|",$array);
 	pg_insert($conn, $table, $array);
 ?>
