@@ -20,5 +20,7 @@
 		$array[$column->column] = $column->data;
 	}
 
+	
+	echo implode("|",$array);
 	pg_insert($conn, $table, $array);
 ?>
