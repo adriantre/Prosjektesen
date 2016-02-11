@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="Leaflet.draw/dist/leaflet.draw.css">
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 <style type="text/css">
-body{font:12px/1.231 arial,helvetica,clean,sans-serif;}
+  body{font:12px/1.231 arial,helvetica,clean,sans-serif;}
 </style>
 
 
@@ -31,19 +31,6 @@ body{font:12px/1.231 arial,helvetica,clean,sans-serif;}
       }
     }
     xmlhttp.open("GET","http://folk.ntnu.no/adrianto/compareToGeofences.php?x=" + x + "&y=" + y,true);
-    xmlhttp.send();
-  }
-  function storeGeofence(polygonCoords) 
-  {
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange=function()
-    {
-      if (xmlhttp.readyState==4 && xmlhttp.status==200)
-      {
-        console.log(xmlhttp.responseText);
-      }
-    }
-    xmlhttp.open("GET","http://folk.ntnu.no/adrianto/storeGeofence.php?x=" + polygonCoords,true);
     xmlhttp.send();
   }
 
@@ -113,12 +100,12 @@ body{font:12px/1.231 arial,helvetica,clean,sans-serif;}
   }
   var popup = L.popup();
 
-  function onMapClick(e) {
-    popup
-        .setLatLng(e.latlng)
-        .setContent("You clicked the map at " + e.latlng.toString())
-        .openOn(map);
-  }
+  // function onMapClick(e) {
+  //   popup
+  //       .setLatLng(e.latlng)
+  //       .setContent("You clicked the map at " + e.latlng.toString())
+  //       .openOn(map);
+  // }
 
 </script>
 

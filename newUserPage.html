@@ -2,8 +2,8 @@
 <meta charset="UTF-8">
 <script>
 
-    var xmlhttp = new XMLHttpRequest();
-    var url = 'http://folk.ntnu.no/adrianto/insertIntoDB.php/';
+    // var xmlhttp = new XMLHttpRequest();
+    // var url = 'http://folk.ntnu.no/adrianto/insertIntoDB.php/';
  
 
     function insertUserIntoDB() {
@@ -54,10 +54,32 @@
                 }
             ]
         };
-        var usertext = JSON.stringify(user)
-        document.getElementById("uservalues").innerHTML=usertext;
-        xmlhttp.send(usertext);
+        // var usertext = JSON.stringify(user)
+        // document.getElementById("uservalues").innerHTML=usertext;
+        // xmlhttp.send(usertext);  
     }
+    <?php
+        $conn = pg_connect("host=92.62.34.78 port=5432 dbname=adrianto user=adrianto password=kalende");
+        pg_set_error_verbosity($conn, PGSQL_ERRORS_VERBOSE);
+        
+        if ($conn === false) {
+            echo "An error occurred connecting to the database.\n";
+            var_dump(pg_last_error($conn));
+        exit;
+        }
+        
+        $json_object = json_decode($input);
+
+        $array = array();
+
+        $table = $json_object->table;
+        foreach ($json_object->user as $column)
+        {
+            $array[$column->column] = $column->data;
+        }
+        echo implode("|",$array);
+        pg_insert($conn, $table, $array);
+    ?>
 </script>
 <body>
     <h1>Opprett ny bruker</h1>
