@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
      }
    }
 
-  $query = "INSERT INTO user(username, email, password) VALUES('" . $name . "', '" . $email . "', '" . $password . "')"; 
+  $query = "INSERT INTO 'public.user' (username, email, password) VALUES('" . $name . "', '" . $email . "', '" . $password . "')"; 
   $result = pg_query($conn, $query); 
       if (!$result) { 
         $errormessage = pg_last_error(); 
