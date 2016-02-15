@@ -12,7 +12,6 @@
 
 	$array = array();
 
-	$sqlopt = $json_object->sqlopt;
 	$table = $json_object->table;
 	foreach ($json_object->data as $column)
 	{
