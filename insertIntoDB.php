@@ -16,8 +16,8 @@
 	foreach ($json_object->data as $column)
 	{
 		$array[$column->column] = $column->data;
-		// if (empty($array[$column->column]))
-		// 	$array[$column->column] = NULL;
+		if (empty($array[$column->column]))
+			$array[$column->column] = NULL;
 	}
 
 
