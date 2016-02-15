@@ -2,12 +2,12 @@
 <meta charset="UTF-8">
 <script>
 
-    var xmlhttp = new XMLHttpRequest();
-    var url = 'http://folk.ntnu.no/adrianto/insertIntoDB.php/';
  
 
     function insertUserIntoDB() {
 
+        var xmlhttp = new XMLHttpRequest();
+        var url = 'http://folk.ntnu.no/adrianto/prosjektesen/insertIntoDB.php/';
         var user_name = document.getElementById("user_name").value;
         var email = document.getElementById("email").value;
         var password = document.getElementById("password").value;    
@@ -58,7 +58,6 @@
         var usertext = JSON.stringify(user);
         document.getElementById("uservalues").innerHTML=usertext;
         xmlhttp.send(usertext);
-
 
     }
 </script>
