@@ -16,20 +16,24 @@
 	foreach ($json_object->data as $column)
 	{
 		$array[$column->column] = $column->data;
+		if (empty($array[$column->column]))
+			$array[$column->column] = null;
 	}
 
 
 	echo implode("|",$array);
-	if ($sqlopt == "insert")
-	{
-		pg_insert($conn, $table, $array);
-	} else if ($sqlopt == "update")
-	{
-		pg_update($conn, $table, $array);
+	pg_insert($conn, $table, $array);
+
+	// if ($sqlopt == "insert")
+	// {
+	// 	pg_insert($conn, $table, $array);
+	// } else if ($sqlopt == "update")
+	// {
+	// 	pg_update($conn, $table, $array);
 	
-	} else if ($sqlopt == "delete")
-	{
-		pg_delete($conn, $table, $array);
-	}
+	// } else if ($sqlopt == "delete")
+	// {
+	// 	pg_delete($conn, $table, $array);
+	// }
 
 ?>
