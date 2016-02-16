@@ -18,15 +18,10 @@
 	{
 		$array[$column->column] = $column->data;
 	}
-
+	pg_insert($conn, $table, $array);
 	if ($sqlopt == "insert")
 	{
-		$result=pg_insert($conn, $table, $array);
-		if (!$result) {
-			echo "An error asd occurred.\n";
-			var_dump(pg_last_error($conn));
-			exit;
-		}
+		pg_insert($conn, $table, $array);
 
 	} else if ($sqlopt == "update")
 	{
