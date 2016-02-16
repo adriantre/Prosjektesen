@@ -21,7 +21,13 @@
 
 	if ($sqlopt == "insert")
 	{
-		pg_insert($conn, $table, $array);
+		$result=pg_insert($conn, $table, $array);
+		if (!$result) {
+			echo "An error asd occurred.\n";
+			var_dump(pg_last_error($conn));
+			exit;
+		}
+
 	} else if ($sqlopt == "update")
 	{
 		pg_update($conn, $table, $array);
