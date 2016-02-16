@@ -20,6 +20,7 @@
 
 	echo ($table);
 	echo implode("|",$array);
+	pg_insert($conn, $table, $array);
 	// $result = pg_query($conn, "SELECT * FROM pulic.user;")
 	// if (!$result) {
 	//   echo "An error asd occurred.\n";
@@ -31,7 +32,6 @@
 	// {
 	//   echo $row[1] . "\n";
 	// }
-	 pg_insert($conn, $table, $array);
 
 	// if ($sqlopt == "insert")
 	// {
