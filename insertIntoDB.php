@@ -20,7 +20,8 @@
 
 	echo ($table);
 	echo implode("|",$array);
-	pg_insert($conn, $table, $array);
+	pg_query($conn, "SELECT * FROM pulic.user;")
+	// pg_insert($conn, $table, $array);
 
 	// if ($sqlopt == "insert")
 	// {
