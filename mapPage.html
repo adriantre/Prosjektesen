@@ -1,15 +1,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
 <script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
 <script src="Leaflet.draw/dist/leaflet.draw.js"></script>
 <script src="wicket.js"></script>
 <script src="wicket-leaflet.js"></script>
 <link rel="stylesheet" type="text/css" href="Leaflet.draw/dist/leaflet.draw.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 <style type="text/css">
-  body{font:12px/1.231 arial,helvetica,clean,sans-serif;}
+body{font:12px/1.231 arial,helvetica,clean,sans-serif;}
+  .jumbotron {
+      background-color: #f4511e;
+      color: #fff;
+  }
 </style>
 
 
@@ -31,6 +39,19 @@
       }
     }
     xmlhttp.open("GET","http://folk.ntnu.no/adrianto/compareToGeofences.php?x=" + x + "&y=" + y,true);
+    xmlhttp.send();
+  }
+  function storeGeofence(polygonCoords) 
+  {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange=function()
+    {
+      if (xmlhttp.readyState==4 && xmlhttp.status==200)
+      {
+        console.log(xmlhttp.responseText);
+      }
+    }
+    xmlhttp.open("GET","http://folk.ntnu.no/adrianto/storeGeofence.php?x=" + polygonCoords,true);
     xmlhttp.send();
   }
 
@@ -100,19 +121,32 @@
   }
   var popup = L.popup();
 
-  // function onMapClick(e) {
-  //   popup
-  //       .setLatLng(e.latlng)
-  //       .setContent("You clicked the map at " + e.latlng.toString())
-  //       .openOn(map);
-  // }
+  function onMapClick(e) {
+    popup
+        .setLatLng(e.latlng)
+        .setContent("You clicked the map at " + e.latlng.toString())
+        .openOn(map);
+  }
 
 </script>
 
 
 </head>
 <body onload="initialize()">
-  <div id="map" style="width:600px; height:400px"></div> 
+  <div class="jumbotron text-center">
+  <h1>Geofriends</h1> 
+  <p>We specialize in blablabla</p> 
+  <!-- <form class="form-inline">
+    <input type="email" class="form-control" size="50" placeholder="Email Address" required>
+    <input type="password" class="form-control" size="50" placeholder="Password" required>
+    <button type="button" class="btn btn-danger">Subscribe</button> -->
+  <!-- </form> -->
+</div>
+
+<div class="container">
+  <div id="map" style="width:1000px; height:1000px">
+ </div> 
   <p id="polygonCoords"></p>
+</div>
 </body>
 </html>
