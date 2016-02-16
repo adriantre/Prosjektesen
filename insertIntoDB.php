@@ -20,13 +20,13 @@
 
 	echo ($table);
 	echo implode("|",$array);
-	pg_insert(pg_convert($conn, $table, $array));
+	$result = pg_insert($conn, $table, $array);
 	// $result = pg_query($conn, "SELECT * FROM public.user;");
-	// if (!$result) {
-	//   echo "An error asd occurred.\n";
-	//   var_dump(pg_last_error($conn));
-	//   exit;
-	// }
+	if (!$result) {
+	  echo "An error asd occurred.\n";
+	  var_dump(pg_last_error($conn));
+	  exit;
+	}
 
 	// while ($row = pg_fetch_row($result))
 	// {
