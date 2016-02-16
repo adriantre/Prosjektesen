@@ -24,7 +24,7 @@
 	// $result = pg_query($conn, "SELECT * FROM public.user;");
 	if (!$result) {
 	  echo "An error has occurred.\n";
-	  echo pg_last_error($conn);
+	  echo pg_result_error($result);
 	  exit;
 	}
 
