@@ -42,12 +42,9 @@
         }
      
         var user = {
+            'sqlopt': 'insert',
             'table': 'public.user',
             'data': [
-                {
-                    'column': 'user_id',
-                    'data': "DEFAULT"
-                },
                 {
                     'column': 'user_name',
                     'data': user_name
@@ -57,7 +54,7 @@
                     'data': email
                 },
                 {
-                    'column': 'current_location',
+                    'column': 'current_location_id',
                     'data': null
                 },
                 {

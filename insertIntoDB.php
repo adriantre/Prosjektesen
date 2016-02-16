@@ -12,38 +12,23 @@
 
 	$array = array();
 
+	$sqlopt = $json_object->sqlopt;
 	$table = $json_object->table;
 	foreach ($json_object->data as $column)
 	{
 		$array[$column->column] = $column->data;
 	}
 
-	// echo ($table);
-	print_r($array );
-	echo implode("|",$array);
-	$result = pg_insert($conn, $table, $array);
-	// $result = pg_query($conn, "SELECT * FROM public.user;");
-	if (!$result) {
-	  echo "An error has occurred.\n";
-	  var_dump(pg_last_error($conn));
-	  exit;
-	}
-
-	// while ($row = pg_fetch_row($result))
-	// {
-	//   echo $row[1] . "\n";
-	// }
-
-	// if ($sqlopt == "insert")
-	// {
-	// 	pg_insert($conn, $table, $array);
-	// } else if ($sqlopt == "update")
-	// {
-	// 	pg_update($conn, $table, $array);
+	if ($sqlopt == "insert")
+	{
+		pg_insert($conn, $table, $array);
+	} else if ($sqlopt == "update")
+	{
+		pg_update($conn, $table, $array);
 	
-	// } else if ($sqlopt == "delete")
-	// {
-	// 	pg_delete($conn, $table, $array);
-	// }
+	} else if ($sqlopt == "delete")
+	{
+		pg_delete($conn, $table, $array);
+	}
 
 ?>
