@@ -18,8 +18,8 @@
 		$array[$column->column] = $column->data;
 	}
 
-	echo ($table);
-	echo implode("|",$array);
+	// echo ($table);
+	// echo implode("|",$array);
 	$result = pg_insert($conn, $table, $array);
 	// $result = pg_query($conn, "SELECT * FROM public.user;");
 	if (!$result) {
