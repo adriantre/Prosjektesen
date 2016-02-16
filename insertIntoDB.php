@@ -20,7 +20,7 @@
 
 	echo ($table);
 	echo implode("|",$array);
-	pg_query($conn, "SELECT * FROM pulic.user;")
+	$result = pg_query($conn, "SELECT * FROM pulic.user;")
 	if (!$result) {
 	  echo "An error asd occurred.\n";
 	  var_dump(pg_last_error($conn));
