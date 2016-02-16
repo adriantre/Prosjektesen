@@ -20,18 +20,18 @@
 
 	echo ($table);
 	echo implode("|",$array);
-	$result = pg_query($conn, "SELECT * FROM pulic.user;")
-	if (!$result) {
-	  echo "An error asd occurred.\n";
-	  var_dump(pg_last_error($conn));
-	  exit;
-	}
+	// $result = pg_query($conn, "SELECT * FROM pulic.user;")
+	// if (!$result) {
+	//   echo "An error asd occurred.\n";
+	//   var_dump(pg_last_error($conn));
+	//   exit;
+	// }
 
-	while ($row = pg_fetch_row($result))
-	{
-	  echo $row[1] . "\n";
-	}
-	// pg_insert($conn, $table, $array);
+	// while ($row = pg_fetch_row($result))
+	// {
+	//   echo $row[1] . "\n";
+	// }
+	 pg_insert($conn, $table, $array);
 
 	// if ($sqlopt == "insert")
 	// {
