@@ -23,8 +23,8 @@
 	$result = pg_insert($conn, $table, $array);
 	// $result = pg_query($conn, "SELECT * FROM public.user;");
 	if (!$result) {
-	  echo "An error asd occurred.\n";
-	  var_dump(pg_last_error($conn));
+	  echo "An error has occurred.\n";
+	  echo pg_last_error($conn);
 	  exit;
 	}
 
