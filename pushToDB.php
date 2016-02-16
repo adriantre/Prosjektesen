@@ -18,7 +18,8 @@
 	{
 		$array[$column->column] = $column->data;
 	}
-	pg_insert($conn, $table, $array);
+
+
 	if ($sqlopt == "insert")
 	{
 		pg_insert($conn, $table, $array);
