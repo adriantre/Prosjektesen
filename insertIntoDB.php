@@ -20,7 +20,7 @@
 
 	echo ($table);
 	echo implode("|",$array);
-	pg_insert(pg_convert(($conn, $table, $array));
+	pg_insert(pg_convert($conn, $table, $array));
 	// $result = pg_query($conn, "SELECT * FROM public.user;");
 	// if (!$result) {
 	//   echo "An error asd occurred.\n";
