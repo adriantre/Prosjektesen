@@ -19,10 +19,10 @@
 </head>
 <script>
 
-    function insertUserIntoDB() {
+    function createNewUser() {
 
         var xmlhttp = new XMLHttpRequest();
-        var url = 'http://folk.ntnu.no/adrianto/prosjektesen/insertIntoDB.php/';
+        var url = 'http://folk.ntnu.no/adrianto/prosjektesen/pushToDB.php/';
         var user_name = document.getElementById("user_name").value;
         var email = document.getElementById("email").value;
         var password = document.getElementById("pwd").value;    
@@ -34,7 +34,7 @@
         {
           if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
           {
-            document.getElementById("uservalues").innerHTML = xmlhttp.responseText;
+            document.getElementById("errormessage").innerHTML = xmlhttp.responseText;
             // Denne koden kalles når xmlhttp.send() er ferdig med å jobbe. Dette er en sånn fancy callback-funksjon.
             // Hvis fila "insertIntoDB.php" skriver ut noe etter at den er ferdig med å oppdatere databasen, kan dere lese ut det her f.eks.
             // Men dere trenger i utgangspunktet ikke å gjøre noe her.
@@ -118,10 +118,10 @@
     </div>
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
-        <button type="button" class="btn btn-default" onclick="pushToDB()">Submit</button>
+        <button type="submit" class="btn btn-default" onclick="createNewUser()">Submit</button>
       </div>
     </div>
-    <p id="uservalues">Ingen bruker opprettet enda</p><br/>
+    <p id="errormessage"></p><br/>
   </form>
 </div>
 </body> 
