@@ -21,7 +21,7 @@
 	echo ($table);
 	echo implode("|",$array);
 	// pg_insert($conn, $table, $array);
-	$result = pg_query($conn, "SELECT * FROM 'public.user';");
+	$result = pg_query($conn, "SELECT * FROM public.user;");
 	if (!$result) {
 	  echo "An error asd occurred.\n";
 	  var_dump(pg_last_error($conn));
