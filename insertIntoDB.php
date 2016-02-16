@@ -19,12 +19,13 @@
 	}
 
 	// echo ($table);
-	// echo implode("|",$array);
+	print_r($array );
+	echo implode("|",$array);
 	$result = pg_insert($conn, $table, $array);
 	// $result = pg_query($conn, "SELECT * FROM public.user;");
 	if (!$result) {
 	  echo "An error has occurred.\n";
-	  echo pg_result_error($result);
+	  var_dump(pg_last_error($conn));
 	  exit;
 	}
 
