@@ -17,7 +17,10 @@
     </style>
 </head>
 <script>
-
+    $(".btnSeccion").click(function(event) {
+        btnMostrarSeccion($(this));
+        event.preventDefault();
+    })
     function createNewUser() {
 
         var xmlhttp = new XMLHttpRequest();
@@ -53,17 +56,9 @@
                     'data': email
                 },
                 {
-                    'column': 'current_location_id',
-                    'data': null
-                },
-                {
                     'column': 'password',
                     'data': password
                 },
-                {
-                    'column': 'geomessage',
-                    'data': null
-                }
             ]
         };
         var usertext = JSON.stringify(user);
@@ -112,7 +107,7 @@
     </div>
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default" onclick="createNewUser()">Submit</button>
+        <input type="button" id="createUser" class="btn btn-default" onclick="createNewUser()">Submit</input>
       </div>
     </div>
     <p id="errormessage"></p><br/>
