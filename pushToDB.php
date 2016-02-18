@@ -18,7 +18,6 @@
 	{
 		$array[$column->column] = $column->data;
 	}
-
 	pg_insert($conn, $table, $array);
     // switch ($sqlopt) {
     // case 'insert':
@@ -30,6 +29,6 @@
     // case 'delete':
     //     $result = pg_delete($conn, $table, $array);
     //     break;
-    // }
+    }
 
 ?>

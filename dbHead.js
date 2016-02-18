@@ -25,7 +25,7 @@ function createNewUser() {
       }
     }
         var user = {
-        'sqlopt': insert,
+        'sqlopt': 'insert',
         'table': 'public.user',
         'data': [
             {
@@ -42,6 +42,8 @@ function createNewUser() {
             },
         ]
     };
+    var usertext = JSON.stringify(user);
+    xmlhttp.send(usertext);
     // switch(operation) {}
     //     case 'newUser':
     //         var user = {
@@ -126,8 +128,8 @@ function createNewUser() {
     //         };
     //         break;
     // }
-    var usertext = JSON.stringify(user);
-    xmlhttp.send(usertext);
+    // var usertext = JSON.stringify(user);
+    // xmlhttp.send(usertext);
 
     // document.location.href = "http://folk.ntnu.no/adrianto/prosjektesen/mapPage.html";
 }
