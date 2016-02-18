@@ -9,7 +9,6 @@
     <script src="jquery-1.12.0.min.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
     <script src="bootstrap/js/npm.js"></script>
-    <script src="head.js" type="text/javascript"></script> 
     <style>
     .jumbotron {
       background-color: #f4511e;
@@ -18,7 +17,7 @@
     </style>
 </head>
 <script>
-//Logikk ligger i head.js
+//logikk ligger i head.js
 </script>
 <body>
 <div class="jumbotron text-center">
@@ -27,7 +26,7 @@
 </div>
 
 <div class="container">
-  <h2>Create user</h2>
+  <h2>Sign in</h2>
   <form class="form-horizontal" role="form">
     <div class="form-group">
       <label class="control-label col-sm-2" for="user_name">Username:</label>
@@ -36,12 +35,6 @@
       </div>
     </div>            
     <div class="form-group">
-      <label class="control-label col-sm-2" for="email">Email:</label>
-      <div class="col-sm-10">
-        <input type="email" class="form-control" id="email" placeholder="Enter email">
-      </div>
-    </div>
-    <div class="form-group">
       <label class="control-label col-sm-2" for="pwd">Password:</label>
       <div class="col-sm-10">          
         <input type="password" class="form-control" id="pwd" placeholder="Enter password">
@@ -49,10 +42,9 @@
     </div>
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
-        <button type="button" id="createUser" class="btn btn-default" onclick="createNewUser()">Submit</button>
+        <button type="button" id="createUser" class="btn btn-default" onclick="login()">Sign in</button>
       </div>
     </div>
-    <p id="errormessage"></p><br/>
   </form>
 </div>
 </body> 
