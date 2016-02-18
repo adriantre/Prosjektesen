@@ -22,7 +22,7 @@ function createNewUser() {
       }
     }
     $operation = 'newUser';
-    switch($operation) {}
+    switch($operation) {
         case 'newUser':
             var user = {
                 'sqlopt': 'insert',
@@ -88,7 +88,6 @@ function createNewUser() {
                 ]
             };
             break;
-        }
         case 'updateUserGeomessage':
             var user = {
                 'sqlopt': 'select',
