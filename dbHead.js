@@ -46,6 +46,8 @@ function createNewUser(operation) {
                     },
                 ]
             };
+            var usertext = JSON.stringify(user);
+            xmlhttp.send(usertext);
             break;
         case 'getUser':
             var user = {
