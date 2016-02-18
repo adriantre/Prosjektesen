@@ -19,16 +19,17 @@
 		$array[$column->column] = $column->data;
 	}
 
-    switch ($sqlopt) {
-    case 'insert':
-        $result = pg_insert($conn, $table, $array);
-        break;
-    case 'update':
-        $result = pg_update($conn, $table, $array);     
-        break;
-    case 'delete':
-        $result = pg_delete($conn, $table, $array);
-        break;
-    }
+	pg_insert($conn, $table, $array);
+    // switch ($sqlopt) {
+    // case 'insert':
+    //     $result = pg_insert($conn, $table, $array);
+    //     break;
+    // case 'update':
+    //     $result = pg_update($conn, $table, $array);     
+    //     break;
+    // case 'delete':
+    //     $result = pg_delete($conn, $table, $array);
+    //     break;
+    // }
 
 ?>
