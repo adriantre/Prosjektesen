@@ -1,4 +1,4 @@
-function createNewUser() {
+function createNewUser(operation) {
 
     var xmlhttp = new XMLHttpRequest();
     var url = 'http://folk.ntnu.no/adrianto/prosjektesen/pushToDB.php/';
@@ -19,117 +19,95 @@ function createNewUser() {
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
       {
         document.getElementById("errormessage").innerHTML = xmlhttp.responseText;
-        // Denne koden kalles når xmlhttp.send() er ferdig med å jobbe. Dette er en sånn fancy callback-funksjon.
-        // Hvis fila "insertIntoDB.php" skriver ut noe etter at den er ferdig med å oppdatere databasen, kan dere lese ut det her f.eks.
-        // Men dere trenger i utgangspunktet ikke å gjøre noe her.
       }
     }
-        var user = {
-        'sqlopt': 'insert',
-        'table': 'public.user',
-        'data': [
-            {
-                'column': 'user_name',
-                'data': user_name
-            },
-            {
-                'column': 'email',
-                'data': email
-            },
-            {
-                'column': 'password',
-                'data': password
-            },
-        ]
-    };
+
+    switch(operation) {}
+        case 'newUser':
+            var user = {
+                'sqlopt': 'insert',
+                'table': 'public.user',
+                'data': [
+                    {
+                        'column': 'user_name',
+                        'data': user_name
+                    },
+                    {
+                        'column': 'email',
+                        'data': email
+                    },
+                    {
+                        'column': 'password',
+                        'data': password
+                    },
+                ]
+            };
+            break;
+        case 'getUser':
+            var user = {
+                'sqlopt': 'select',
+                'table': 'public.user',
+                'data': [
+                    {
+                        'column': 'user_name',
+                        'data': user_name
+                    },
+                    {
+                        'column': 'password',
+                        'data': password
+                    },
+                ]
+            };
+            //return user_id
+            break;
+        case 'deleteUser':
+            var user = {
+                'sqlopt': 'delete',
+                'table': 'public.user',
+                'data': [
+                    {
+                        'column': 'user_id',
+                        'data': user_id
+                    },
+                ]
+            };
+            break;
+        case 'updateUserLocation':
+            var user = {
+                'sqlopt': 'select',
+                'table': 'public.user',
+                'data': [
+                    {
+                        'column': 'user_id',
+                        'data': user_id
+                    },
+                    {
+                        'column': 'current_location_id',
+                        'data': location
+                    },
+                ]
+            };
+            break;
+        }
+        case 'updateUserGeomessage':
+            var user = {
+                'sqlopt': 'select',
+                'table': 'public.user',
+                'data': [
+                    {
+                        'column': 'user_id',
+                        'data': user_id
+                    },
+                    {
+                        'column': 'geomessage',
+                        'data': geomessage
+                    },
+                ]
+            };
+            break;
+    }
     var usertext = JSON.stringify(user);
     xmlhttp.send(usertext);
-    // switch(operation) {}
-    //     case 'newUser':
-    //         var user = {
-    //             'sqlopt': insert,
-    //             'table': 'public.user',
-    //             'data': [
-    //                 {
-    //                     'column': 'user_name',
-    //                     'data': user_name
-    //                 },
-    //                 {
-    //                     'column': 'email',
-    //                     'data': email
-    //                 },
-    //                 {
-    //                     'column': 'password',
-    //                     'data': password
-    //                 },
-    //             ]
-    //         };
-    //         break;
-    //     case 'getUser':
-    //         var user = {
-    //             'sqlopt': select,
-    //             'table': 'public.user',
-    //             'data': [
-    //                 {
-    //                     'column': 'user_name',
-    //                     'data': user_name
-    //                 },
-    //                 {
-    //                     'column': 'password',
-    //                     'data': password
-    //                 },
-    //             ]
-    //         };
-    //         //return user_id
-    //         break;
-    //     case 'deleteUser':
-    //         var user = {
-    //             'sqlopt': delete,
-    //             'table': 'public.user',
-    //             'data': [
-    //                 {
-    //                     'column': 'user_id',
-    //                     'data': user_id
-    //                 },
-    //             ]
-    //         };
-    //         break;
-    //     case 'updateUserLocation':
-    //         var user = {
-    //             'sqlopt': select,
-    //             'table': 'public.user',
-    //             'data': [
-    //                 {
-    //                     'column': 'user_id',
-    //                     'data': user_id
-    //                 },
-    //                 {
-    //                     'column': 'current_location_id',
-    //                     'data': location
-    //                 },
-    //             ]
-    //         };
-    //         break;
-    //     }
-    //     case 'updateUserGeomessage':
-    //         var user = {
-    //             'sqlopt': select,
-    //             'table': 'public.user',
-    //             'data': [
-    //                 {
-    //                     'column': 'user_id',
-    //                     'data': user_id
-    //                 },
-    //                 {
-    //                     'column': 'geomessage',
-    //                     'data': geomessage
-    //                 },
-    //             ]
-    //         };
-    //         break;
-    // }
-    // var usertext = JSON.stringify(user);
-    // xmlhttp.send(usertext);
 
     // document.location.href = "http://folk.ntnu.no/adrianto/prosjektesen/mapPage.html";
 }
