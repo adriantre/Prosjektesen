@@ -6,8 +6,8 @@
 	if ($conn === false) {
 		echo "An error occurred connecting to the database.\n";
 		var_dump(pg_last_error($conn));
-	exit;
-}
+		exit;
+	}
 	$json_object = json_decode($input);
 
 	$array = array();
@@ -22,15 +22,19 @@
 
 	if ($sqlopt == "insert")
 	{
-		pg_insert($conn, $table, $array);
+		$result = pg_insert($conn, $table, $array);
+		if (!$result)
+		{
+			//brukeren finnes fra før eller liknende.
+		}
 
 	} else if ($sqlopt == "update")
 	{
-		pg_update($conn, $table, $array);
+		$result = pg_update($conn, $table, $array);
 	
 	} else if ($sqlopt == "delete")
 	{
-		pg_delete($conn, $table, $array);
+		$result = pg_delete($conn, $table, $array);
 	}
 
 ?>

@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Geofriends</title>
+    <title>Mapal</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+    <script src="jquery-1.12.0.min.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="bootstrap/js/npm.js"></script>
@@ -17,17 +18,17 @@
     </style>
 </head>
 <script>
-    $(".btnSeccion").click(function(event) {
-        btnMostrarSeccion($(this));
-        event.preventDefault();
-    })
+
     function createNewUser() {
 
         var xmlhttp = new XMLHttpRequest();
         var url = 'http://folk.ntnu.no/adrianto/prosjektesen/pushToDB.php/';
+
         var user_name = document.getElementById("user_name").value;
         var email = document.getElementById("email").value;
-        var password = document.getElementById("pwd").value;    
+        var password = document.getElementById("pwd").value;
+        //validering
+
         xmlhttp.open('POST', url, true);
      
         xmlhttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
@@ -63,25 +64,14 @@
         };
         var usertext = JSON.stringify(user);
         xmlhttp.send(usertext);
+        document.location.href = "http://folk.ntnu.no/adrianto/prosjektesen/mapPage.html";
 
     }
 </script>
 <body>
-<!--     <h1>Opprett ny bruker</h1>
-    <p>Username</p>
-    <input id="user_name"><br />
-    <p>Email</p>
-    <input id="email"><br />
-    <p>Password</p>
-    <input id="password"><br />
-    <button type="button" onclick="insertUserIntoDB()">Trykk her for å opprette bruker!</button>
-    <p id="uservalues">Ingen bruker opprettet enda</p><br />
-    <p id="txtHint"></p>
-    <button type="button" onclick=window.open('http://folk.ntnu.no/adrianto/prosjektesen/mapPage.html',"_self","","")>Til Hovedmeny!</button>
- -->
 <div class="jumbotron text-center">
-  <h1>Geofriends</h1> 
-  <p>We make your maps friendly</p> 
+  <h1>Mapal</h1> 
+  <p>Share your whereabouts with pals</p> 
 </div>
 
 <div class="container">
@@ -107,7 +97,7 @@
     </div>
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
-        <input type="button" id="createUser" class="btn btn-default" onclick="createNewUser()">Submit</input>
+        <button type="button" id="createUser" class="btn btn-default" onclick="createNewUser()">Submit</button>
       </div>
     </div>
     <p id="errormessage"></p><br/>
