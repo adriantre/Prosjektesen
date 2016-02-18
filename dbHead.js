@@ -1,4 +1,4 @@
-function createNewUser(operation) {
+function createNewUser() {
 
     var xmlhttp = new XMLHttpRequest();
     var url = 'http://folk.ntnu.no/adrianto/prosjektesen/pushToDB.php/';
@@ -21,7 +21,7 @@ function createNewUser(operation) {
         document.getElementById("errormessage").innerHTML = xmlhttp.responseText;
       }
     }
-
+    $operation = 'newUser';
     switch($operation) {}
         case 'newUser':
             var user = {
