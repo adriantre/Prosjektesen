@@ -2,7 +2,6 @@ function createNewUser() {
 
     var xmlhttp = new XMLHttpRequest();
     var url = 'http://folk.ntnu.no/adrianto/prosjektesen/pushToDB.php/';
-    var operation = 'insert';
     var user_id;
     var user_name = document.getElementById("user_name").value;
     var email = document.getElementById("email").value;
@@ -25,91 +24,108 @@ function createNewUser() {
         // Men dere trenger i utgangspunktet ikke å gjøre noe her.
       }
     }
-    
-    switch(operation) {}
-        case 'newUser':
-            var user = {
-                'sqlopt': insert,
-                'table': 'public.user',
-                'data': [
-                    {
-                        'column': 'user_name',
-                        'data': user_name
-                    },
-                    {
-                        'column': 'email',
-                        'data': email
-                    },
-                    {
-                        'column': 'password',
-                        'data': password
-                    },
-                ]
-            };
-            break;
-        case 'getUser':
-            var user = {
-                'sqlopt': select,
-                'table': 'public.user',
-                'data': [
-                    {
-                        'column': 'user_name',
-                        'data': user_name
-                    },
-                    {
-                        'column': 'password',
-                        'data': password
-                    },
-                ]
-            };
-            //return user_id
-            break;
-        case 'deleteUser':
-            var user = {
-                'sqlopt': delete,
-                'table': 'public.user',
-                'data': [
-                    {
-                        'column': 'user_id',
-                        'data': user_id
-                    },
-                ]
-            };
-            break;
-        case 'updateUserLocation':
-            var user = {
-                'sqlopt': select,
-                'table': 'public.user',
-                'data': [
-                    {
-                        'column': 'user_id',
-                        'data': user_id
-                    },
-                    {
-                        'column': 'current_location_id',
-                        'data': location
-                    },
-                ]
-            };
-            break;
-        }
-        case 'updateUserGeomessage':
-            var user = {
-                'sqlopt': select,
-                'table': 'public.user',
-                'data': [
-                    {
-                        'column': 'user_id',
-                        'data': user_id
-                    },
-                    {
-                        'column': 'geomessage',
-                        'data': geomessage
-                    },
-                ]
-            };
-            break;
-    }
+        var user = {
+        'sqlopt': insert,
+        'table': 'public.user',
+        'data': [
+            {
+                'column': 'user_name',
+                'data': user_name
+            },
+            {
+                'column': 'email',
+                'data': email
+            },
+            {
+                'column': 'password',
+                'data': password
+            },
+        ]
+    };
+    // switch(operation) {}
+    //     case 'newUser':
+    //         var user = {
+    //             'sqlopt': insert,
+    //             'table': 'public.user',
+    //             'data': [
+    //                 {
+    //                     'column': 'user_name',
+    //                     'data': user_name
+    //                 },
+    //                 {
+    //                     'column': 'email',
+    //                     'data': email
+    //                 },
+    //                 {
+    //                     'column': 'password',
+    //                     'data': password
+    //                 },
+    //             ]
+    //         };
+    //         break;
+    //     case 'getUser':
+    //         var user = {
+    //             'sqlopt': select,
+    //             'table': 'public.user',
+    //             'data': [
+    //                 {
+    //                     'column': 'user_name',
+    //                     'data': user_name
+    //                 },
+    //                 {
+    //                     'column': 'password',
+    //                     'data': password
+    //                 },
+    //             ]
+    //         };
+    //         //return user_id
+    //         break;
+    //     case 'deleteUser':
+    //         var user = {
+    //             'sqlopt': delete,
+    //             'table': 'public.user',
+    //             'data': [
+    //                 {
+    //                     'column': 'user_id',
+    //                     'data': user_id
+    //                 },
+    //             ]
+    //         };
+    //         break;
+    //     case 'updateUserLocation':
+    //         var user = {
+    //             'sqlopt': select,
+    //             'table': 'public.user',
+    //             'data': [
+    //                 {
+    //                     'column': 'user_id',
+    //                     'data': user_id
+    //                 },
+    //                 {
+    //                     'column': 'current_location_id',
+    //                     'data': location
+    //                 },
+    //             ]
+    //         };
+    //         break;
+    //     }
+    //     case 'updateUserGeomessage':
+    //         var user = {
+    //             'sqlopt': select,
+    //             'table': 'public.user',
+    //             'data': [
+    //                 {
+    //                     'column': 'user_id',
+    //                     'data': user_id
+    //                 },
+    //                 {
+    //                     'column': 'geomessage',
+    //                     'data': geomessage
+    //                 },
+    //             ]
+    //         };
+    //         break;
+    // }
     var usertext = JSON.stringify(user);
     xmlhttp.send(usertext);
 
