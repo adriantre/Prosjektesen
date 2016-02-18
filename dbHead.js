@@ -1,8 +1,8 @@
-function createNewUser(operation) {
+function createNewUser() {
 
     var xmlhttp = new XMLHttpRequest();
     var url = 'http://folk.ntnu.no/adrianto/prosjektesen/pushToDB.php/';
-
+    var operation = 'insert';
     var user_id;
     var user_name = document.getElementById("user_name").value;
     var email = document.getElementById("email").value;
@@ -94,7 +94,7 @@ function createNewUser(operation) {
             break;
         }
         case 'updateUserGeomessage':
-        var user = {
+            var user = {
                 'sqlopt': select,
                 'table': 'public.user',
                 'data': [
