@@ -20,7 +20,7 @@
 	}
 
 
-    switch (sqlopt) {
+    switch ($sqlopt) {
     case 'insert':
         $result = pg_insert($conn, $table, $array);
         break;
@@ -29,6 +29,7 @@
         break;
     case 'delete':
         $result = pg_delete($conn, $table, $array);
+        break;
     }
 
 ?>
