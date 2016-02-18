@@ -24,7 +24,6 @@
     case 'insert':
         $result = pg_insert($conn, $table, $array);
         break;
-    
     case 'update':
         $result = pg_update($conn, $table, $array);     
         break;
