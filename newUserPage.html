@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Geofriends</title>
+    <title>Mapal</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
-    
+    <script src="jquery-1.12.0.min.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="bootstrap/js/npm.js"></script>
+    <script src="head.js" type="text/javascript"></script> 
     <style>
     .jumbotron {
       background-color: #f4511e;
@@ -18,6 +18,7 @@
     </style>
 </head>
 <script>
+<<<<<<< HEAD
 
     function insertUserIntoDB() {
 
@@ -78,23 +79,14 @@
         alert("Dette funka");
 
     }
+=======
+//Logikk ligger i head.js
+>>>>>>> master
 </script>
 <body>
-<!--     <h1>Opprett ny bruker</h1>
-    <p>Username</p>
-    <input id="user_name"><br />
-    <p>Email</p>
-    <input id="email"><br />
-    <p>Password</p>
-    <input id="password"><br />
-    <button type="button" onclick="insertUserIntoDB()">Trykk her for å opprette bruker!</button>
-    <p id="uservalues">Ingen bruker opprettet enda</p><br />
-    <p id="txtHint"></p>
-    <button type="button" onclick=window.open('http://folk.ntnu.no/adrianto/prosjektesen/mapPage.html',"_self","","")>Til Hovedmeny!</button>
- -->
 <div class="jumbotron text-center">
-  <h1>Geofriends</h1> 
-  <p>We make your maps friendly</p> 
+  <h1>Mapal</h1> 
+  <p>Share your whereabouts with pals</p> 
 </div>
 
 <div class="container">
@@ -120,10 +112,10 @@
     </div>
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
-        <button type="button" class="btn btn-default" onclick="insertUserIntoDB()">Submit</button>
+        <button type="button" id="createUser" class="btn btn-default" onclick="createNewUser()">Submit</button>
       </div>
     </div>
-    <p id="uservalues">Ingen bruker opprettet enda</p><br/>
+    <p id="errormessage"></p><br/>
   </form>
 </div>
 </body> 
