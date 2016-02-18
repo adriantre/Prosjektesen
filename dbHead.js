@@ -1,4 +1,4 @@
-function createNewUser(operation) {
+function manageUser(operation) {
 
     var xmlhttp = new XMLHttpRequest();
     var url = 'http://folk.ntnu.no/adrianto/prosjektesen/pushToDB.php/';
@@ -8,7 +8,6 @@ function createNewUser(operation) {
     var password = document.getElementById("pwd").value;
     var current_location_id;
     var geomessage;
-    //validering
 
     xmlhttp.open('POST', url, true);
  
