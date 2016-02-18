@@ -22,7 +22,7 @@ function createNewUser(operation) {
       }
     }
 
-    switch(operation) {}
+    switch($operation) {}
         case 'newUser':
             var user = {
                 'sqlopt': 'insert',
