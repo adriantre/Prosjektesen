@@ -8,6 +8,7 @@ function createNewUser(operation) {
     var email = document.getElementById("email").value;
     var password = document.getElementById("pwd").value;
     var current_location_id;
+    var geomessage;
     //validering
 
     xmlhttp.open('POST', url, true);
@@ -83,7 +84,7 @@ function createNewUser(operation) {
         //return user_id
         break;
     case 'updateUserLocation':
-                var user = {
+        var user = {
             'sqlopt': select,
             'table': 'public.user',
             'data': [
@@ -98,22 +99,20 @@ function createNewUser(operation) {
             ]
         };
     }
-
-        switch (sqlopt) {
-        case 'insert':
-            $result = pg_insert($conn, $table, $array);
-            if (!$result)
-            {
-                //brukeren finnes fra før eller liknende.
-            }
-            break;
-        
-        case 'update':
-            $result = pg_update($conn, $table, $array);     
-            break;
-        case 'delete':
-            $result = pg_delete($conn, $table, $array);
-    }
+    case 'updateUserGeomessage':
+    var user = {
+                'sqlopt': select,
+                'table': 'public.user',
+                'data': [
+                    {
+                        'column': 'user_id',
+                        'data': user_id
+                    },
+                    {
+                        'column': 'geomessage',
+                        'data': geomessage
+                    },
+            };
 
     // document.location.href = "http://folk.ntnu.no/adrianto/prosjektesen/mapPage.html";
 }
