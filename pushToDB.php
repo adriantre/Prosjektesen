@@ -29,6 +29,6 @@
     // case 'delete':
     //     $result = pg_delete($conn, $table, $array);
     //     break;
-    }
+    // }
 
 ?>
