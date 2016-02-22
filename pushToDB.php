@@ -22,7 +22,7 @@
 			$values[$column->column] = $column->data;
 		}
 	}
-	if (isset(($json_object->conditions))
+	if (isset($json_object->conditions))
 	{
 		foreach ($json_object->conditions as $column)
 		{
