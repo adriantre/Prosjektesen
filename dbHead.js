@@ -25,7 +25,7 @@ function manageUser(operation) {
             var user = {
                 'sqlopt': 'insert',
                 'table': 'public.user',
-                'data': [
+                'values': [
                     {
                         'column': 'user_name',
                         'data': user_name
@@ -45,7 +45,15 @@ function manageUser(operation) {
             var user = {
                 'sqlopt': 'select',
                 'table': 'public.user',
-                'condition': [
+                'to_select': [
+                    {
+                        'column': 'user_id'
+                    },
+                    {
+                        'column': 'current_location_id'
+                    }
+                ]
+                'conditions': [
                     {
                         'column': 'user_name',
                         'data': user_name
@@ -62,25 +70,25 @@ function manageUser(operation) {
             var user = {
                 'sqlopt': 'delete',
                 'table': 'public.user',
-                'condition': [
+                'conditions': [
                     {
                         'column': 'user_id',
                         'data': user_id
-                    },
+                    }
                 ]
             };
             break;
         case 'updateUserLocation':
             var user = {
-                'sqlopt': 'select',
+                'sqlopt': 'update',
                 'table': 'public.user',
-                'data': [
+                'values': [
                     {
                         'column': 'current_location_id',
                         'data': location
                     }
-                ]
-                'condition': [
+                ],
+                'conditions': [
                     {
                         'column': 'user_id',
                         'data': user_id
@@ -90,15 +98,15 @@ function manageUser(operation) {
             break;
         case 'updateUserGeomessage':
             var user = {
-                'sqlopt': 'select',
+                'sqlopt': 'update',
                 'table': 'public.user',
-                'data': [
+                'values': [
                     {
                         'column': 'geomessage',
                         'data': geomessage
                     }
-                ]
-                'condition': [
+                ],
+                'conditions': [
                     {
                         'column': 'user_id',
                         'data': user_id
