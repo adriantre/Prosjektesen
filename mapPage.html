@@ -56,16 +56,13 @@ body{font:12px/1.231 arial,helvetica,clean,sans-serif;}
   }
 
   function initialize() {
-  	var topografiskLayer = L.tileLayer("http://{s}.statkart.no/gatekeeper/gk/gk.open_gmaps?layers=topo2&zoom={z}&x={x}&y={y}",
-  	{subdomains: ["opencache", "opencache2", "opencache3"], maxZoom: 20});
 
    	var osmLayer = L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
       {subdomains: "abc", maxZoom: 20});
-      var mapSettings = {layers: [topografiskLayer], attributionControl: false};
-      map = L.map('map',mapSettings);
+    var mapSettings = {layers: [topografiskLayer], attributionControl: false};
+    map = L.map('map',mapSettings);
   	var baseMaps =
     	{
-  	    "Statkart Topografisk": topografiskLayer,
   	    "OpenStreetMap": osmLayer
       };
     L.control.layers(baseMaps).addTo(map);
