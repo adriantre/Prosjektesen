@@ -52,7 +52,7 @@ function manageUser(operation) {
                     {
                         'column': 'current_location_id'
                     }
-                ]
+                ],
                 'conditions': [
                     {
                         'column': 'user_name',
