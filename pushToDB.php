@@ -16,29 +16,37 @@
 
 	$sqlopt = $json_object->sqlopt;
 	$table = $json_object->table;
-	foreach ($json_object->values as $column)
+	if ($values) 
 	{
-		$values[$column->column] = $column->data;
+		foreach ($json_object->values as $column)
+		{
+			$values[$column->column] = $column->data;
+		}
 	}
-	foreach ($json_object->condition as $column)
+	if ($conditions)
 	{
-		$condition[$column->column] = $column->data;
+		foreach ($json_object->conditions as $column)
+		{
+			$condition[$column->column] = $column->data;
+		}
 	}
-	foreach ($json_object->to_select as $column)
+	if ($to_select)
 	{
-		array_push($to_select, $column->column);
+		foreach ($json_object->to_select as $column)
+		{
+			array_push($to_select, $column->column);
+		}
 	}
-	
 
     switch ($sqlopt) {
 	    case "insert":
-	        $result = pg_insert($conn, $table, $data);
+	        $result = pg_insert($conn, $table, $values);
 	        break;
 	    case "update":
-	        $result = pg_update($conn, $table, $data, $condition);     
+	        $result = pg_update($conn, $table, $values, $condition);     
 	        break;
 	    case "select":
-	        $result = pg_query($conn, "select" . http_build_query($data, '', ",") . "from" . $table . "where" . http_build_query($condition, '', "and"));
+	        $result = pg_query($conn, "select" . http_build_query($to_select, '', ",") . "from" . $table . "where" . http_build_query($condition, '', "and"));
 	        break;
 	    case "delete":
 	        $result = pg_delete($conn, $table, $condition);
