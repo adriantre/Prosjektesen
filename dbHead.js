@@ -85,7 +85,7 @@ function manageUser(operation) {
                 'values': [
                     {
                         'column': 'current_location_id',
-                        'data': location
+                        'data': current_location_id
                     }
                 ],
                 'conditions': [
