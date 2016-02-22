@@ -45,7 +45,7 @@ function manageUser(operation) {
             var user = {
                 'sqlopt': 'select',
                 'table': 'public.user',
-                'data': [
+                'condition': [
                     {
                         'column': 'user_name',
                         'data': user_name
@@ -56,13 +56,13 @@ function manageUser(operation) {
                     },
                 ]
             };
-            //return user_id
+            //return user_id, current_location_id, 
             break;
         case 'deleteUser':
             var user = {
                 'sqlopt': 'delete',
                 'table': 'public.user',
-                'data': [
+                'condition': [
                     {
                         'column': 'user_id',
                         'data': user_id
@@ -76,13 +76,15 @@ function manageUser(operation) {
                 'table': 'public.user',
                 'data': [
                     {
-                        'column': 'user_id',
-                        'data': user_id
-                    },
-                    {
                         'column': 'current_location_id',
                         'data': location
-                    },
+                    }
+                ]
+                'condition': [
+                    {
+                        'column': 'user_id',
+                        'data': user_id
+                    }
                 ]
             };
             break;
@@ -92,13 +94,15 @@ function manageUser(operation) {
                 'table': 'public.user',
                 'data': [
                     {
-                        'column': 'user_id',
-                        'data': user_id
-                    },
-                    {
                         'column': 'geomessage',
                         'data': geomessage
-                    },
+                    }
+                ]
+                'condition': [
+                    {
+                        'column': 'user_id',
+                        'data': user_id
+                    }
                 ]
             };
             break;

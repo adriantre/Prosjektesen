@@ -10,24 +10,24 @@
 	}
 	$json_object = json_decode($input);
 
-	$array = array();
+	$data = array();
 
 	$sqlopt = $json_object->sqlopt;
 	$table = $json_object->table;
 	foreach ($json_object->data as $column)
 	{
-		$array[$column->column] = $column->data;
+		$data[$column->column] = $column->data;
 	}
 
     switch ($sqlopt) {
 	    case "insert":
-	        $result = pg_insert($conn, $table, $array);
+	        $result = pg_insert($conn, $table, $data);
 	        break;
 	    case "update":
-	        $result = pg_update($conn, $table, $array);     
+	        $result = pg_update($conn, $table, $data);     
 	        break;
 	    case "delete":
-	        $result = pg_delete($conn, $table, $array);
+	        $result = pg_delete($conn, $table, $data);
 	        break;
     }
 ?>
