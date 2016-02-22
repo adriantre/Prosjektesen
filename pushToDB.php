@@ -10,24 +10,38 @@
 	}
 	$json_object = json_decode($input);
 
-	$data = array();
+	$values = array();
+	$conditions = array();
+	$to_select = array();
 
 	$sqlopt = $json_object->sqlopt;
 	$table = $json_object->table;
-	foreach ($json_object->data as $column)
+	foreach ($json_object->values as $column)
 	{
-		$data[$column->column] = $column->data;
+		$values[$column->column] = $column->data;
 	}
+	foreach ($json_object->condition as $column)
+	{
+		$condition[$column->column] = $column->data;
+	}
+	foreach ($json_object->to_select as $column)
+	{
+		array_push($to_select, $column->column);
+	}
+	
 
     switch ($sqlopt) {
 	    case "insert":
 	        $result = pg_insert($conn, $table, $data);
 	        break;
 	    case "update":
-	        $result = pg_update($conn, $table, $data);     
+	        $result = pg_update($conn, $table, $data, $condition);     
+	        break;
+	    case "select":
+	        $result = pg_query($conn, "select" . http_build_query($data, '', ",") . "from" . $table . "where" . http_build_query($condition, '', "and"));
 	        break;
 	    case "delete":
-	        $result = pg_delete($conn, $table, $data);
+	        $result = pg_delete($conn, $table, $condition);
 	        break;
     }
 ?>
