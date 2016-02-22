@@ -15,21 +15,22 @@
 	$to_select = array();
 	$sqlopt = $json_object->sqlopt;
 	$table = $json_object->table;
-	if (isset($json_object->values)) 
+
+	if (array_key_exists($json_object->values)) 
 	{
 		foreach ($json_object->values as $column)
 		{
 			$values[$column->column] = $column->data;
 		}
 	}
-	if (isset($json_object->conditions))
+	if (array_key_exists($json_object->conditions))
 	{
 		foreach ($json_object->conditions as $column)
 		{
 			$conditions[$column->column] = $column->data;
 		}
 	}
-	if (isset($json_object->to_select))
+	if (array_key_exists($json_object->to_select))
 	{
 		foreach ($json_object->to_select as $column)
 		{
