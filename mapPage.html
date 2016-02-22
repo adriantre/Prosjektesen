@@ -118,6 +118,7 @@ body{font:12px/1.231 arial,helvetica,clean,sans-serif;}
   	
     L.marker(coords).addTo(map).bindPopup('Du er her!').openPopup();
     map.setView(coords, 13);
+    alert("Got Position");
   }
   var popup = L.popup();
 
@@ -144,8 +145,11 @@ body{font:12px/1.231 arial,helvetica,clean,sans-serif;}
 </div>
 
 <div class="container">
-  <div id="map" style="width:1000px; height:1000px">
- </div> 
+  <div id="map" style="width:1000px; height:500px">
+ </div>
+ <div class="col-sm-offset-2 col-sm-10">
+        <button type="button" id="createUser" class="btn btn-default" onclick="getUserPosition('position')">Submit</button>
+      </div> 
   <p id="polygonCoords"></p>
 </div>
 </body>
