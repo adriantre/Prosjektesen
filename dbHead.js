@@ -1,15 +1,13 @@
-function createNewUser(operation) {
+function manageUser(operation) {
 
     var xmlhttp = new XMLHttpRequest();
     var url = 'http://folk.ntnu.no/adrianto/prosjektesen/pushToDB.php/';
-
     var user_id;
     var user_name = document.getElementById("user_name").value;
     var email = document.getElementById("email").value;
     var password = document.getElementById("pwd").value;
     var current_location_id;
     var geomessage;
-    //validering
 
     xmlhttp.open('POST', url, true);
  
@@ -20,16 +18,12 @@ function createNewUser(operation) {
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
       {
         document.getElementById("errormessage").innerHTML = xmlhttp.responseText;
-        // Denne koden kalles når xmlhttp.send() er ferdig med å jobbe. Dette er en sånn fancy callback-funksjon.
-        // Hvis fila "insertIntoDB.php" skriver ut noe etter at den er ferdig med å oppdatere databasen, kan dere lese ut det her f.eks.
-        // Men dere trenger i utgangspunktet ikke å gjøre noe her.
       }
     }
-    
-    switch(operation) {}
+    switch(operation) {
         case 'newUser':
             var user = {
-                'sqlopt': insert,
+                'sqlopt': 'insert',
                 'table': 'public.user',
                 'data': [
                     {
@@ -49,7 +43,7 @@ function createNewUser(operation) {
             break;
         case 'getUser':
             var user = {
-                'sqlopt': select,
+                'sqlopt': 'select',
                 'table': 'public.user',
                 'data': [
                     {
@@ -66,7 +60,7 @@ function createNewUser(operation) {
             break;
         case 'deleteUser':
             var user = {
-                'sqlopt': delete,
+                'sqlopt': 'delete',
                 'table': 'public.user',
                 'data': [
                     {
@@ -78,7 +72,7 @@ function createNewUser(operation) {
             break;
         case 'updateUserLocation':
             var user = {
-                'sqlopt': select,
+                'sqlopt': 'select',
                 'table': 'public.user',
                 'data': [
                     {
@@ -92,10 +86,9 @@ function createNewUser(operation) {
                 ]
             };
             break;
-        }
         case 'updateUserGeomessage':
-        var user = {
-                'sqlopt': select,
+            var user = {
+                'sqlopt': 'select',
                 'table': 'public.user',
                 'data': [
                     {
