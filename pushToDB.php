@@ -13,7 +13,6 @@
 	$values = array();
 	$conditions = array();
 	$to_select = array();
-
 	$sqlopt = $json_object->sqlopt;
 	$table = $json_object->table;
 	if (!empty($json_object->values)) 
@@ -27,7 +26,7 @@
 	{
 		foreach ($json_object->conditions as $column)
 		{
-			$condition[$column->column] = $column->data;
+			$conditions[$column->column] = $column->data;
 		}
 	}
 	if (!empty($json_object->to_select))
