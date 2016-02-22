@@ -16,21 +16,21 @@
 
 	$sqlopt = $json_object->sqlopt;
 	$table = $json_object->table;
-	if ($json_object->values) 
+	if (!empty($json_object->values)) 
 	{
 		foreach ($json_object->values as $column)
 		{
 			$values[$column->column] = $column->data;
 		}
 	}
-	if ($json_object->conditions)
+	if (!empty(($json_object->conditions))
 	{
 		foreach ($json_object->conditions as $column)
 		{
 			$condition[$column->column] = $column->data;
 		}
 	}
-	if ($json_object->to_select)
+	if (!empty($json_object->to_select))
 	{
 		foreach ($json_object->to_select as $column)
 		{
