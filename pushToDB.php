@@ -24,16 +24,16 @@
 	// }
 	// if (!empty(($json_object->conditions))
 	// {
-	// 	foreach ($json_object->conditions as $column)
-	// 	{
-	// 		$conditions[$column->column] = $column->data;
+		foreach ($json_object->conditions as $column)
+		{
+			$conditions[$column->column] = $column->data;
 	// 	}
 	// }
 	// if (!empty($json_object->to_select))
 	// {
-	// 	foreach ($json_object->to_select as $column)
-	// 	{
-	// 		array_push($to_select, $column->column);
+		foreach ($json_object->to_select as $column)
+		{
+			array_push($to_select, $column->column);
 	// 	}
 	// }
 
