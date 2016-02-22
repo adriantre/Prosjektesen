@@ -13,19 +13,60 @@
     <style>
     .jumbotron {
     position: relative;
-    background: #000 url("Logo-white.png") center center no-repeat;
+    background: url("Logo-white.png") center center no-repeat;
     width: 100%;
     height: 275px;
     background-size:53%;
     overflow: hidden;
-    background-color: #f4511e;
+/*    background-color: #f4511e;
     color: #fff
-    }
+*/    }
     body {
-      background-image: url("spacegif.gif");
+      background-image: url("spinningearth.webm");
       width: 100%;
       height: 100%;
     }
+.fullscreen-bg {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: -100;
+}
+
+.fullscreen-bg__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .fullscreen-bg__video {
+    height: 300%;
+    top: -100%;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .fullscreen-bg__video {
+    width: 300%;
+    left: -100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .fullscreen-bg {
+    background: url('../img/videoframe.jpg') center center / cover no-repeat;
+  }
+
+  .fullscreen-bg__video {
+    display: none;
+  }
+}
     </style>
 </head>
 <script>
@@ -34,10 +75,15 @@
 <body>
 <div class="jumbotron container">
 </div>
+<div class="fullscreen-bg">
+    <video loop muted autoplay poster="img/videoframe.jpg" class="fullscreen-bg__video">
+        <source src="spinningearth.webm" type="video/webm">
+    </video>
+</div>
 
 <div class="container">
 <div class="text-center">
-<h2> Welcome to Mapal </h2>      
+<h2 style="color:#FFFFFF"> Welcome to Mapal </h2>      
       <div class="text-center">
 <div class="btn-group-lg">
         <button type="button" id="Log in" class="btn btn-primary" onclick= window.open("loginPage.html","_self")>Log in
