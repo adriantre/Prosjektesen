@@ -15,27 +15,27 @@
 	$to_select = array();
 	$sqlopt = $json_object->sqlopt;
 	$table = $json_object->table;
-	// if (!empty($json_object->values)) 
-	// {
+	if (isset($json_object->values)) 
+	{
 		foreach ($json_object->values as $column)
 		{
 			$values[$column->column] = $column->data;
 		}
-	// }
-	// if (!empty(($json_object->conditions))
-	// {
+	}
+	if (isset(($json_object->conditions))
+	{
 		foreach ($json_object->conditions as $column)
 		{
 			$conditions[$column->column] = $column->data;
-	// 	}
-	// }
-	// if (!empty($json_object->to_select))
-	// {
+		}
+	}
+	if (isset($json_object->to_select))
+	{
 		foreach ($json_object->to_select as $column)
 		{
 			array_push($to_select, $column->column);
-	// 	}
-	// }
+		}
+	}
 
     switch ($sqlopt) {
 	    case "insert":
