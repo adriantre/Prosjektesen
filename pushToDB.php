@@ -41,6 +41,7 @@
     switch ($sqlopt) {
 	    case "insert":
 	        $result = pg_insert($conn, $table, $values);
+	        $last_id = pg_last_oid($result);
 	        break;
 	    case "update":
 	        $result = pg_update($conn, $table, $values, $condition);     
