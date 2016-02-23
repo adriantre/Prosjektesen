@@ -62,4 +62,5 @@
 	$result_array = pg_fetch_all($result)
 	echo $result_array;
 	echo $last_id;
+	
 ?>
