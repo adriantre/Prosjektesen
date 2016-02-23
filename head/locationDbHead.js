@@ -1,11 +1,11 @@
-function manageLocation(operation) {
+function manageLocation(operation, object) {
 
     var xmlhttp = new XMLHttpRequest();
     var url = 'http://folk.ntnu.no/adrianto/prosjektesen/pushToDB.php/';
-    var location_name = document.getElementById("location_name").value;
-    var geofence = wkt.write();
+    // var location_name = document.getElementById("location_name").value;
+    // var geofence = wkt.write();
     // var creator_id = this.user_id;
-    document.getElementById('polygonCoords').innerHTML=geofence;
+    // document.getElementById('polygonCoords').innerHTML=geofence;
 
     xmlhttp.open('POST', url, true);
  
@@ -26,11 +26,11 @@ function manageLocation(operation) {
                 'values': [
                     {
                         'column': 'location_name',
-                        'data': location_name
+                        'data': object.getName()
                     },
                     {
                         'column': 'geofence2s',
-                        'data': geofence
+                        'data': object.getGeofence()
                     },
                     // {
                     //     'column': 'creator_id',
@@ -93,6 +93,7 @@ function manageLocation(operation) {
             break;
     }
     var locationText = JSON.stringify(location);
+    document.getElementById('polygonCoords').innerHTML=locationText;
     xmlhttp.send(locationText);
 
     // document.location.href = "http://folk.ntnu.no/adrianto/prosjektesen/mapPage.html";
