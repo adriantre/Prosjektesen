@@ -3,7 +3,8 @@
 
 	$conn = pg_connect("host=92.62.34.78 port=5432 dbname=adrianto user=adrianto password=kalende");
 	pg_set_error_verbosity($conn, PGSQL_ERRORS_VERBOSE);
-	if ($conn === false) {
+	if ($conn === false)
+	{
 		echo "An error occurred connecting to the database.\n";
 		var_dump(pg_last_error($conn));
 		exit;
@@ -58,10 +59,7 @@
 	  var_dump(pg_last_error($conn));
 	  exit;
 	}
-
-	while ($row = pg_fetch_row($result))
-	{
-	  echo $row[1] . "\n";
-	}
+	$result_array = pg_fetch_all($result)
+	echo $result_array;
 	echo $last_id;
 ?>
