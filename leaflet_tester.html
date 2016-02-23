@@ -6,8 +6,8 @@
 <!-- CDN og lokal source leaflet -->
 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css">
 <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
-<link rel="stylesheet" type="text/css" href="Leaflet.draw/dist/leaflet.draw.css">
-<script src="Leaflet.draw/dist/leaflet.draw.js"></script>
+<link rel="stylesheet" type="text/css" href="Leaflet/Leaflet.draw/dist/leaflet.draw.css">
+<script src="Leaflet/Leaflet.draw/dist/leaflet.draw.js"></script>
 
 <!-- CDN bootstrap -->
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
@@ -15,10 +15,11 @@
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 <!-- source til wickets -->
-<script src="wicket.js"></script>
-<script src="wicket-leaflet.js"></script>
+<script src="Leaflet/wicket.js"></script>
+<script src="Leaflet/wicket-leaflet.js"></script>
 
 <script src="leaflet_tester_script.js"></script>
+<script src="head/locationDbHead.js"></script>
 
 <!--<meta name="viewport" content="initial-scale=1.0, user-scalable=no"> -->
 <style type="text/css">
@@ -31,9 +32,15 @@ html, body {
 	}
 
   	.jumbotron {
+      position: relative;
+      background: #000 url("graphics/Logo-white.png") center center no-repeat;
+      width: 100%;
+      height: 275px;
+      background-size:53%;
+      overflow: hidden;
       background-color: #f4511e;
-      color: #fff;
-  }
+      color: #fff
+      }
 
 	#map {
       height:72.3%;
@@ -41,7 +48,31 @@ html, body {
       /*padding:0px;
       margin:0px;*/
       border: 2px solid black;
-   }   
+   }  
+
+/*--------------------MODAL CSS--------------------------------*/
+   .vertical-align-center {
+    /* To center vertically */
+    display: table-cell;
+    vertical-align: middle;
+    pointer-events:none;
+  }
+
+  .modal-content {
+    width:inherit;
+    height:inherit;
+    /* To center horizontally */
+    margin: 0 auto;
+    pointer-events:all;
+} 
+
+.vertical-alignment-helper {
+    display:table;
+    height: 100%;
+    width: 100%;
+    pointer-events:none;
+}
+/*-------------------------------------------------------------*/
 
 </style>
 
@@ -49,8 +80,6 @@ html, body {
 </head>
 <body onload="initialize()">
   <div class="jumbotron text-center">
-  <h1>Mapal</h1> 
-  <p>Share your whereabouts with pals</p> 
 </div>
 <!-- <div class="container"> -->
  <div id="map">
@@ -60,7 +89,8 @@ html, body {
 <div class="container">
   <!-- Modal -->
   <div class="modal fade" id="myLocation" role="dialog">
-    <div class="modal-dialog">
+   <div class="vertical-alignment-helper">
+    <div class="modal-dialog vertical-align-center">
     
       <!-- Modal content-->
       <div class="modal-content">
@@ -69,25 +99,30 @@ html, body {
           <h4><span class="glyphicon glyphicon-pencil"></span> Give your location a name</h4>
         </div>
         <div class="modal-body" style="padding:40px 50px;">
-
           <form role="form">
             <div class="form-group">
               <label for="usrname"><span class="glyphicon glyphicon-globe"></span> Location name</label>
-              <input type="text" class="form-control" id="locationName" placeholder="Enter location name">
+              <input type="text" class="form-control" id="location_name" placeholder="Enter location name">
             </div>
           </form>
 
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-          <p>Some text in the modal.</p>
+          <button type="button" class="btn btn-danger btn-default pull-left" data-dismiss="modal" onclick="cancelLocation()"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+          <button type="button" class="btn btn-primary btn-default pull-right" data-dismiss="modal" onclick="submitLocation()"><span class="glyphicon glyphicon-ok"></span> Submit</button>
+          
         </div>
       </div>
-      
+     </div>
     </div>
   </div>
   
 </div>
+<!-- <div class="alert alert-success" id="success-alert">
+    <button type="button" class="close" data-dismiss="alert">x</button>
+    <strong>Success! </strong>
+    Product have added to your wishlist.
+</div> -->
 
 
  <p id="polygonCoords"></p>

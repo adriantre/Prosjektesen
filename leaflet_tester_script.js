@@ -2,8 +2,11 @@ var latitude, longitude;
 var coords;
 var map;
 var popup = L.popup();
+var layer;
+var wkt;
 
 function initialize() {
+  // $("#success-alert").hide();
 	var osmLayer = L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
       {subdomains: "abc", maxZoom: 20});
     var mapSettings = {layers: [osmLayer], attributionControl: false};
@@ -44,14 +47,14 @@ function initialize() {
 
     // Det som skjer når man har laget et polygon:
     map.on('draw:created', function (e) {
-    var type = e.layerType, layer = e.layer;
+    var type = e.layerType;
+    layer = e.layer;
 
-    var wkt = new Wkt.Wkt();
+    wkt = new Wkt.Wkt();
     wkt.fromObject(layer);
     console.log(wkt.components);
     // storeGeofence(wkt.write());
     $("#myLocation").modal();
-    document.getElementById('polygonCoords').innerHTML=wkt.write();
     drawnItems.addLayer(layer);
 });
 
@@ -72,4 +75,21 @@ function onMapClick(e) {
         .setLatLng(e.latlng)
         // .setContent("You clicked the map at " + e.latlng.toString())
         // .openOn(map);
+}
+
+function cancelLocation() {
+   map.removeLayer(this.layer);
+}
+
+function submitLocation() {
+  map.removeLayer(this.layer);
+  manageLocation('newLocation');
+  // document.getElementById('polygonCoords').innerHTML=wkt.write();
+   // $("#success-alert").alert();
+   // $("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
+   //    $("#success-alert").alert('close');
+   // });
+// setTimeout(function() {
+//         $(".alert").alert('close');
+//     }, 2000);
 }
