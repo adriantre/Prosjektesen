@@ -17,9 +17,11 @@ function manageUser(operation) {
     {
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
       {
-        document.getElementById("errormessage").innerHTML = xmlhttp.responseText;
+        // var array = JSON.parse(xmlhttp.responseText);
+        document.getElementById("errormessage") = xmlhttp.responseText;
       }
     }
+    
     switch(operation) {
         case 'newUser':
             var user = {
@@ -118,5 +120,4 @@ function manageUser(operation) {
     var usertext = JSON.stringify(user);
     xmlhttp.send(usertext);
 
-    // document.location.href = "http://folk.ntnu.no/adrianto/prosjektesen/mapPage.html";
 }

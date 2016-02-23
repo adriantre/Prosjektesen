@@ -53,4 +53,14 @@
 	        $result = pg_delete($conn, $table, $condition);
 	        break;
     }
+    if (!$result) {
+	  echo "An error asd occurred.\n";
+	  var_dump(pg_last_error($conn));
+	  exit;
+	}
+
+	while ($row = pg_fetch_row($result))
+	{
+	  echo $row[1] . "\n";
+	}
 ?>
