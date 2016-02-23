@@ -59,8 +59,7 @@
 	  var_dump(pg_last_error($conn));
 	  exit;
 	}
-	$result_array = pg_fetch_all($result)
-	echo $result_array;
-	echo $last_id;
-	
+	// $result_array = pg_fetch_all($result)
+	// echo $result_array;
+	// echo $last_id;
 ?>
