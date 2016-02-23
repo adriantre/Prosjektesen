@@ -63,4 +63,5 @@
 	{
 	  echo $row[1] . "\n";
 	}
+	echo $last_id;
 ?>

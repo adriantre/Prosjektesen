@@ -18,7 +18,8 @@ function manageUser(operation) {
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
       {
         // var array = JSON.parse(xmlhttp.responseText);
-        document.getElementById("errormessage") = xmlhttp.responseText;
+        alert("hei");
+        document.getElementById('errormessage').innerHTML = xmlhttp.responseText;
       }
     }
     
