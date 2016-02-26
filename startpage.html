@@ -74,6 +74,7 @@
   .bottomaligned {
     position:absolute; bottom:0;  margin-bottom:7px; margin:7px; left: center;
   }
+
 }
     </style>
 </head>
@@ -144,9 +145,26 @@
 <div class="container bottomaligned">
 
 <div class="text-center">
-<button type="button" id="info" class="btn btn-link bottomaligned" style="color:#FFFFFF">What is Mapal?</button>
+<button type="button" id="info" class="btn btn-link bottomaligned" style="color:#FFFFFF" data-toggle="modal" data-target="#whatisModal">What is Mapal?</button>
 <!-- Add Modal with .txt document here -->
+  <div class="modal fade" id="whatisModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4><img src="graphics/Logo-black-small.png"></img></h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <div id="list">
+            <p><iframe src="WhatisMapal.txt" frameborder="0" height="400"
+              width="95%"></iframe></p>
+          </div>
+      </div>      
+    </div>
+  </div> 
 </div>
 </div>
-</body>
+</body> 
 </html>

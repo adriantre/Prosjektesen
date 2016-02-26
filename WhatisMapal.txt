@@ -1,0 +1,7 @@
+Mapal is a non-commercial web application created by students at NTNU for a project in the subject  "Geografisk informasjonsbehandling 2 (TBA 4250)". It is currently in early development.
+
+Mapal is intended for social circles, roommates and families. The product is intended as a web application that can be used from both PC and mobile devices, but further development to an app is not unthinkable. In Mapal, everyone creates their own user, who can then define areas by drawing polygons on an interactive map. Each area is assigned a self-defined name, such as "Work", "School" or "Home". 
+
+Users can choose to share their location through the application with other user groups, which will then be able to see which area the user is in, but not the exact location. It is therefore easy to share with others if you are at work, home, etc.
+
+The Mapal Development Team
