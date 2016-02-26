@@ -67,6 +67,7 @@ function manageUser(operation) {
                     },
                 ]
             };
+            alert("Success");
             //return user_id, current_location_id, 
             break;
         case 'deleteUser':
