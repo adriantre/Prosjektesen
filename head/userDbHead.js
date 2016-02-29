@@ -47,6 +47,37 @@ function manageUser(operation) {
             break;
         case 'verifyUser':
             alert("Success 2");
+            alert("Success 1");
+            if (user_name == ""){
+                alert("Success4");
+            }
+            var user = {
+                'sqlopt': 'select',
+                'table': 'public.user',
+                'to_select': [
+                    {
+                        'column': 'user_id'
+                    }
+                ],
+                'conditions': [
+                    {
+                        'column': 'user_name',
+                        'data': user_name
+                    },
+                    {
+                        'column': 'password',
+                        'data': password
+                    },
+                ]
+            };
+            
+            if (user_id == null){
+                alert("DBFailure")
+            }
+            else{
+                (window.open("mainmenu.html","_self"))
+            }
+            alert("Success 3");
 
             break;
         case 'getUser':
