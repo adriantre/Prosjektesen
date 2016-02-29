@@ -50,7 +50,7 @@
 	        $result = pg_update($conn, $table, $values, $condition);     
 	        break;
 	    case "select":
-	        $result = pg_query($conn, "select" . http_build_query($to_select, '', ",") . "from" . $table . "where" . http_build_query($condition, '', "and"));
+	        $result = pg_query($conn, "select " . http_build_query($to_select, '', ",") . " from " . $table . " where " . http_build_query($condition, '', " and "));
 	        break;
 	    case "delete":
 	        $result = pg_delete($conn, $table, $condition);
