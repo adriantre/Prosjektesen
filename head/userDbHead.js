@@ -25,6 +25,7 @@ function manageUser(operation) {
     
     switch(operation) {
         case 'newUser':
+            alert("Success");
             var user = {
                 'sqlopt': 'insert',
                 'table': 'public.user',
@@ -44,7 +45,15 @@ function manageUser(operation) {
                 ]
             };
             break;
+        case 'verifyUser':
+            alert("Success 2");
+
+            break;
         case 'getUser':
+            alert("Success 1");
+            if (user_name == ""){
+                alert("Success4");
+            }
             var user = {
                 'sqlopt': 'select',
                 'table': 'public.user',
@@ -67,8 +76,15 @@ function manageUser(operation) {
                     },
                 ]
             };
-            //return user_id, current_location_id, 
-            break;
+            if (user_id == null){
+                alert("DBFailure")
+            }
+            else{
+                (window.open("mainmenu.html","_self"))
+            }
+            alert("Success 3");
+            //return user_id, current_location_id,
+            return user_id;
         case 'deleteUser':
             var user = {
                 'sqlopt': 'delete',
