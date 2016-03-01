@@ -68,6 +68,28 @@
     </style>
 </head>
 <script>
+// var demo = "Logout";
+var t1;
+var linebreak;
+var t2;
+function myInnFunction() {
+    document.getElementById("demo").innerHTML;
+    demo.className ="text";
+    t1 = document.createTextNode("Log");
+    demo.appendChild(t1);
+    linebreak = document.createElement('br');
+    demo.appendChild(linebreak);
+    t2 = document.createTextNode("out");
+    demo.appendChild(t2);
+}
+function myOutFunction(){
+    document.getElementById("demo").innerHTML;
+   demo.removeChild(t1);
+   demo.removeChild(t2);
+   demo.removeChild(linebreak);
+    demo.className ="glyphicon glyphicon-off";
+
+}
 
 </script>
 <body>
@@ -75,6 +97,18 @@
 </div>
 <div class="text-center">
 <div class="container">
+            <div class="row top-buffer">
+            <div class="col-sm-12">
+                <div class"dropdown">
+<button type="button" id="ViewGroup" class="btn btn-primary btn-lg" data-toggle="collapse" data-target="#collap" style="width: 400px"> View Group
+        </button>
+          <div id="collap" class="collapse">
+            <button type="button" id="ViewGroup1" class="btn btn-standard">Group 1 goes here</button>
+                <button type="button" id="ViewGroup2" class="btn btn-standard">Group 2 goes here</button>
+        </div>
+        </div>
+        </div>
+        </div>
         <div class="row top-buffer">
             <div class="col-sm-12">
 <button type="button" id="CreateArea" class="btn btn-primary btn-lg" style="width: 400px"> Create Area
@@ -101,7 +135,7 @@
 </div>
 </div>
 </div>
-<button type="button"id="Logout"class="btn btn-danger btn-lg pull-right bottomright"style="width: 100px; height: 100px"onclick= window.open("startpage.html","_self")><span class="glyphicon glyphicon-off"></span>
+<button type="button"id="Logout"class="btn btn-danger btn-lg pull-right bottomright"style="width: 100px; height: 100px" onmouseover="myInnFunction()" onmouseout="myOutFunction()" onclick= window.open("startpage.html","_self")><span id="demo" class="glyphicon glyphicon-off"></span>
         </button>
 </body>
 </html>
