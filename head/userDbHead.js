@@ -21,7 +21,8 @@ function manageUser(operation) {
             var jsonData = JSON.parse(xmlhttp.responseText);
             document.getElementById('errormessage').innerHTML = jsonData;
         } catch(e) {
-            return callback('json parsing error');
+            document.getElementById('errormessage').innerHTML = "unable to fetch data from DB";
+
         }
       }
     }
