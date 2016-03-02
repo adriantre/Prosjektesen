@@ -17,15 +17,17 @@ function manageUser(operation) {
     {
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
       {
-        // var array = JSON.parse(xmlhttp.responseText);
-        alert("hei");
-        document.getElementById('errormessage').innerHTML = xmlhttp.responseText;
+        try{
+            var jsonData = JSON.parse(xmlhttp.responseText);
+            document.getElementById('errormessage').innerHTML = jsonData;
+        } catch(e) {
+            return callback('json parsing error');
+        }
       }
     }
     
     switch(operation) {
         case 'newUser':
-            alert("Success");
             var user = {
                 'sqlopt': 'insert',
                 'table': 'public.user',
@@ -46,10 +48,7 @@ function manageUser(operation) {
             };
             break;
         case 'verifyUser':
-            alert("Success 2");
-            alert("Success 1");
             if (user_name == ""){
-                alert("Success4");
             }
             var user = {
                 'sqlopt': 'select',
@@ -72,18 +71,15 @@ function manageUser(operation) {
             };
             
             if (user_id == null){
-                alert("DBFailure")
+                alert("no user_id")
             }
             else{
                 (window.open("mainmenu.html","_self"))
             }
-            alert("Success 3");
 
             break;
         case 'getUser':
-            alert("Success 1");
             if (user_name == ""){
-                alert("Success4");
             }
             var user = {
                 'sqlopt': 'select',
@@ -108,12 +104,11 @@ function manageUser(operation) {
                 ]
             };
             if (user_id == null){
-                alert("DBFailure")
+                alert("no user_id")
             }
             else{
                 (window.open("mainmenu.html","_self"))
             }
-            alert("Success 3");
             //return user_id, current_location_id,
             return user_id;
         case 'deleteUser':
@@ -167,5 +162,10 @@ function manageUser(operation) {
     }
     var usertext = JSON.stringify(user);
     xmlhttp.send(usertext);
+
+}
+function formatResponse(xmlhttp) {
+    var xmlDoc = xmlhttp.responseXML;
+    document.getElementById("errormessage").innerHTML = xmlDoc;
 
 }
