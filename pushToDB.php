@@ -61,10 +61,8 @@
 	  var_dump(pg_last_error($conn));
 	  exit;
 	}
-	//$result_array = pg_fetch_all($result)
-	//$xml = new SimpleXMLElement($result_array);
-
-	//echo $xml->asXML();
+	$result_array = pg_fetch_all($result)
+	return $result;
 
 	// echo $last_id;
 ?>
