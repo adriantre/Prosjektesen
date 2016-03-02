@@ -62,8 +62,7 @@
 	  exit;
 	}
 	$result_array = pg_fetch_all($result)
-	$result_string = json_encode($result_array);
-	echo $result_string;
+	echo json_encode($result_array);
 
 	// echo $last_id;
 ?>

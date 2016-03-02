@@ -18,7 +18,7 @@ function manageUser(operation) {
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
       {
         try{
-            //var jsonData = JSON.parse(xmlhttp.responseText);
+            var jsonData = JSON.parse(xmlhttp.responseText);
             document.getElementById('errormessage').innerHTML = jsonData;
         } catch(e) {
             document.getElementById('errormessage').innerHTML = "unable to fetch data from DB";
