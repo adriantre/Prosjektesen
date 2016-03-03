@@ -43,7 +43,7 @@
     switch ($sqlopt) {
 	    case "insert":
 	        $result = pg_insert($conn, $table, $values);
-	        $last_id = pg_last_oid($result);
+	        $result = pg_last_oid($result);
 	        break;
 	    case "update":
 	        $result = pg_update($conn, $table, $values, $condition);     
@@ -57,8 +57,7 @@
     }
 
 	if (is_bool($result)) {
-		echo (string)$last_id;
-		// echo $result ? 'true' : 'false';
+		echo $result ? 'true' : 'false';
 	} else {
 		$result_array = pg_fetch_all($result);
 		echo json_encode($result_array);	
