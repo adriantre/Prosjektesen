@@ -59,7 +59,8 @@
 	if (is_bool($result)) {
 		echo $last_id;
 		// echo $result ? 'true' : 'false';
-	// } else {
+	}
+		// else {
 	// 	$result_array = pg_fetch_all($result);
 	// 	echo json_encode($result_array);	
 	// }
