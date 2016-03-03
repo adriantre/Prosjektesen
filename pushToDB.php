@@ -1,4 +1,5 @@
 <?php
+	header("Content-type: application/json");
 	$input = file_get_contents("php://input");
 
 	$conn = pg_connect("host=92.62.34.78 port=5432 dbname=adrianto user=adrianto password=kalende");
