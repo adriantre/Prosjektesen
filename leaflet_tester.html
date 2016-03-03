@@ -22,6 +22,29 @@
 <script src="leaflet_tester_script.js"></script>
 <script src="head/locationDbHead.js"></script>
 <script src="location.js"></script>
+<script>
+var t1;
+var linebreak;
+var t2;
+function myInnFunction() {
+    document.getElementById("demo").innerHTML;
+    demo.className ="text";
+    t1 = document.createTextNode("Main");
+    demo.appendChild(t1);
+    linebreak = document.createElement('br');
+    demo.appendChild(linebreak);
+    t2 = document.createTextNode("Menu");
+    demo.appendChild(t2);
+}
+function myOutFunction(){
+    document.getElementById("demo").innerHTML;
+   demo.removeChild(t1);
+   demo.removeChild(t2);
+   demo.removeChild(linebreak);
+    demo.className ="glyphicon glyphicon-menu-hamburger";
+
+}
+</script>
 
 <!--<meta name="viewport" content="initial-scale=1.0, user-scalable=no"> -->
 <style type="text/css">
@@ -45,8 +68,11 @@ html, body {
       }
 
 	#map {
-      height:72.3%;
+      position: absolute;
+      left:0;
       width:100%;
+      top:275px;
+      bottom:0;
       /*padding:0px;
       margin:0px;*/
       border: 2px solid white;
@@ -75,14 +101,26 @@ html, body {
     pointer-events:none;
 }
 /*-------------------------------------------------------------*/
-
+  .topleft {
+    position:absolute; top:0;  margin-top:0px; margin:0px; left: 0;
+}
+   .btn {
+    padding: 0px 0px;
+    border: 0 none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background-color: transparent;
+}
 </style>
 
 <!-- <div class="jumbotron text-center"> -->
 </head>
 <body onload="initialize()">
-  <div class="jumbotron text-center">
+<div class="jumbotron text-center">
 </div>
+<button type="button"id="Main"class="btn btn-lg pull-left topleft"style="width: 75px; height: 75px" onmouseover="myInnFunction()" onmouseout="myOutFunction()" onclick= window.open("mainmenu.html","_self")><span id="demo" class="glyphicon glyphicon-menu-hamburger"></span>
+</button>
 <!-- <div class="container"> -->
  <div id="map">
  </div> 
