@@ -55,13 +55,9 @@
 	        $result = pg_delete($conn, $table, $condition);
 	        break;
     }
-    if (!$result) {
-	  echo "An error asd occurred.\n";
-	  var_dump(pg_last_error($conn));
-	  exit;
-	}
-	if ($result == true) {
-		echo "true";
+
+	if (is_bool($result)) {
+		echo $result ? 'true' : 'false';
 	} else {
 		$result_array = pg_fetch_all($result);
 		echo json_encode($result_array);	
