@@ -60,10 +60,8 @@
 	  var_dump(pg_last_error($conn));
 	  exit;
 	}
-	while ($row = pg_fetch_row($result))
-	{
-		$result_array = pg_fetch_all($result)
-		// echo json_encode($result_array);
-	}
+
+	$result_array = pg_fetch_all($result)
+	// echo json_encode($result_array);	
 
 ?>
