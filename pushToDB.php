@@ -64,7 +64,7 @@
 	// echo json_encode($result_array);
 	while ($row = pg_fetch_row($result))
 	{
-	  echo $row[1] . "\n";
+	  echo json_encode($row);
 	}
 
 ?>
