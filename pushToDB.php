@@ -57,7 +57,7 @@
     }
 
 	if (is_bool($result)) {
-		echo $last_id;
+		echo (string)$last_id;
 		// echo $result ? 'true' : 'false';
 	} else {
 		$result_array = pg_fetch_all($result);
