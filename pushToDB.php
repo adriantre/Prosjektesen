@@ -57,10 +57,11 @@
     }
 
 	if (is_bool($result)) {
-		echo $result ? 'true' : 'false';
-	} else {
-		$result_array = pg_fetch_all($result);
-		echo json_encode($result_array);	
-	}
+		echo $last_id;
+		// echo $result ? 'true' : 'false';
+	// } else {
+	// 	$result_array = pg_fetch_all($result);
+	// 	echo json_encode($result_array);	
+	// }
 
 ?>
