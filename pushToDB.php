@@ -1,6 +1,6 @@
 <?php
-	// header("Access-Control-Allow-Origin: *");
-	// header("Access-Control-Allow-Headers: X-Requested-With");
+	header("Access-Control-Allow-Origin: *");
+	header("Access-Control-Allow-Headers: X-Requested-With");
 	$input = file_get_contents("php://input");
 
 	$conn = pg_connect("host=92.62.34.78 port=5432 dbname=adrianto user=adrianto password=kalende");
@@ -62,6 +62,7 @@
 	  exit;
 	}
 	$result_array = pg_fetch_all($result)
+	alert("what");
 	echo json_encode(array_values($result_array));
 
 ?>
