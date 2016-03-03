@@ -61,6 +61,6 @@
 	  exit;
 	}
 	$result_array = pg_fetch_all($result)
-	echo json_encode($result_array);
+	print_r(json_encode($result_array));
 
 ?>
