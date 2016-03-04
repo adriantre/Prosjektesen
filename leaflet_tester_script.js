@@ -5,6 +5,14 @@ var popup = L.popup();
 var layer;
 var wkt;
 
+var drawControl;
+var drawnItems;
+var baseMaps;
+var mapSettings;
+var osmLayer;
+
+var polygonDrawer;
+
 
 function initialize() {
 
@@ -16,6 +24,20 @@ function initialize() {
     trigger.click(function () {
       hamburger_cross();      
     });
+
+    // overlay.click(function () {
+    //   overlay_click();
+    // });
+
+    // function overlay_click() {
+    //   if(isClosed == true) {
+    //     overlay.hide();
+    //     trigger.removeClass('is-open');
+    //     trigger.addClass('is-closed');
+    //     isClosed = false;
+        
+    //   }
+    // }
 
     function hamburger_cross() {
 
@@ -36,13 +58,13 @@ function initialize() {
         $('#wrapper').toggleClass('toggled');
   });  
 // });
-  
+
   // $("#success-alert").hide();
-	var osmLayer = L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+	  osmLayer = L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
       {subdomains: "abc", maxZoom: 20});
-    var mapSettings = {layers: [osmLayer], attributionControl: false};
+    mapSettings = {layers: [osmLayer], attributionControl: false};
     map = L.map('map',mapSettings);
-  	var baseMaps =
+  	baseMaps =
     	{
   	    "OpenStreetMap": osmLayer
       };
@@ -51,11 +73,11 @@ function initialize() {
     map.on('click', onMapClick);
 
     // Initialise the FeatureGroup to store editable layers
-    var drawnItems = new L.FeatureGroup();
+    drawnItems = new L.FeatureGroup();
     map.addLayer(drawnItems);
 
     // Initialise the draw control and pass it the FeatureGroup of editable layers
-    var drawControl = new L.Control.Draw({
+    drawControl = new L.Control.Draw({
         edit: {
           featureGroup: drawnItems,
           edit: false
@@ -71,9 +93,9 @@ function initialize() {
           }
         }
     });
-    L.drawLocal.draw.toolbar.buttons.polygon = 'Avgrens et område med punkter';
-    // L.drawLocal.draw.handlers.polygon.tooltip.start = 'Sett førse punkt';
-    map.addControl(drawControl);
+    // L.drawLocal.draw.toolbar.buttons.polygon = 'Avgrens et område med punkter';
+    L.drawLocal.draw.handlers.polygon.tooltip.start = 'Sett førse punkt';
+    // map.addControl(drawControl);
   	navigator.geolocation.getCurrentPosition(getUserPosition)
 
     // Det som skjer når man har laget et polygon:
@@ -116,10 +138,11 @@ function submitLocation() {
   map.removeLayer(this.layer);
   var location_name = document.getElementById("location_name").value;
   var geofence = wkt.write();
-  var newLocation = new Location(location_name, geofence);
+  document.getElementById('polygonCoords').innerHTML=geofence;
+  $("#myModal").modal();
+  // var newLocation = new Location(location_name, geofence);
   localStorage.setItem("location_name", newLocation.getName());
   manageLocation('newLocation', newLocation);
-  // document.getElementById('polygonCoords').innerHTML=wkt.write();
    // $("#success-alert").alert();
    // $("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
    //    $("#success-alert").alert('close');
@@ -127,4 +150,9 @@ function submitLocation() {
 // setTimeout(function() {
 //         $(".alert").alert('close');
 //     }, 2000);
+}
+
+function drawPolygon() {
+  polygonDrawer = new L.Draw.Polygon(map, drawControl.options.polygon);
+  polygonDrawer.enable();
 }
