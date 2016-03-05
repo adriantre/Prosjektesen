@@ -57,7 +57,7 @@
 	        break;
     }
 
-    echo $sql;
+    echo json_encode($to_select);
 	// if (is_bool($result)) {
 	// 	echo $result ? 'true' : 'false';
 	// 	exit;
