@@ -25,9 +25,10 @@ function manageUser(operation) {
 
             switch(operation) {
                 case 'newUser':
-                    var jsonData = JSON.parse(xmlhttp.responseText);
-                    user_id = jsonData.currval;
-                    alert(user_id);
+                    alert(xmlhttp.responseText);
+                    // var jsonData = JSON.parse(xmlhttp.responseText);
+                    // user_id = jsonData.currval;
+                    // alert(user_id);
                      break;
                 case 'getUser':;
                     alert(xmlhttp.responseText);
