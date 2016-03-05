@@ -56,13 +56,13 @@
 	        break;
     }
 
-	if (is_bool($result)) {
 		echo $last_id;
+	// if (is_bool($result)) {
 		// echo $result ? 'true' : 'false';
-	}
-		else {
-		$result_array = pg_fetch_all($result);
-		echo json_encode($result_array);	
-	}
+	// }
+	// 	else {
+	// 	$result_array = pg_fetch_all($result);
+	// 	echo json_encode($result_array);	
+	// }
 
 ?>
