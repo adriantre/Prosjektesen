@@ -57,7 +57,7 @@
 	        break;
     }
 
-    echo $values;
+    echo json_encode($values);
 	// if (is_bool($result)) {
 	// 	echo $result ? 'true' : 'false';
 	// 	exit;
