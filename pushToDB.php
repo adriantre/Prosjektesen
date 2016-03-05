@@ -58,7 +58,7 @@
 
 
     $last_id = pg_fetch_row($last_id_result);
-	echo $last_id;
+	echo json_encode($last_id);
 	// if (is_bool($result)) {
 		// echo $result ? 'true' : 'false';
 	// }
