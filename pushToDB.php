@@ -58,7 +58,7 @@
 
 
     while ($last_id = pg_fetch_row($last_id_result) {
-	  echo $last_id;
+	  echo json_encode($last_id);
 	}
     // $last_id = pg_fetch_row($last_id_result);
 	// echo json_encode($last_id[0]);
