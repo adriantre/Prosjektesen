@@ -29,11 +29,12 @@ function manageUser(operation) {
                     user_id = jsonData.currval;
                     alert(user_id);
                      break;
-                case 'getUser':
-                    var jsonData = JSON.parse(xmlhttp.responseText);
-                    user_id = jsonData.user_id;
-                    current_location_id = jsonData.current_location_id;
-                    geomessage = jsonData.geomessage;                    
+                case 'getUser':;
+                    alert(xmlhttp.responseText);
+                    // var jsonData = JSON.parse(xmlhttp.responseText);
+                    // user_id = jsonData.user_id;
+                    // current_location_id = jsonData.current_location_id;
+                    // geomessage = jsonData.geomessage;                    
                     break;
                 default:
                     var success = xmlhttp.responseText == "true" ? true : false;
