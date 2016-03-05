@@ -57,7 +57,7 @@
 	        break;
     }
 
-    echo $valuse;
+    echo $values;
 	// if (is_bool($result)) {
 	// 	echo $result ? 'true' : 'false';
 	// 	exit;
