@@ -42,8 +42,8 @@
 
     switch ($sqlopt) {
 	    case "insert":
-	        $result = pg_insert($conn, $table, $values);
-	        // $result = pg_query($conn, "select currval('" . $table . "_user_id_seq');");
+	        pg_insert($conn, $table, $values);
+	        $result = pg_query($conn, "select currval('" . $table . "_user_id_seq');");
 	        break;
 	    case "update":
 	        $result = pg_update($conn, $table, $values, $condition);     
@@ -57,7 +57,7 @@
 	        break;
     }
 
-    echo $sql;
+    echo "hei";
 	// if (is_bool($result)) {
 	// 	echo $result ? 'true' : 'false';
 	// 	exit;
