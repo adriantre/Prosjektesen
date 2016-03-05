@@ -19,32 +19,26 @@ function manageUser(operation) {
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
       {
         try{
-            var jsonData = JSON.parse(xmlhttp.responseText);
+            // var jsonData = JSON.parse(xmlhttp.responseText);
             // var text = xmlhttp.responseText;
-            document.getElementById('errormessage').innerHTML = jsonData;
+            // document.getElementById('errormessage').innerHTML = jsonData;
 
-            // switch(operation) {
-            //     case 'newUser':
-            //         var jsonArray = JSON.parse(xmlhttp.responseText);
-            //         user_id = jsonArray[0].currval;
-            //         break;
-            //     case 'getUser':
-            //         var jsonArray = JSON.parse(xmlhttp.responseText);
-            //         user_id = jsonArray[0].user_id;
-            //         current_location_id = jsonArray[0].current_location_id;
-            //         geomessage = jsonArray[0].geomessage;                    
-            //         break;
-            //     default:
-            //         var success = xmlhttp.responseText == "true" ? true : false;
-            //         break;
-            // }
-            // for (var i = 0; i < jsonArray.length; i++) {
-            //     var text = "";
-            //     var x;
-            //     if (sqlopt == 'insert') {
-            //         user_id = jsonArray[i].currval;
-            //     }
-            // }
+            switch(operation) {
+                case 'newUser':
+                    var jsonData = JSON.parse(xmlhttp.responseText);
+                    // user_id = jsonData[0];
+                    document.getElementById('errormessage').innerHTML = jsonData.currval;
+                    break;
+                case 'getUser':
+                    var jsonData = JSON.parse(xmlhttp.responseText);
+                    user_id = jsonData[0].user_id;
+                    current_location_id = jsonData[0].current_location_id;
+                    geomessage = jsonData[0].geomessage;                    
+                    break;
+                default:
+                    var success = xmlhttp.responseText == "true" ? true : false;
+                    break;
+            }
         } catch(e) {
             document.getElementById('errormessage').innerHTML = "unable to fetch data from DB";
 
