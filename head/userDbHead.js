@@ -19,15 +19,11 @@ function manageUser(operation) {
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
       {
         try{
-            // var jsonData = JSON.parse(xmlhttp.responseText);
-            // var text = xmlhttp.responseText;
-            // document.getElementById('errormessage').innerHTML = jsonData;
-
             switch(operation) {
                 case 'newUser':
                     var jsonData = JSON.parse(xmlhttp.responseText);
                     user_id = jsonData.currval;
-                    alert("user_id = "user_id);
+                    alert("user_id = " . user_id);
                      break;
                 case 'getUser':;
                     var jsonData = JSON.parse(xmlhttp.responseText);
