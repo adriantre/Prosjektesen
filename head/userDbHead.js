@@ -19,9 +19,9 @@ function manageUser(operation) {
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
       {
         try{
-            // var jsonArray = JSON.parse(xmlhttp.responseText);
+            var jsonData = JSON.parse(xmlhttp.responseText);
             // var text = xmlhttp.responseText;
-             document.getElementById('errormessage').innerHTML = jsonData;
+            document.getElementById('errormessage').innerHTML = jsonData;
 
             // switch(operation) {
             //     case 'newUser':
