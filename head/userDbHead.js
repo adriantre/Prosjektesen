@@ -19,9 +19,32 @@ function manageUser(operation) {
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
       {
         try{
-            var jsonData = JSON.parse(xmlhttp.responseText);
+            // var jsonArray = JSON.parse(xmlhttp.responseText);
             // var text = xmlhttp.responseText;
-            document.getElementById('errormessage').innerHTML = jsonData[1].currval;
+             document.getElementById('errormessage').innerHTML = jsonData;
+
+            // switch(operation) {
+            //     case 'newUser':
+            //         var jsonArray = JSON.parse(xmlhttp.responseText);
+            //         user_id = jsonArray[0].currval;
+            //         break;
+            //     case 'getUser':
+            //         var jsonArray = JSON.parse(xmlhttp.responseText);
+            //         user_id = jsonArray[0].user_id;
+            //         current_location_id = jsonArray[0].current_location_id;
+            //         geomessage = jsonArray[0].geomessage;                    
+            //         break;
+            //     default:
+            //         var success = xmlhttp.responseText == "true" ? true : false;
+            //         break;
+            // }
+            // for (var i = 0; i < jsonArray.length; i++) {
+            //     var text = "";
+            //     var x;
+            //     if (sqlopt == 'insert') {
+            //         user_id = jsonArray[i].currval;
+            //     }
+            // }
         } catch(e) {
             document.getElementById('errormessage').innerHTML = "unable to fetch data from DB";
 
@@ -51,8 +74,6 @@ function manageUser(operation) {
             };
             break;
         case 'verifyUser':
-            if (user_name == ""){
-            }
             var user = {
                 'sqlopt': 'select',
                 'table': 'public.user',
@@ -72,18 +93,8 @@ function manageUser(operation) {
                     },
                 ]
             };
-            
-            if (user_id == null){
-                alert("no user_id")
-            }
-            else{
-                (window.open("mainmenu.html","_self"))
-            }
-
             break;
         case 'getUser':
-            if (user_name == ""){
-            }
             var user = {
                 'sqlopt': 'select',
                 'table': 'public.user',
@@ -93,6 +104,9 @@ function manageUser(operation) {
                     },
                     {
                         'column': 'current_location_id'
+                    },
+                    {
+                        'column': 'geomessage',
                     }
                 ],
                 'conditions': [
@@ -106,14 +120,6 @@ function manageUser(operation) {
                     },
                 ]
             };
-            if (user_id == null){
-                alert("no user_id")
-            }
-            else{
-                (window.open("mainmenu.html","_self"))
-            }
-            //return user_id, current_location_id,
-            return user_id;
         case 'deleteUser':
             var user = {
                 'sqlopt': 'delete',
