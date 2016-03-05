@@ -43,7 +43,7 @@
     switch ($sqlopt) {
 	    case "insert":
 	        $result = pg_insert($conn, $table, $values);
-	        $last_id = pg_query($conn, "select currval(" . $table . "_id_seq;" );
+	        $last_id = pg_query($conn, "select currval('" . $table . "_id_seq');");
 	        break;
 	    case "update":
 	        $result = pg_update($conn, $table, $values, $condition);     
@@ -56,7 +56,7 @@
 	        break;
     }
 
-		echo $last_id;
+	echo $last_id;
 	// if (is_bool($result)) {
 		// echo $result ? 'true' : 'false';
 	// }
