@@ -49,7 +49,7 @@
 	        $result = pg_update($conn, $table, $values, $condition);     
 	        break;
 	    case "select":
-	    	$sql = "select " . http_build_query($to_select, '', ",") . " from " . $table . " where " . http_build_query($condition, '', " and ") . ";";
+	    	$sql = "select " . http_build_query($to_select, '', ",") . " from " . $table . " where " . http_build_query($condition->column, '', " and ") . ";";
 	        $result = pg_query($conn, $sql);
 	        break;
 	    case "delete":
@@ -57,7 +57,7 @@
 	        break;
     }
 
-    echo "hei";
+    echo $sql;
 	// if (is_bool($result)) {
 	// 	echo $result ? 'true' : 'false';
 	// 	exit;
