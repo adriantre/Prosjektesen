@@ -57,12 +57,12 @@
 	        break;
     }
 
-    echo json_encode($values);
-	// if (is_bool($result)) {
-	// 	echo $result ? 'true' : 'false';
-	// 	exit;
-	// }
- //    while ($result_row = pg_fetch_assoc($result)) {
- //    	echo json_encode($result_row);
- //    }
+    // echo json_encode($values);
+	if (is_bool($result)) {
+		echo $result ? 'true' : 'false';
+		exit;
+	}
+    while ($result_row = pg_fetch_assoc($result)) {
+    	echo json_encode($result_row);
+    }
 ?>
