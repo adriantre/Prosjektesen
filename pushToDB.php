@@ -42,8 +42,8 @@
 
     switch ($sqlopt) {
 	    case "insert":
-	        $result = pg_insert($conn, $table, $values);
-	        $last_id_result = pg_query($conn, "select currval('" . $table . "_user_id_seq');");
+	        pg_insert($conn, $table, $values);
+	        $result = pg_query($conn, "select currval('" . $table . "_user_id_seq');");
 	        break;
 	    case "update":
 	        $result = pg_update($conn, $table, $values, $condition);     
@@ -57,18 +57,11 @@
     }
 
 
-    while ($last_id = pg_fetch_row($last_id_result) {
-	  echo json_encode($last_id[0]);
+	if (is_bool($result)) {
+		echo $result ? 'true' : 'false';
+		exit;
 	}
-	exit;
-    // $last_id = pg_fetch_row($last_id_result);
-	// echo json_encode($last_id[0]);
-	// if (is_bool($result)) {
-		// echo $result ? 'true' : 'false';
-	// }
-	// 	else {
-	// 	$result_array = pg_fetch_all($result);
-	// 	echo json_encode($result_array);	
-	// }
-
+    while ($result_row = pg_fetch_assoc($result)) {
+    	echo json_encode($result_row);
+    }
 ?>
