@@ -60,6 +60,7 @@
     while ($last_id = pg_fetch_row($last_id_result) {
 	  echo json_encode($last_id[0]);
 	}
+	exit;
     // $last_id = pg_fetch_row($last_id_result);
 	// echo json_encode($last_id[0]);
 	// if (is_bool($result)) {
