@@ -43,7 +43,7 @@
     switch ($sqlopt) {
 	    case "insert":
 	        $result = pg_insert($conn, $table, $values);
-	        $last_id_result = pg_query($conn, "select currval('" . $table . "_id_seq');");
+	        $last_id_result = pg_query($conn, "select currval('" . $table . "_user_id_seq');");
 	        break;
 	    case "update":
 	        $result = pg_update($conn, $table, $values, $condition);     
@@ -58,9 +58,6 @@
 
 
     $last_id = pg_fetch_all($last_id_result);
-    if (is_null($last_id)) {
-    	echo "Fant ikke siste id";
-    }
 	echo json_encode($last_id);
 	// if (is_bool($result)) {
 		// echo $result ? 'true' : 'false';
