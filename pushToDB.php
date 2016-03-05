@@ -58,6 +58,9 @@
 
 
     $last_id = pg_fetch_all($last_id_result);
+    if (is_null($last_id)) {
+    	echo "Fant ikke siste id";
+    }
 	echo json_encode($last_id);
 	// if (is_bool($result)) {
 		// echo $result ? 'true' : 'false';
