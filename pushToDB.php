@@ -1,4 +1,6 @@
 <?php
+	error_reporting(E_ALL);
+	ini_set('display_errors', 1)
 	header("Content-type: application/json");
 	$input = file_get_contents("php://input");
 
@@ -25,14 +27,16 @@
 			$values[$column->column] = $column->data;
 		}
 	}
-	if (array_key_exists('conditions', $json_object))
+	//if (array_key_exists('conditions', $json_object))
+	if (property_exists($json_object, 'conditions'))
 	{
 		foreach ($json_object->conditions as $column)
 		{
 			$conditions[$column->column] = $column->data;
 		}
 	}
-	if (array_key_exists('to_select', $json_object))
+	//if (array_key_exists('to_select', $json_object))
+	if property_exists($json_object, 'to_select'))
 	{
 		foreach ($json_object->to_select as $column)
 		{
@@ -42,27 +46,27 @@
 
     switch ($sqlopt) {
 	    case "insert":
-	        $result = pg_insert($conn, $table, $values);
-	        $last_id = pg_query($conn, "select currval(" . $table . "_id_seq;" );
+	        pg_insert($conn, $table, $values);
+	        $result = pg_query($conn, "select currval('" . $table . "_user_id_seq');");
 	        break;
 	    case "update":
 	        $result = pg_update($conn, $table, $values, $condition);     
 	        break;
 	    case "select":
-	        $result = pg_query($conn, "select " . http_build_query($to_select, '', ",") . " from " . $table . " where " . http_build_query($condition, '', " and " . ";"));
+	    	$sql = "select " . http_build_query($to_select, '', ",") . " from " . $table . " where " . http_build_query($condition->column, '', " and ") . ";";
+	        $result = pg_query($conn, $sql);
 	        break;
 	    case "delete":
 	        $result = pg_delete($conn, $table, $condition);
 	        break;
     }
 
+    // echo json_encode($values);
 	if (is_bool($result)) {
-		echo $last_id;
-		// echo $result ? 'true' : 'false';
+		echo $result ? 'true' : 'false';
+		exit;
 	}
-		else {
-		$result_array = pg_fetch_all($result);
-		echo json_encode($result_array);	
-	}
-
+    while ($result_row = pg_fetch_assoc($result)) {
+    	echo json_encode($result_row);
+    }
 ?>

@@ -4,9 +4,9 @@ function manageUser(operation) {
     var url = 'http://folk.ntnu.no/adrianto/prosjektesen/pushToDB.php/';
     
     var user_id;
-    var user_name = document.getElementById("user_name").value;
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("pwd").value;
+    var user_name;
+    var email;
+    var password;
     var current_location_id;
     var geomessage;
 
@@ -19,10 +19,26 @@ function manageUser(operation) {
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
       {
         try{
-            var jsonData = JSON.parse(xmlhttp.responseText);
-            document.getElementById('errormessage').innerHTML = jsonData;
+            switch(operation) {
+                case 'newUser':
+                    var jsonData = JSON.parse(xmlhttp.responseText);
+                    user_id = jsonData.currval;
+                    alert('user_id = ' + user_id);
+                     break;
+                case 'getUser':;
+                    var jsonData = JSON.parse(xmlhttp.responseText);
+                    user_id = jsonData.user_id;
+                    current_location_id = jsonData.current_location_id;
+                    geomessage = jsonData.geomessage;  
+                    alert('user_id = ' + user_id);                    
+                    break;
+                default:
+                    var success = xmlhttp.responseText == "true" ? true : false;
+                    alert(success);
+                    break;
+            }
         } catch(e) {
-            document.getElementById('errormessage').innerHTML = "unable to fetch data from DB";
+            alert('Kunne ikke evaluere svaret fra DB');
 
         }
       }
@@ -30,6 +46,9 @@ function manageUser(operation) {
     
     switch(operation) {
         case 'newUser':
+            user_name = document.getElementById("user_name").value;
+            email = document.getElementById("email").value;
+            password = document.getElementById("pwd").value;
             var user = {
                 'sqlopt': 'insert',
                 'table': 'public.user',
@@ -49,40 +68,9 @@ function manageUser(operation) {
                 ]
             };
             break;
-        case 'verifyUser':
-            if (user_name == ""){
-            }
-            var user = {
-                'sqlopt': 'select',
-                'table': 'public.user',
-                'to_select': [
-                    {
-                        'column': 'user_id'
-                    }
-                ],
-                'conditions': [
-                    {
-                        'column': 'user_name',
-                        'data': user_name
-                    },
-                    {
-                        'column': 'password',
-                        'data': password
-                    },
-                ]
-            };
-            
-            if (user_id == null){
-                alert("no user_id")
-            }
-            else{
-                (window.open("mainmenu.html","_self"))
-            }
-
-            break;
         case 'getUser':
-            if (user_name == ""){
-            }
+            user_name = document.getElementById("user_name").value;
+            password = document.getElementById("pwd").value;
             var user = {
                 'sqlopt': 'select',
                 'table': 'public.user',
@@ -92,6 +80,9 @@ function manageUser(operation) {
                     },
                     {
                         'column': 'current_location_id'
+                    },
+                    {
+                        'column': 'geomessage',
                     }
                 ],
                 'conditions': [
@@ -105,14 +96,6 @@ function manageUser(operation) {
                     },
                 ]
             };
-            if (user_id == null){
-                alert("no user_id")
-            }
-            else{
-                (window.open("mainmenu.html","_self"))
-            }
-            //return user_id, current_location_id,
-            return user_id;
         case 'deleteUser':
             var user = {
                 'sqlopt': 'delete',
