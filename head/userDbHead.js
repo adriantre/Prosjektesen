@@ -29,7 +29,8 @@ function manageUser(operation) {
                     var jsonData = JSON.parse(xmlhttp.responseText);
                     user_id = jsonData.user_id;
                     current_location_id = jsonData.current_location_id;
-                    geomessage = jsonData.geomessage;                    
+                    geomessage = jsonData.geomessage;  
+                    alert('user_id = ' + user_id);                    
                     break;
                 default:
                     var success = xmlhttp.responseText == "true" ? true : false;
