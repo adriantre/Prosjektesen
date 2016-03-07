@@ -27,16 +27,16 @@
 			$values[$column->column] = $column->data;
 		}
 	}
-	//if (array_key_exists('conditions', $json_object))
-	if (property_exists($json_object, 'conditions'))
+	if (array_key_exists('conditions', $json_object))
+	//if (property_exists($json_object, 'conditions'))
 	{
 		foreach ($json_object->conditions as $column)
 		{
 			$conditions[$column->column] = $column->data;
 		}
 	}
-	//if (array_key_exists('to_select', $json_object))
-	if property_exists($json_object, 'to_select'))
+	if (array_key_exists('to_select', $json_object))
+	//if property_exists($json_object, 'to_select'))
 	{
 		foreach ($json_object->to_select as $column)
 		{
