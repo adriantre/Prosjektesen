@@ -98,10 +98,10 @@
 <h2 style="color:#FFFFFF"> Welcome to Mapal </h2>      
       <div class="text-center">
 <div class="btn-group-lg">
-        <button type="button" id="Log in" class="btn btn-primary" style="width: 150px" data-toggle="modal" data-target="#myModal">Log in
+        <button type="button" id="Log in" class="btn btn-primary" style="width: 150px" data-toggle="modal" data-target="#myLogInModal">Log in
         </button>
   <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
+  <div class="modal fade" id="myLogInModal" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
@@ -141,7 +141,48 @@
       
     </div>
   </div> 
-        <button type="button" id="New User" class="btn btn-primary" style="width: 150px"onclick= window.open("newUserPage.html","_self")>New User</button>
+        <button type="button" id="New User" class="btn btn-primary" style="width: 150px" data-toggle="modal" data-target="#myNewUserModal">New User</button>
+        <!-- Modal -->
+  <div class="modal fade" id="myNewUserModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4><img src="graphics/Logo-black-small.png"></img></h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form role="form">
+            <div class="form-group">
+              <label for="user_name"><span class="glyphicon glyphicon-user"></span> Username</label>
+              <input type="text" class="form-control" id="user_name" placeholder="Enter username">
+            </div>
+            <div class="form-group">
+              <label for="email"><span class="glyphicon glyphicon-envelope"></span> Email</label>
+              <input type="text" class="form-control" id="email" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+              <label for="pwd"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+              <input type="text" class="form-control" id="pwd" placeholder="Enter password">
+            </div>
+            <!--<div class="checkbox">
+              <label><input type="checkbox" value="" checked>Remember me</label>
+            </div>-->
+            <!--TO BE CHANGED-->
+              <button type="button" id="NewUser" class="btn btn-success btn-block" onclick="manageUser('newUser')"> 
+              <!-- onclick= window.open("mainmenu.html","_self") -->
+                <span class="glyphicon glyphicon-off"></span> Create User</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+          <p>Not a member? <a href="#" onclick= window.open("newUserPage.html","_self")>Sign Up</a></p>
+        </div>
+      </div>
+      
+    </div>
+  </div> 
     </div>
 </div>
     </div>
