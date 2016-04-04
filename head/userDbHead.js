@@ -98,6 +98,7 @@ function manageUser(operation) {
                     },
                 ]
             };
+            break;
         case 'deleteUser':
             var user = {
                 'sqlopt': 'delete',
