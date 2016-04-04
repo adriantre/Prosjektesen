@@ -116,10 +116,12 @@
               <label for="user_name"><span class="glyphicon glyphicon-user"></span> Username</label>
               <input type="text" class="form-control" id="user_name" placeholder="Enter username">
             </div>
+            <!--
             <div class="form-group">
               <label for="email"><span class="glyphicon glyphicon-envelope"></span> Email</label>
               <input type="text" class="form-control" id="email" placeholder="Enter email">
             </div>
+          -->
             <div class="form-group">
               <label for="pwd"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
               <input type="text" class="form-control" id="pwd" placeholder="Enter password">
@@ -135,7 +137,7 @@
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-          <p>Not a member? <a href="#" onclick= window.open("newUserPage.html","_self")>Sign Up</a></p>
+          <p>Not a member? <a href="#" data-toggle="modal" data-target="#myNewUserModal" >Sign Up</a></p>
         </div>
       </div>
       
@@ -177,7 +179,6 @@
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-          <p>Not a member? <a href="#" onclick= window.open("newUserPage.html","_self")>Sign Up</a></p>
         </div>
       </div>
       
