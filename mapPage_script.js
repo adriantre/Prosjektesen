@@ -4,6 +4,7 @@ var map;
 var popup = L.popup();
 var layer;
 var wkt;
+var geofence;
 
 var drawControl;
 var drawnItems;
@@ -137,12 +138,12 @@ function cancelLocation() {
 function submitLocation() {
   map.removeLayer(this.layer);
   var location_name = document.getElementById("location_name").value;
-  var geofence = wkt.write();
+  geofence = wkt.write();
   document.getElementById('polygonCoords').innerHTML=geofence;
   $("#myModal").modal();
   // var newLocation = new Location(location_name, geofence);
-  localStorage.setItem("location_name", newLocation.getName());
-  manageLocation('newLocation', newLocation);
+  localStorage.setItem("location_name", location_name);
+  manageLocation('newLocation');
    // $("#success-alert").alert();
    // $("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
    //    $("#success-alert").alert('close');
