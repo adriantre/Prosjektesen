@@ -5,6 +5,7 @@ var popup = L.popup();
 var layer;
 var wkt;
 var geofence;
+var location_name;
 
 var drawControl;
 var drawnItems;
@@ -137,7 +138,7 @@ function cancelLocation() {
 
 function submitLocation() {
   map.removeLayer(this.layer);
-  var location_name = document.getElementById("location_name").value;
+  location_name = document.getElementById("location_name").value;
   geofence = wkt.write();
   document.getElementById('polygonCoords').innerHTML=geofence;
   $("#myModal").modal();
