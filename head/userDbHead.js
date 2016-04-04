@@ -47,9 +47,9 @@ function manageUser(operation) {
     
     switch(operation) {
         case 'newUser':
-            user_name = document.getElementById("user_name").value;
-            email = document.getElementById("email").value;
-            password = document.getElementById("pwd").value;
+            user_name = document.getElementById("new_user_name").value;
+            email = document.getElementById("new_email").value;
+            password = document.getElementById("new_pwd").value;
             var user = {
                 'sqlopt': 'insert',
                 'table': 'public.user',
@@ -70,8 +70,8 @@ function manageUser(operation) {
             };
             break;
         case 'getUser':
-            user_name = document.getElementById("user_name").value;
-            password = document.getElementById("pwd").value;
+            user_name = document.getElementById("login_user_name").value;
+            password = document.getElementById("login_pwd").value;
             var user = {
                 'sqlopt': 'select',
                 'table': 'public.user',
