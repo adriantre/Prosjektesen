@@ -87,7 +87,7 @@ function manageUser(operation) {
                 'conditions': [
                     {
                         'column': 'user_name',
-                        'data': "'" + user_name + "'";
+                        'data': "'" + user_name + "'"
                     },
                     {
                         'column': 'password',
