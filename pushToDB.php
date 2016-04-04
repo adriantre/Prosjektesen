@@ -19,7 +19,7 @@
 	$to_select = array();
 	$sqlopt = $json_object->sqlopt;
 	$table = $json_object->table;
-	$conditions_string="";
+	$conditions_array = array();
 
 	if (array_key_exists('values', $json_object)) 
 	{
@@ -33,7 +33,7 @@
 		foreach ($json_object->conditions as $column)
 		{
 			$conditions[$column->column] = $column->data;
-			$conditions_string .= $column->column . " = '" . $column->data . "'";
+			array_push($conditions_array, $column->column . " = '" . $column->data . "'");
 		}
 	}
 	if (array_key_exists('to_select', $json_object))
@@ -53,7 +53,7 @@
 	        $result = pg_update($conn, $table, $values, $conditions);     
 	        break;
 	    case "select":
-	    	$sql = "select " . implode(", ", $to_select) . " from " . $table . " where " . implode(" and ", $conditions_string) . ";";
+	    	$sql = "select " . implode(", ", $to_select) . " from " . $table . " where " . implode(" and ", $conditions_array) . ";";
 	        $result = pg_query($conn, $sql);
 	        break;
 	    case "delete":
@@ -61,7 +61,7 @@
 	        break;
     }
 
-    echo $conditions_string;
+    echo $conditions_array;
 	// if (is_bool($result)) {
 	// 	echo $result ? 'true' : 'false';
 	// 	exit;
