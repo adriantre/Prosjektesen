@@ -33,7 +33,7 @@
 		foreach ($json_object->conditions as $column)
 		{
 			$conditions[$column->column] = $column->data;
-			$conditions_string = $conditions_string . $column->column . " = '" . $column->data . "' and ";
+			$conditions_string = $conditions_string . $column->column . " = '" . $column->data;
 		}
 	}
 	if (array_key_exists('to_select', $json_object))
@@ -54,7 +54,7 @@
 	        break;
 	    case "select":
 	    	//http_build_query($conditions, '', " and ")
-	    	$sql = "select " . implode(", ", $to_select) . " from " . $table . " where " . $conditions_string . ";";
+	    	$sql = "select " . implode(", ", $to_select) . " from " . $table . " where " . implode(" and ", $conditions_string . ";";
 	        $result = pg_query($conn, $sql);
 	        break;
 	    case "delete":
