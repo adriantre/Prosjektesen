@@ -39,7 +39,6 @@ function manageUser(operation) {
             }
         } catch(e) {
             alert('Kunne ikke evaluere svaret fra DB' + xmlhttp.responseText);
-
         }
       }
     }
@@ -88,11 +87,11 @@ function manageUser(operation) {
                 'conditions': [
                     {
                         'column': 'user_name',
-                        'data': user_name
+                        'data': "'" + user_name + "'";
                     },
                     {
                         'column': 'password',
-                        'data': password
+                        'data': "'" + password + "'"
                     },
                 ]
             };
@@ -122,7 +121,7 @@ function manageUser(operation) {
                 'conditions': [
                     {
                         'column': 'user_id',
-                        'data': user_id
+                        'data': "'" + user_id + "'"
                     }
                 ]
             };
