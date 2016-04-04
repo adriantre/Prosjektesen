@@ -32,7 +32,6 @@
 	{
 		foreach ($json_object->conditions as $column)
 		{
-			$conditions[$column->column] = $column->data;
 			array_push($conditions_array, $column->column . " = " . $column->data);
 		}
 	}
