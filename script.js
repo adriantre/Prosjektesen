@@ -1,3 +1,4 @@
+//---------------------MAP PAGE----------------------//
 var latitude, longitude;
 var coords;
 var map;
@@ -15,8 +16,7 @@ var osmLayer;
 
 var polygonDrawer;
 
-
-function initialize() {
+function initializeMapPage() {
 
     initSideMenu();
 // });
@@ -118,3 +118,76 @@ function drawPolygon() {
   polygonDrawer = new L.Draw.Polygon(map, drawControl.options.polygon);
   polygonDrawer.enable();
 }
+
+//--------------------SIDE MENU---------------------------//
+
+function initSideMenu() {
+// $(document).ready(function () {
+  var trigger = $('.hamburger'),
+      overlay = $('.overlay'),
+     isClosed = false;
+
+    trigger.click(function () {
+      hamburger_cross();      
+    });
+
+    // overlay.click(function () {
+    //   overlay_click();
+    // });
+
+    // function overlay_click() {
+    //   if(isClosed == true) {
+    //     overlay.hide();
+    //     trigger.removeClass('is-open');
+    //     trigger.addClass('is-closed');
+    //     isClosed = false;
+        
+    //   }
+    // }
+
+    function hamburger_cross() {
+
+      if (isClosed == true) {          
+        overlay.hide();
+        trigger.removeClass('is-open');
+        trigger.addClass('is-closed');
+        isClosed = false;
+      } else {   
+        overlay.show();
+        trigger.removeClass('is-closed');
+        trigger.addClass('is-open');
+        isClosed = true;
+      }
+  }
+  
+  $('[data-toggle="offcanvas"]').click(function () {
+        $('#wrapper').toggleClass('toggled');
+  });  
+
+}
+
+//--------------------MAIN MENU---------------------------//
+
+// var demo = "Logout";
+var t1;
+var linebreak;
+var t2;
+function myInnFunction() {
+    document.getElementById("demo").innerHTML;
+    demo.className ="text";
+    t1 = document.createTextNode("Log");
+    demo.appendChild(t1);
+    linebreak = document.createElement('br');
+    demo.appendChild(linebreak);
+    t2 = document.createTextNode("out");
+    demo.appendChild(t2);
+}
+function myOutFunction(){
+    document.getElementById("demo").innerHTML;
+   demo.removeChild(t1);
+   demo.removeChild(t2);
+   demo.removeChild(linebreak);
+    demo.className ="glyphicon glyphicon-off";
+}
+
+//------------------------------------------------------------//
