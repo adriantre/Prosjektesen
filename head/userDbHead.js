@@ -24,6 +24,7 @@ function manageUser(operation) {
                     var jsonData = JSON.parse(xmlhttp.responseText);
                     user_id = jsonData.currval;
                     alert('user_id = ' + user_id);
+                    window.open("mapPage.html", "_self");
                      break;
                 case 'getUser':
                     var jsonData = JSON.parse(xmlhttp.responseText);
@@ -31,6 +32,7 @@ function manageUser(operation) {
                     current_location_id = jsonData.current_location_id;
                     geomessage = jsonData.geomessage;  
                     alert('user_id = ' + user_id + 'current_location_id = ' + current_location_id + 'geomessage = ' + geomessage);                    
+                    window.open("mainmenu.html", "_self");
                     break;
                 default:
                     var success = xmlhttp.responseText == "true" ? true : false;
