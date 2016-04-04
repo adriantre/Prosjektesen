@@ -305,7 +305,7 @@ body,
 }
 
 
-/*---CSS FOR SELVE SIDEN---*/
+/*---CSS FOR SELVE SIDENE---*/
 
 .jumbotron {
       position: relative;
@@ -329,6 +329,11 @@ body,
       margin:0px;*/
       border: 2px solid white;
    }
+
+   /*-----------------Main Menu----------------------*/
+
+
+/*-------------------------------------------------------------*/
 
 /*--------------------MODAL CSS--------------------------------*/
    .vertical-align-center {
