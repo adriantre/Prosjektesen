@@ -15,7 +15,7 @@ function manageLocation(operation) {
     {
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
       {
-        document.getElementById("errormessage").innerHTML = xmlhttp.responseText;
+        alert(xmlhttp.responseText)
       }
     }
     switch(operation) {
