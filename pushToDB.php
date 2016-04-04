@@ -53,7 +53,7 @@
 	        $result = pg_update($conn, $table, $values, $conditions);     
 	        break;
 	    case "select":
-	    	$sql = "select " . implode(", ", $to_select) . " from " . $table . " where " . implode(" and ", $conditions_string) . ";";
+	    	$sql = "select " . implode(", ", $to_select) . " from " . $table . " where " . implode(", ", $conditions_string) . ";";
 	        $result = pg_query($conn, $sql);
 	        break;
 	    case "delete":
