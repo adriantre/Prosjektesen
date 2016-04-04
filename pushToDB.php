@@ -51,8 +51,8 @@
 	        $result = pg_update($conn, $table, $values, $conditions);     
 	        break;
 	    case "select":
-	    	// $sql = "select " . http_build_query($to_select, '', ",") . " from " . $table . " where " . http_build_query($conditions->column, '', " and ") . ";";
-	        $result = pg_query($conn, $sql);
+	    	$sql = "select " . http_build_query($to_select, '', ",") . " from " . $table . " where " . http_build_query($conditions->column, '', " and ") . ";";
+	        // $result = pg_query($conn, $sql);
 	        break;
 	    case "delete":
 	        $result = pg_delete($conn, $table, $conditions);
