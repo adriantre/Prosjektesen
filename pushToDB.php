@@ -51,14 +51,14 @@
 	        $result = pg_update($conn, $table, $values, $conditions);     
 	        break;
 	    case "select":
-	    	$sql = "select " . implode(", ", $to_select) . " from " . $table . " where " . http_build_query($conditions, '', " and ") . ";";
+	    	$sql = "select " . implode(", ", $to_select) . " from " . $table . " where '" . http_build_query($conditions, '', "'' and '") . "';";
 	        $result = pg_query($conn, $sql);
 	        break;
 	    case "delete":
 	        $result = pg_delete($conn, $table, $conditions);
 	        break;
     }
-    
+
 	if (is_bool($result)) {
 		echo $result ? 'true' : 'false';
 		exit;
