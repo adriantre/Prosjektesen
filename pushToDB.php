@@ -61,7 +61,7 @@
 	        break;
     }
 
-    echo $sql;
+    echo $conditions_string;
 	// if (is_bool($result)) {
 	// 	echo $result ? 'true' : 'false';
 	// 	exit;
