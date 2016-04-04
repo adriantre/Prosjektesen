@@ -15,7 +15,31 @@ function manageLocation(operation) {
     {
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
       {
-        alert(xmlhttp.responseText)
+        try{
+            switch(operation) {
+                case 'newLocation':
+                    var jsonData = JSON.parse(xmlhttp.responseText);
+                    user_id = jsonData.currval;
+                    alert('user_id = ' + user_id);
+                    window.open("mapPage.html","_self");
+                     break;
+                case 'getLocation':
+                    var jsonData = JSON.parse(xmlhttp.responseText);
+                    user_id = jsonData.user_id;
+                    current_location_id = jsonData.current_location_id;
+                    geomessage = jsonData.geomessage;  
+                    alert('user_id = ' + user_id + 'current_location_id = ' + current_location_id + 'geomessage = ' + geomessage);                    
+                    window.open("mainmenu.html","_self");
+                    break;
+                default:
+                    var success = xmlhttp.responseText == "true" ? true : false;
+                    alert(success);
+                    break;
+            }
+        } catch(e) {
+            alert('Kunne ikke evaluere svaret fra DB' + xmlhttp.responseText);
+
+        }
       }
     }
     switch(operation) {
@@ -93,7 +117,7 @@ function manageLocation(operation) {
             break;
     }
     var locationText = JSON.stringify(location);
-    document.getElementById('polygonCoords').innerHTML=locationText;
+    // document.getElementById('polygonCoords').innerHTML=locationText;
     xmlhttp.send(locationText);
 
     // document.location.href = "http://folk.ntnu.no/adrianto/prosjektesen/mapPage.html";
