@@ -1,4 +1,4 @@
-function manageLocation(operation, object) {
+function manageLocation(operation) {
 
     var xmlhttp = new XMLHttpRequest();
     var url = 'http://folk.ntnu.no/adrianto/prosjektesen/pushToDB.php/';
@@ -15,7 +15,7 @@ function manageLocation(operation, object) {
     {
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
       {
-        document.getElementById("errormessage").innerHTML = xmlhttp.responseText;
+        alert(xmlhttp.responseText)
       }
     }
     switch(operation) {
@@ -26,16 +26,16 @@ function manageLocation(operation, object) {
                 'values': [
                     {
                         'column': 'location_name',
-                        'data': object.getName()
+                        'data': location_name
                     },
                     {
-                        'column': 'geofence2s',
-                        'data': object.getGeofence()
+                        'column': 'geofence2',
+                        'data': 'ST_PolygonFromText(' + geofence + ')'
                     },
-                    // {
-                    //     'column': 'creator_id',
-                    //     'data': creator_id
-                    // },
+                    {
+                        'column': 'creator_id',
+                        'data': 2
+                    },
                 ]
             };
             break;
