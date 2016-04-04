@@ -19,7 +19,7 @@
 	$to_select = array();
 	$sqlopt = $json_object->sqlopt;
 	$table = $json_object->table;
-	$conditions_string;
+	$conditions_string="";
 
 	if (array_key_exists('values', $json_object)) 
 	{
@@ -33,7 +33,7 @@
 		foreach ($json_object->conditions as $column)
 		{
 			$conditions[$column->column] = $column->data;
-			$conditions_string = $conditions_string . $column->column . " = '" . $column->data . "'";
+			$conditions_string .= $column->column . " = '" . $column->data . "'";
 		}
 	}
 	if (array_key_exists('to_select', $json_object))
