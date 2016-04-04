@@ -34,7 +34,7 @@ function manageLocation(operation) {
                     },
                     {
                         'column': 'creator_id',
-                        'data': 2
+                        'data': 184
                     },
                 ]
             };
