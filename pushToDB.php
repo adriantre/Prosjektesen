@@ -53,7 +53,6 @@
 	        $result = pg_update($conn, $table, $values, $conditions);     
 	        break;
 	    case "select":
-	    	//http_build_query($conditions, '', " and ")
 	    	$sql = "select " . implode(", ", $to_select) . " from " . $table . " where " . implode(" and ", $conditions_string) . ";";
 	        $result = pg_query($conn, $sql);
 	        break;
