@@ -51,7 +51,7 @@
 	        $result = pg_update($conn, $table, $values, $conditions);     
 	        break;
 	    case "select":
-	    	$sql = "select " . http_build_query($to_select, '', ",") . " from " . $table . " where " . http_build_query($conditions->column, '', " and ") . ";";
+	    	// $sql = "select " . http_build_query($to_select, '', ",") . " from " . $table . " where " . http_build_query($conditions->column, '', " and ") . ";";
 	        $result = pg_query($conn, $sql);
 	        break;
 	    case "delete":
@@ -59,11 +59,13 @@
 	        break;
     }
 
-	if (is_bool($result)) {
-		echo $result ? 'true' : 'false';
-		exit;
-	}
-    while ($result_row = pg_fetch_assoc($result)) {
-    	echo json_encode($result_row);
-    }
+    echo $sql;
+	// if (is_bool($result)) {
+	// 	echo $result ? 'true' : 'false';
+	// 	exit;
+	// }
+ //    while ($result_row = pg_fetch_assoc($result)) {
+ //    	echo json_encode($result_row);
+ //    }
+
 ?>
