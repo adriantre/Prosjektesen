@@ -25,8 +25,9 @@ function manageUser(operation) {
                     user_id = jsonData.currval;
                     alert('user_id = ' + user_id);
                      break;
-                case 'getUser':;
+                case 'getUser':
                     var jsonData = JSON.parse(xmlhttp.responseText);
+                    alert(jsonData);
                     user_id = jsonData.user_id;
                     current_location_id = jsonData.current_location_id;
                     geomessage = jsonData.geomessage;  
