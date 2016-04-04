@@ -61,7 +61,7 @@
 	        break;
     }
 
-    echo json_encode($values);
+    echo $sql;
 	// if (is_bool($result)) {
 	// 	echo $result ? 'true' : 'false';
 	// 	exit;
