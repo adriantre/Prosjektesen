@@ -54,7 +54,7 @@
 	        break;
 	    case "select":
 	    	//http_build_query($conditions, '', " and ")
-	    	$sql = "select " . implode(", ", $to_select) . " from " . $table . " where " . implode(" and ", $conditions_string . ";";
+	    	$sql = "select " . implode(", ", $to_select) . " from " . $table . " where " . implode(" and ", $conditions_string) . ";";
 	        $result = pg_query($conn, $sql);
 	        break;
 	    case "delete":
@@ -62,13 +62,12 @@
 	        break;
     }
 
-    echo $sql;
-	// if (is_bool($result)) {
-	// 	echo $result ? 'true' : 'false';
-	// 	exit;
-	// }
- //    while ($result_row = pg_fetch_assoc($result)) {
- //    	echo json_encode($result_row);
- //    }
+	if (is_bool($result)) {
+		echo $result ? 'true' : 'false';
+		exit;
+	}
+    while ($result_row = pg_fetch_assoc($result)) {
+    	echo json_encode($result_row);
+    }
 
 ?>
