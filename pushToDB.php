@@ -56,9 +56,9 @@
 	    	$sql = "select " . http_build_query($to_select, '', ",") . " from " . $table . " where " . http_build_query($condition->column, '', " and ") . ";";
 	        $result = pg_query($conn, $sql);
 	        break;
-	    case "delete":
-	        $result = pg_delete($conn, $table, $condition);
-	        break;
+	    // case "delete":
+	    //     $result = pg_delete($conn, $table, $condition);
+	    //     break;
     }
 
     echo $sql;
