@@ -82,6 +82,7 @@ function getUserPosition(position) {
   	
     L.marker(coords).addTo(map).bindPopup('Du er her!' + coords).openPopup();
     map.setView(coords, 13);
+    localStorage.setItem("myCurrentCoords", coords);
  }
 
 function onMapClick(e) {

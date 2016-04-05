@@ -54,23 +54,47 @@ function manageLocation(operation) {
                         'data': "'" + location_name + "'"
                     },
                     {
-                        'column': 'geofence2',
+                        'column': 'geofence',
                         'data': 'ST_GeomFromText(' + "'" + geofence + "'" + ')'
                     },
                     {
                         'column': 'creator_id',
-                        'data': 195
+                        'data': localStorage.getItem("my_user_id")
                     },
                 ]
             };
             break;
-        case 'getLocation':
+        case 'getMyLocations':
             var location = {
                 'sqlopt': 'select',
                 'table': table,
                 'to_select': [
                     {
                         'column': 'location_name'
+                    },
+                    {
+                        'column': 'geofence'
+                    }
+                ],
+                'conditions': [
+                    {
+                        'column': 'creator_id',
+                        'data': localStorage.getItem("my_user_id")
+                    },
+                ]
+            };
+            //return user_id, current_location_id, 
+            break;
+        case 'getCurrentLocation':
+            var location = {
+                'sqlopt': 'select',
+                'table': table,
+                'to_select': [
+                    {
+                        'column': 'location_name'
+                    },
+                    {
+                        'column': 'location_id'
                     }
                 ],
                 'conditions': [
@@ -80,12 +104,12 @@ function manageLocation(operation) {
                     },
                     {
                         'column': 'creator_id',
-                        'data': creator_id
+                        'data': 'ST_Contains(' + geofence + ', ST_GeomFromText(' + "'" + localStorage.getItem("myCurrentCoords") + "'" + '))'
                     },
                 ]
             };
             //return user_id, current_location_id, 
-            break;
+            break;    
         case 'deleteLocation':
             var location = {
                 'sqlopt': 'delete',
