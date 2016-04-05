@@ -76,7 +76,7 @@ function manageLocation(operation) {
                 'conditions': [
                     {
                         'column': 'location_name',
-                        'data': location_name
+                        'data': "'" + location_name + "'"
                     },
                     {
                         'column': 'creator_id',
@@ -105,7 +105,7 @@ function manageLocation(operation) {
                 'values': [
                     {
                         'column': 'location_name',
-                        'data': location_name
+                        'data': "'" + location_name + "'"
                     }
                 ],
                 'conditions': [
