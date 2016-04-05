@@ -51,11 +51,11 @@ function manageLocation(operation) {
                 'values': [
                     {
                         'column': 'location_name',
-                        'data': location_name
+                        'data': "'" + location_name + "'"
                     },
                     {
                         'column': 'geofence2',
-                        'data': 'ST_GeomFromText(' + "'" + geofence + "'" + ')'
+                        'data': "ST_GeomFromText('" + "'" + geofence + "'" + "')"
                     },
                     {
                         'column': 'creator_id',
