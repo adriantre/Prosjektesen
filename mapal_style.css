@@ -173,6 +173,11 @@ body,
     box-shadow: none;
 }
 
+#logOutButton {
+    background-color: transparent;
+    width:100%;
+}
+
 /*-------------------------------*/
 /*       Hamburger-Cross         */
 /*-------------------------------*/

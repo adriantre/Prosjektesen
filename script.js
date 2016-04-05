@@ -166,6 +166,10 @@ function initSideMenu() {
 
 }
 
+function getLogOutModal() {
+    $("#logOutModal").modal();
+}
+
 //--------------------MAIN MENU---------------------------//
 
 // var demo = "Logout";
