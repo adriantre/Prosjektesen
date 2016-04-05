@@ -7,6 +7,7 @@ function manageLocation(operation) {
     // var creator_id = this.user_id;
     // document.getElementById('polygonCoords').innerHTML=geofence;
     var table = 'location';
+    var location_name;
 
     xmlhttp.open('POST', url, true);
  
@@ -40,10 +41,10 @@ function manageLocation(operation) {
 
         }
       }
-      alert(xmlhttp.responseText);
     }
     switch(operation) {
         case 'newLocation':
+            location_name = document.getElementById("location_name").value;
             var location = {
                 'sqlopt': 'insert',
                 'table': table,
