@@ -24,13 +24,15 @@ function manageUser(operation) {
                     var jsonData = JSON.parse(xmlhttp.responseText);
                     user_id = jsonData.currval;
                     alert('user_id = ' + user_id);
+                    window.open("mapPage.html", "_self");
                      break;
                 case 'getUser':
                     var jsonData = JSON.parse(xmlhttp.responseText);
                     user_id = jsonData.user_id;
                     current_location_id = jsonData.current_location_id;
                     geomessage = jsonData.geomessage;  
-                    alert('user_id = ' + user_id + ' current_location_id = ' + current_location_id + ' geomessage = ' + geomessage);                    
+                    alert('user_id = ' + user_id + 'current_location_id = ' + current_location_id + 'geomessage = ' + geomessage);                    
+                    window.open("mainmenu.html", "_self");
                     break;
                 default:
                     var success = xmlhttp.responseText == "true" ? true : false;
@@ -39,6 +41,7 @@ function manageUser(operation) {
             }
         } catch(e) {
             alert('Kunne ikke evaluere svaret fra DB' + xmlhttp.responseText);
+
         }
       }
     }
@@ -87,11 +90,11 @@ function manageUser(operation) {
                 'conditions': [
                     {
                         'column': 'user_name',
-                        'data': "'" + user_name + "'"
+                        'data': user_name
                     },
                     {
                         'column': 'password',
-                        'data': "'" + password + "'"
+                        'data': password
                     },
                 ]
             };
@@ -121,7 +124,7 @@ function manageUser(operation) {
                 'conditions': [
                     {
                         'column': 'user_id',
-                        'data': "'" + user_id + "'"
+                        'data': user_id
                     }
                 ]
             };
