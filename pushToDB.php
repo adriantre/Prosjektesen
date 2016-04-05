@@ -14,6 +14,7 @@
 	}
 	$json_object = json_decode($input);
 
+	$values_columns = array();
 	$values = array();
 	$conditions = array();
 	$to_select = array();
@@ -33,6 +34,7 @@
 		foreach ($json_object->conditions as $column)
 		{
 			$conditions[$column->column] = $column->data;
+
 			array_push($conditions_array, $column->column . " = '" . $column->data . "'");
 		}
 	}
@@ -46,8 +48,8 @@
 
     switch ($sqlopt) {
 	    case "insert":
-	        pg_insert($conn, $table, $values);
-	        // pg_query($conn, "insert into " . $table . " values " . )
+	        // pg_insert($conn, $table, $values);
+	        pg_query($conn, "insert into " . $table . "(" . implode(", ", array_keys($values)) . ") values (" . implode(", ", array_values($values)) . ")";);
 	        $sql = "select currval('" . $table . "_" . $json_object->table . "_id_seq');";
 	        $result = pg_query($conn, $sql);
 	        break;
