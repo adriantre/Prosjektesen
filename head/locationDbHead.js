@@ -6,6 +6,7 @@ function manageLocation(operation) {
     // var geofence = wkt.write();
     // var creator_id = this.user_id;
     // document.getElementById('polygonCoords').innerHTML=geofence;
+    var table = 'location';
 
     xmlhttp.open('POST', url, true);
  
@@ -14,38 +15,38 @@ function manageLocation(operation) {
     xmlhttp.onreadystatechange = function()
     {
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
-      // {
-      //   try{
-      //       switch(operation) {
-      //           case 'newLocation':
-      //               var jsonData = JSON.parse(xmlhttp.responseText);
-      //               user_id = jsonData.currval;
-      //               alert('user_id = ' + user_id);
-      //                break;
-      //           case 'getLocation':
-      //               var jsonData = JSON.parse(xmlhttp.responseText);
-      //               user_id = jsonData.user_id;
-      //               current_location_id = jsonData.current_location_id;
-      //               geomessage = jsonData.geomessage;  
-      //               alert('user_id = ' + user_id + 'current_location_id = ' + current_location_id + 'geomessage = ' + geomessage);                    
-      //               break;
-      //           default:
-      //               var success = xmlhttp.responseText == "true" ? true : false;
-      //               alert(success);
-      //               break;
-      //       }
-      //   } catch(e) {
-      //       alert('Kunne ikke evaluere svaret fra DB' + xmlhttp.responseText);
+      {
+        try{
+            switch(operation) {
+                case 'newLocation':
+                    var jsonData = JSON.parse(xmlhttp.responseText);
+                    location_id = jsonData.currval;
+                    alert('location_id = ' + location_id);
+                     break;
+                case 'getLocation':
+                    var jsonData = JSON.parse(xmlhttp.responseText);
+                    location_id = jsonData.location_id;
+                    // current_location_id = jsonData.current_location_id;
+                    // geomessage = jsonData.geomessage;  
+                    alert('location_id = ' + location_id);                    
+                    break;
+                default:
+                    var success = xmlhttp.responseText == "true" ? true : false;
+                    alert(success);
+                    break;
+            }
+        } catch(e) {
+            alert('Kunne ikke evaluere svaret fra DB' + xmlhttp.responseText);
 
-      //   }
-      // }
+        }
+      }
       alert(xmlhttp.responseText);
     }
     switch(operation) {
         case 'newLocation':
             var location = {
                 'sqlopt': 'insert',
-                'table': 'public.location',
+                'table': table,
                 'values': [
                     {
                         'column': 'location_name',
@@ -65,7 +66,7 @@ function manageLocation(operation) {
         case 'getLocation':
             var location = {
                 'sqlopt': 'select',
-                'table': 'public.location',
+                'table': table,
                 'to_select': [
                     {
                         'column': 'location_name'
@@ -87,7 +88,7 @@ function manageLocation(operation) {
         case 'deleteLocation':
             var location = {
                 'sqlopt': 'delete',
-                'table': 'public.location',
+                'table': table,
                 'conditions': [
                     {
                         'column': 'location_id',
@@ -99,7 +100,7 @@ function manageLocation(operation) {
         case 'updateLocation':
             var location = {
                 'sqlopt': 'update',
-                'table': 'public.location',
+                'table': table,
                 'values': [
                     {
                         'column': 'location_name',
