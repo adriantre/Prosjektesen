@@ -75,7 +75,7 @@ function manageUser(operation) {
             password = document.getElementById("login_pwd").value;
             var user = {
                 'sqlopt': 'select',
-                'table': 'public.user',
+                'table': 'user',
                 'to_select': [
                     {
                         'column': 'user_id'
