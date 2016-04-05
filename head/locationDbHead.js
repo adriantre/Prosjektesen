@@ -51,7 +51,7 @@ function manageLocation(operation) {
                 'values': [
                     {
                         'column': 'location_name',
-                        'data': location_name
+                        'data': "'" + location_name + "'"
                     },
                     {
                         'column': 'geofence2',
@@ -59,7 +59,7 @@ function manageLocation(operation) {
                     },
                     {
                         'column': 'creator_id',
-                        'data': 184
+                        'data': 195
                     },
                 ]
             };

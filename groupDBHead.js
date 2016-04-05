@@ -53,7 +53,7 @@ function manageGroup(operation) {
                 'values': [
                     {
                         'column': 'group_name',
-                        'data': group_name
+                        'data': "'" + group_name + "'"
                     }
                 ]
             };
