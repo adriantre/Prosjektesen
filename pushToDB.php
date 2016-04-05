@@ -48,8 +48,8 @@
 
     switch ($sqlopt) {
 	    case "insert":
-	        // pg_insert($conn, $table, $values);
-	        pg_query($conn, "insert into " . $table . "(" . implode(", ", array_keys($values)) . ") values (" . implode(", ", array_values($values)) . ");");
+	        pg_insert($conn, $table, $values);
+	        //pg_query($conn, "insert into " . $table . "(" . implode(", ", array_keys($values)) . ") values (" . implode(", ", array_values($values)) . ");");
 	        $sql = "select currval('" . $table . "_" . $json_object->table . "_id_seq');";
 	        $result = pg_query($conn, $sql);
 	        break;
