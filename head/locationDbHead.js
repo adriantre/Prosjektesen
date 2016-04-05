@@ -55,7 +55,7 @@ function manageLocation(operation) {
                     },
                     {
                         'column': 'geofence2',
-                        'data': "ST_GeomFromText('" + "'" + geofence + "'" + "')"
+                        'data': 'ST_GeomFromText(' + "'" + geofence + "'" + ')'
                     },
                     {
                         'column': 'creator_id',
