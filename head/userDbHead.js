@@ -58,15 +58,15 @@ function manageUser(operation) {
                 'values': [
                     {
                         'column': 'user_name',
-                        'data': user_name
+                        'data': "'" + user_name "'"
                     },
                     {
                         'column': 'email',
-                        'data': email
+                        'data': "'" + email + "'"
                     },
                     {
                         'column': 'password',
-                        'data': password
+                        'data': "'" + password + "'"
                     },
                 ]
             };
