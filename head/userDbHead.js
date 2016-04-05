@@ -9,6 +9,7 @@ function manageUser(operation) {
     var password;
     var current_location_id;
     var geomessage;
+    var table = 'user';
 
     xmlhttp.open('POST', url, true);
  
@@ -53,7 +54,7 @@ function manageUser(operation) {
             password = document.getElementById("new_pwd").value;
             var user = {
                 'sqlopt': 'insert',
-                'table': 'public.user',
+                'table': table,
                 'values': [
                     {
                         'column': 'user_name',
@@ -75,7 +76,7 @@ function manageUser(operation) {
             password = document.getElementById("login_pwd").value;
             var user = {
                 'sqlopt': 'select',
-                'table': 'user',
+                'table': table,
                 'to_select': [
                     {
                         'column': 'user_id'
@@ -102,7 +103,7 @@ function manageUser(operation) {
         case 'deleteUser':
             var user = {
                 'sqlopt': 'delete',
-                'table': 'public.user',
+                'table': table,
                 'conditions': [
                     {
                         'column': 'user_id',
@@ -114,7 +115,7 @@ function manageUser(operation) {
         case 'updateUserLocation':
             var user = {
                 'sqlopt': 'update',
-                'table': 'public.user',
+                'table': table,
                 'values': [
                     {
                         'column': 'current_location_id',
@@ -132,7 +133,7 @@ function manageUser(operation) {
         case 'updateUserGeomessage':
             var user = {
                 'sqlopt': 'update',
-                'table': 'public.user',
+                'table': table,
                 'values': [
                     {
                         'column': 'geomessage',
