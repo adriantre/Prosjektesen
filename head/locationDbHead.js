@@ -52,7 +52,7 @@ function manageLocation(operation) {
                     },
                     {
                         'column': 'geofence2',
-                        'data': 'ST_PolygonFromText(' + "'" + geofence + "'" + ')'
+                        'data': 'ST_GeomFromText(' + "'" + geofence + "'" + ')'
                     },
                     {
                         'column': 'creator_id',
