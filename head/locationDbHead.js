@@ -14,31 +14,32 @@ function manageLocation(operation) {
     xmlhttp.onreadystatechange = function()
     {
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
-      {
-        try{
-            switch(operation) {
-                case 'newLocation':
-                    var jsonData = JSON.parse(xmlhttp.responseText);
-                    user_id = jsonData.currval;
-                    alert('user_id = ' + user_id);
-                     break;
-                case 'getLocation':
-                    var jsonData = JSON.parse(xmlhttp.responseText);
-                    user_id = jsonData.user_id;
-                    current_location_id = jsonData.current_location_id;
-                    geomessage = jsonData.geomessage;  
-                    alert('user_id = ' + user_id + 'current_location_id = ' + current_location_id + 'geomessage = ' + geomessage);                    
-                    break;
-                default:
-                    var success = xmlhttp.responseText == "true" ? true : false;
-                    alert(success);
-                    break;
-            }
-        } catch(e) {
-            alert('Kunne ikke evaluere svaret fra DB' + xmlhttp.responseText);
+      // {
+      //   try{
+      //       switch(operation) {
+      //           case 'newLocation':
+      //               var jsonData = JSON.parse(xmlhttp.responseText);
+      //               user_id = jsonData.currval;
+      //               alert('user_id = ' + user_id);
+      //                break;
+      //           case 'getLocation':
+      //               var jsonData = JSON.parse(xmlhttp.responseText);
+      //               user_id = jsonData.user_id;
+      //               current_location_id = jsonData.current_location_id;
+      //               geomessage = jsonData.geomessage;  
+      //               alert('user_id = ' + user_id + 'current_location_id = ' + current_location_id + 'geomessage = ' + geomessage);                    
+      //               break;
+      //           default:
+      //               var success = xmlhttp.responseText == "true" ? true : false;
+      //               alert(success);
+      //               break;
+      //       }
+      //   } catch(e) {
+      //       alert('Kunne ikke evaluere svaret fra DB' + xmlhttp.responseText);
 
-        }
-      }
+      //   }
+      // }
+      alert(xmlhttp.responseText);
     }
     switch(operation) {
         case 'newLocation':
@@ -52,7 +53,7 @@ function manageLocation(operation) {
                     },
                     {
                         'column': 'geofence2',
-                        'data': 'ST_PolygonFromText(' + "'" + geofence + "'" + ')'
+                        'data': 'ST_GeomFromText(' + "'" + geofence + "'" + ')'
                     },
                     {
                         'column': 'creator_id',
