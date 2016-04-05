@@ -47,7 +47,7 @@
     switch ($sqlopt) {
 	    case "insert":
 	        pg_insert($conn, $table, $values);
-	        $result = pg_query($conn, "select currval('" . $table . "_user_id_seq');");
+	        $result = pg_query($conn, "select currval('" . $table . "_public." . $table . "_id_seq');");
 	        break;
 	    case "update":
 	        $result = pg_update($conn, $table, $values, $conditions);     
