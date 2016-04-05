@@ -49,7 +49,7 @@
 	        pg_insert($conn, $table, $values);
 	        // pg_query($conn, "insert into " . $table . " values " . )
 	        $sql = "select currval('" . $table . "_" . $json_object->table . "_id_seq');";
-	        $result = pg_query($conn, $sql);
+	        // $result = pg_query($conn, $sql);
 	        break;
 	    case "update":
 	        $result = pg_update($conn, $table, $values, $conditions);     
