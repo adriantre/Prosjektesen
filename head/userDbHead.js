@@ -27,7 +27,7 @@ function manageUser(operation) {
                     // user_id = jsonData.currval;
                     // alert('user_id = ' + user_id);
                     // window.open("mapPage.html", "_self");
-                     break;
+                    break;
                 case 'getUser':
                     var jsonData = JSON.parse(xmlhttp.responseText);
                     user_id = jsonData.user_id;
