@@ -25,6 +25,7 @@ function manageUser(operation) {
                     var jsonData = JSON.parse(xmlhttp.responseText);
                     user_id = jsonData.currval;
                     alert('user_id = ' + user_id);
+                    localStorage.setItem("my_user_id", user_id);
                     window.open("mapPage.html", "_self");
                     break;
                 case 'getUser':
@@ -91,11 +92,11 @@ function manageUser(operation) {
                 'conditions': [
                     {
                         'column': 'user_name',
-                        'data': user_name
+                        'data': "'" + user_name + "'"
                     },
                     {
                         'column': 'password',
-                        'data': password
+                        'data': "'" + password + "'"
                     },
                 ]
             };
@@ -137,7 +138,7 @@ function manageUser(operation) {
                 'values': [
                     {
                         'column': 'geomessage',
-                        'data': geomessage
+                        'data': "'" + geomessage + "'"
                     }
                 ],
                 'conditions': [

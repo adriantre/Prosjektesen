@@ -91,9 +91,14 @@
 @-moz-keyframes fadeIn { from { opacity:0; opacity: 1\9; /* IE9 only */ } to { opacity:1; } }
 @keyframes fadeIn { from { opacity:0; opacity: 1\9; /* IE9 only */ } to { opacity:1; } }
     </style>
+    <script>
+    document.getElementById("Main").innerHTML = localStorage.getItem("my_user_id");
+    </script>
 </head>
 <body onload="initSideMenu()">
 <div class="jumbotron container">
+<button type="button"id="Main"class="btn btn-lg pull-right topright"style="width: 75px; height: 75px" onclick= window.open("mainmenu.html","_self")><span id="demo"></span>
+</button>
 </div>
 <div class="text-center fade-in">
 <div class="container">
