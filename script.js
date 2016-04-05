@@ -64,7 +64,6 @@ function initializeMapPage() {
     map.on('draw:created', function (e) {
     var type = e.layerType;
     layer = e.layer;
-
     wkt = new Wkt.Wkt();
     wkt.fromObject(layer);
     console.log(wkt.components);
@@ -81,7 +80,7 @@ function getUserPosition(position) {
     coords.push(position.coords.latitude);
     coords.push(position.coords.longitude);
   	
-    L.marker(coords).addTo(map).bindPopup('Du er her!').openPopup();
+    L.marker(coords).addTo(map).bindPopup('Du er her!' + coords).openPopup();
     map.setView(coords, 13);
  }
 
@@ -101,7 +100,7 @@ function submitLocation() {
   // location_name = document.getElementById("location_name").value;
   geofence = wkt.write();
   document.getElementById('polygonCoords').innerHTML=geofence;
-  $("#myModal").modal();
+  // $("#myModal").modal();
   // var newLocation = new Location(location_name, geofence);
   // localStorage.setItem("location_name", location_name);
   manageLocation('newLocation');
@@ -117,6 +116,14 @@ function submitLocation() {
 function drawPolygon() {
   polygonDrawer = new L.Draw.Polygon(map, drawControl.options.polygon);
   polygonDrawer.enable();
+}
+
+function viewPolygons() {
+    var geoPoly = Terraformer.WKT.parse(geofence); //Create Polygon from WKT
+    if (geoPoly.type != "Polygon") {
+        throw "Not a Polygon";
+        return "";
+    }
 }
 
 //--------------------SIDE MENU---------------------------//
@@ -193,5 +200,7 @@ function myOutFunction(){
    demo.removeChild(linebreak);
     demo.className ="glyphicon glyphicon-off";
 }
+
+
 
 //------------------------------------------------------------//
