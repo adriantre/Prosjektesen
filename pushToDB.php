@@ -35,7 +35,7 @@
 		{
 			$conditions[$column->column] = $column->data;
 
-			array_push($conditions_array, $column->column . ' = ' . $column->data);
+			array_push($conditions_array, $column->column .' = ' . $column->data);
 		}
 	}
 	if (array_key_exists('to_select', $json_object))
