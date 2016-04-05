@@ -22,10 +22,11 @@ function manageUser(operation) {
         try{
             switch(operation) {
                 case 'newUser':
-                    var jsonData = JSON.parse(xmlhttp.responseText);
-                    user_id = jsonData.currval;
-                    alert('user_id = ' + user_id);
-                    window.open("mapPage.html", "_self");
+                    alert(xmlhttp.responseText);
+                    // var jsonData = JSON.parse(xmlhttp.responseText);
+                    // user_id = jsonData.currval;
+                    // alert('user_id = ' + user_id);
+                    // window.open("mapPage.html", "_self");
                      break;
                 case 'getUser':
                     var jsonData = JSON.parse(xmlhttp.responseText);
