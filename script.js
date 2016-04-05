@@ -98,7 +98,7 @@ function cancelLocation() {
 
 function submitLocation() {
   map.removeLayer(this.layer);
-  location_name = document.getElementById("location_name").value;
+  // location_name = document.getElementById("location_name").value;
   geofence = wkt.write();
   document.getElementById('polygonCoords').innerHTML=geofence;
   $("#myModal").modal();

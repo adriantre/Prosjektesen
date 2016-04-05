@@ -41,12 +41,10 @@ function manageLocation(operation) {
 
         }
       }
-      alert(xmlhttp.responseText);
     }
     switch(operation) {
         case 'newLocation':
-                location_name = document.getElementById("location_name").value;
-                alert(geofence);
+            location_name = document.getElementById("location_name").value;
             var location = {
                 'sqlopt': 'insert',
                 'table': table,
