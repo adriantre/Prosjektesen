@@ -18,7 +18,7 @@
 	$conditions = array();
 	$to_select = array();
 	$sqlopt = $json_object->sqlopt;
-	$table = "public." . $json_object->table;
+	$table = "public." .$json_object->table;
 	$conditions_array = array();
 
 	if (array_key_exists('values', $json_object)) 
@@ -47,7 +47,7 @@
     switch ($sqlopt) {
 	    case "insert":
 	        pg_insert($conn, $table, $values);
-	        $result = pg_query($conn, "select currval('" . $table . "_" . $table . "_id_seq');");
+	        $result = pg_query($conn, "select currval('" . $table . "_" . $json_object->table . "_id_seq');");
 	        break;
 	    case "update":
 	        $result = pg_update($conn, $table, $values, $conditions);     
