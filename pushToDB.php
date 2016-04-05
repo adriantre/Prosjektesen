@@ -18,7 +18,7 @@
 	$conditions = array();
 	$to_select = array();
 	$sqlopt = $json_object->sqlopt;
-	$table = "public." .$json_object->table;
+	$table = "public." . $json_object->table;
 	$conditions_array = array();
 
 	if (array_key_exists('values', $json_object)) 
@@ -46,8 +46,9 @@
 
     switch ($sqlopt) {
 	    case "insert":
-	        pg_insert($conn, $table, $values);
-	        $result = pg_query($conn, "select currval('" . $table . "_" . $json_object->table . "_id_seq');");
+	        // pg_insert($conn, $table, $values);
+	        // pg_query($conn)
+	        // $result = pg_query($conn, "select currval('" . $table . "_" . $json_object->table . "_id_seq');");
 	        break;
 	    case "update":
 	        $result = pg_update($conn, $table, $values, $conditions);     
@@ -61,12 +62,13 @@
 	        break;
     }
 
-	if (is_bool($result)) {
-		echo $result ? 'true' : 'false';
-		exit;
-	}
-    while ($result_row = pg_fetch_assoc($result)) {
-    	echo json_encode($result_row);
-    }
+    echo json_encode($table);
+	// if (is_bool($result)) {
+	// 	echo $result ? 'true' : 'false';
+	// 	exit;
+	// }
+ //    while ($result_row = pg_fetch_assoc($result)) {
+ //    	echo json_encode($result_row);
+ //    }
 
 ?>
