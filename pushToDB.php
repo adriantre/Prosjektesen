@@ -48,7 +48,8 @@
 	    case "insert":
 	        pg_insert($conn, $table, $values);
 	        // pg_query($conn, "insert into " . $table . " values " . )
-	        $result = pg_query($conn, "select currval('" . $table . "_" . $json_object->table . "_id_seq');");
+	        $sql = "select currval('" . $table . "_" . $json_object->table . "_id_seq');";
+	        $result = pg_query($conn, $sql);
 	        break;
 	    case "update":
 	        $result = pg_update($conn, $table, $values, $conditions);     
@@ -63,12 +64,13 @@
     }
 
 
-	if (is_bool($result)) {
-		echo $result ? 'true' : 'false';
-		exit;
-	}
-    while ($result_row = pg_fetch_assoc($result)) {
-    	echo json_encode($result_row);
-    }
+    echo $sql;
+	// if (is_bool($result)) {
+	// 	echo $result ? 'true' : 'false';
+	// 	exit;
+	// }
+ //    while ($result_row = pg_fetch_assoc($result)) {
+ //    	echo json_encode($result_row);
+    // }
 
 ?>
