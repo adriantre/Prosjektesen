@@ -32,8 +32,8 @@ function manageUser(operation) {
                     var jsonData = JSON.parse(xmlhttp.responseText);
                     user_id = jsonData.user_id;
                     current_location_id = jsonData.current_location_id;
-                    geomessage = jsonData.geomessage;  
-                    // alert('user_id = ' + user_id + ' current_location_id = ' + current_location_id + 'geomessage = ' + geomessage);                    
+                    geomessage = jsonData.geomessage;
+                    localStorage.setItem("my_user_id", user_id);
                     window.open("mainmenu.html", "_self");
                     break;
                 default:
