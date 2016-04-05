@@ -20,9 +20,10 @@ function manageLocation(operation) {
         try{
             switch(operation) {
                 case 'newLocation':
-                    var jsonData = JSON.parse(xmlhttp.responseText);
-                    location_id = jsonData.currval;
-                    alert('location_id = ' + location_id);
+                    alert(xmlhttp.responseText);
+                    // var jsonData = JSON.parse(xmlhttp.responseText);
+                    // location_id = jsonData.currval;
+                    // alert('location_id = ' + location_id);
                      break;
                 case 'getLocation':
                     var jsonData = JSON.parse(xmlhttp.responseText);
