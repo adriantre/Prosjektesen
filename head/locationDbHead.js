@@ -105,12 +105,11 @@ function manageLocation(operation) {
                 ],
                 'conditions': [
                     {
-                        'column': "ST_Contains(" + "geofence" + ", ST_GeomFromText('POINT(" + localStorage.getItem('myCurrentCoords') + ")'))",
-                        'data': "'t'"
-                    },
-                ]
-            };
-            //return user_id, current_location_id, 
+                        'column': "'t'",
+                        'data': "ST_Contains(" + "geofence" + ", ST_GeomFromText('POINT(" + localStorage.getItem('myCurrentCoords') + ")')) order by ST_Area(geofence) asc limit 1"
+                    } //returner bare én
+                ],
+            }; 
             break;    
         case 'deleteLocation':
             var location = {
