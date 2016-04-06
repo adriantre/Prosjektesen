@@ -26,11 +26,15 @@ function manageLocation(operation) {
                     break;
                 case 'getLocation':
                     var jsonData = JSON.parse(xmlhttp.responseText);
-                    location_id = jsonData.location_id;
                     // current_location_id = jsonData.current_location_id;
                     // geomessage = jsonData.geomessage;  
                     alert('location_id = ' + location_id);                    
                     break;
+                case 'getCurrentLocation':
+                    var jsonData = JSON.parse(xmlhttp.responseText);
+                    location_id = jsonData.location_id;
+                    location_name = jsonData.location_name;
+                    localStorage.setItem("current_location_id", location_id);
                 default:
                     var success = xmlhttp.responseText == "true" ? true : false;
                     alert(success);
@@ -99,12 +103,8 @@ function manageLocation(operation) {
                 ],
                 'conditions': [
                     {
-                        'column': 'location_name',
-                        'data': "'" + location_name + "'"
-                    },
-                    {
-                        'column': 'creator_id',
-                        'data': 'ST_Contains(' + geofence + ', ST_GeomFromText(' + "'" + localStorage.getItem("myCurrentCoords") + "'" + '))'
+                        'column': "'t'",
+                        'data': 'ST_Contains(' + 'geofence' + ', ST_GeomFromText(' + "'" + localStorage.getItem("myCurrentCoords") + "'" + '))'
                     },
                 ]
             };

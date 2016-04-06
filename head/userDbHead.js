@@ -10,6 +10,7 @@ function manageUser(operation) {
     var current_location_id;
     var geomessage;
     var table = 'user';
+    var current_location_id;
 
     xmlhttp.open('POST', url, true);
  
@@ -114,6 +115,10 @@ function manageUser(operation) {
             };
             break;
         case 'updateUserLocation':
+            //Bruker locationDbHead sin getCurrentLocation-funksjon
+            manageLocation('getCurrentLocation');
+            current_location_id = localStorage.getItem("current_location_id");
+            alert(current_location_id);
             var user = {
                 'sqlopt': 'update',
                 'table': table,
