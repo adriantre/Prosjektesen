@@ -54,7 +54,7 @@ function manageLocation(operation) {
                         'data': "'" + location_name + "'"
                     },
                     {
-                        'column': 'geofence2',
+                        'column': 'geofence',
                         'data': 'ST_GeomFromText(' + "'" + geofence + "'" + ')'
                     },
                     {
