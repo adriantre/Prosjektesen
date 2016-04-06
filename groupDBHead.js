@@ -26,11 +26,12 @@ function manageGroup(operation) {
                     break;
                 case 'getGroup':
                     var jsonData = JSON.parse(xmlhttp.responseText);
-                    //user_id = jsonData.user_id;
+                    group_id = jsonData.group_id;
                     //current_location_id = jsonData.current_location_id;
                     //geomessage = jsonData.geomessage;  
                     // alert('user_id = ' + user_id + ' current_location_id = ' + current_location_id + 'geomessage = ' + geomessage);                    
                     //window.open("mainmenu.html", "_self");
+                    alert(group_id);
                     break;
                 default:
                     var success = xmlhttp.responseText == "true" ? true : false;
@@ -59,7 +60,7 @@ function manageGroup(operation) {
             };
             break;
         case 'getGroup':
-            group_name = document.getElementById("new_group_name").value;
+            group_name = document.getElementById("check_group_name").value;
             var group = {
                 'sqlopt': 'select',
                 'table': table,

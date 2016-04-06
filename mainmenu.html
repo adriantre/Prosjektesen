@@ -100,12 +100,14 @@
             <div class="row top-buffer">
             <div class="col-sm-12">
                 <div class"dropdown">
-<button type="button" id="ViewGroup" class="btn btn-primary btn-lg" data-toggle="collapse" data-target="#collap" style="width: 400px"> View Group
+<button type="button" id="ViewGroup" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#viewGroupModal" style="width: 400px"> View Group
         </button>
+        <!--
           <div id="collap" class="collapse">
             <button type="button" id="ViewGroup1" class="btn btn-standard">Group 1 goes here</button>
                 <button type="button" id="ViewGroup2" class="btn btn-standard">Group 2 goes here</button>
         </div>
+    -->
         </div>
         </div>
         </div>
@@ -164,6 +166,41 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
           <button type="submit" class="btn btn-primary btn-default pull-right" data-dismiss="modal" onclick="manageGroup('newGroup')"><span class="glyphicon glyphicon-ok"></span> Submit</button>
+          
+        </div>
+      </div>
+     </div>
+    </div>
+  </div>
+  
+</div>
+
+<!-- View GROUP MODAL -->
+
+<div class="container">
+  <!-- Modal -->
+  <div class="modal fade" id="viewGroupModal" role="dialog">
+   <div class="vertical-alignment-helper">
+    <div class="modal-dialog vertical-align-center">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4><span class="glyphicon glyphicon-pencil"></span> Enter groupname</h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form role="form">
+            <div class="form-group">
+              <label for="check_group_name"><span class="glyphicon glyphicon-globe"></span> Group name</label>
+              <input type="text" class="form-control" id="check_group_name" placeholder="Enter group name">
+            </div>
+          </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+          <button type="submit" class="btn btn-primary btn-default pull-right" data-dismiss="modal" onclick="manageGroup('getGroup')"><span class="glyphicon glyphicon-ok"></span> Submit</button>
           
         </div>
       </div>
