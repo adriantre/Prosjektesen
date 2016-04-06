@@ -31,13 +31,15 @@ function manageLocation(operation) {
                     alert('location_id = ' + location_id);                    
                     break;
                 case 'getCurrentLocation':
+                    //hvis flere geofences inneholder currentPosition må man plukke ut ett.
                     var jsonData = JSON.parse(xmlhttp.responseText);
                     location_id = jsonData.location_id;
                     location_name = jsonData.location_name;
                     localStorage.setItem("current_location_id", location_id);
+                    break;
                 default:
                     var success = xmlhttp.responseText == "true" ? true : false;
-                    alert(success);
+                    alert(success + " locationDbHead");
                     break;
             }
         } catch(e) {
@@ -103,8 +105,8 @@ function manageLocation(operation) {
                 ],
                 'conditions': [
                     {
-                        'column': "'t'",
-                        'data': 'ST_Contains(' + 'geofence' + ', ST_GeomFromText(' + "'" + localStorage.getItem("myCurrentCoords") + "'" + '))'
+                        'column': "ST_Contains(" + "geofence" + ", ST_GeomFromText('POINT(" + localStorage.getItem('myCurrentCoords') + ")'))",
+                        'data': "'t'"
                     },
                 ]
             };

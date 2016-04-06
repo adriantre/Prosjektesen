@@ -1,6 +1,7 @@
 //---------------------MAP PAGE----------------------//
 var latitude, longitude;
 var coords;
+var coordsString;
 var map;
 var popup = L.popup();
 var layer;
@@ -79,10 +80,12 @@ function getUserPosition(position) {
     coords =[];
     coords.push(position.coords.latitude);
     coords.push(position.coords.longitude);
+    coordsString = position.coords.longitude + " " + position.coords.latitude;
+
   	
     L.marker(coords).addTo(map).bindPopup('Du er her!' + coords).openPopup();
     map.setView(coords, 13);
-    localStorage.setItem("myCurrentCoords", coords);
+    localStorage.setItem("myCurrentCoords", coordsString);
  }
 
 function onMapClick(e) {

@@ -25,7 +25,6 @@ function manageUser(operation) {
                 case 'newUser':
                     var jsonData = JSON.parse(xmlhttp.responseText);
                     user_id = jsonData.currval;
-                    alert('user_id = ' + user_id);
                     localStorage.setItem("my_user_id", user_id);
                     window.open("mapPage.html", "_self");
                     break;
@@ -39,7 +38,7 @@ function manageUser(operation) {
                     break;
                 default:
                     var success = xmlhttp.responseText == "true" ? true : false;
-                    alert(success);
+                    alert(success + " userDbHead");
                     break;
             }
         } catch(e) {
@@ -116,9 +115,9 @@ function manageUser(operation) {
             break;
         case 'updateUserLocation':
             //Bruker locationDbHead sin getCurrentLocation-funksjon
+            user_id =localStorage.getItem("my_user_id");
             manageLocation('getCurrentLocation');
             current_location_id = localStorage.getItem("current_location_id");
-            alert(current_location_id);
             var user = {
                 'sqlopt': 'update',
                 'table': table,
