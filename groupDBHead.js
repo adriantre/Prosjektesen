@@ -72,7 +72,7 @@ function manageGroup(operation) {
                 'conditions': [
                     {
                         'column': 'group_name',
-                        'data': group_name
+                        'data': "'" + group_name + "'"
                     }
                 ]
             };
@@ -84,7 +84,7 @@ function manageGroup(operation) {
                 'conditions': [
                     {
                         'column': 'group_id',
-                        'data': group_id
+                        'data': "'" + group_id + "'"
                     }
                 ]
             };
