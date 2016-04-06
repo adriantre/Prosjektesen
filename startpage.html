@@ -80,7 +80,13 @@
     </style>
 </head>
 <script>
-
+function clearFunction(){
+  document.getElementById("login_user_name").value = "";
+  document.getElementById("login_pwd").value = "";
+  document.getElementById("new_user_name").value = "";
+  document.getElementById("new_email").value = "";
+  document.getElementById("new_pwd").value = "";
+}
 </script>
 <body>
 <div class="jumbotron container">
@@ -107,7 +113,7 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header" style="padding:35px 50px;">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <button type="reset" class="close" data-dismiss="modal" onclick="clearFunction()">&times;</button>
           <h4><img src="graphics/Logo-black-small.png"></img></h4>
         </div>
         <div class="modal-body" style="padding:40px 50px;">
@@ -136,7 +142,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+          <button type="reset" class="btn btn-danger btn-default pull-left" data-dismiss="modal" onclick="clearFunction()"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
           <p>Not a member? <a href="#" data-toggle="modal" data-target="#myNewUserModal" >Sign Up</a></p>
         </div>
       </div>
@@ -151,7 +157,7 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header" style="padding:35px 50px;">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <button type="button" class="close" data-dismiss="modal" onclick="clearFunction()">&times;</button>
           <h4><img src="graphics/Logo-black-small.png"></img></h4>
         </div>
         <div class="modal-body" style="padding:40px 50px;">
@@ -178,7 +184,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+          <button type="reset" class="btn btn-danger btn-default pull-left" data-dismiss="modal" onclick="clearFunction()"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
         </div>
       </div>
       
