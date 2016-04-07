@@ -50,7 +50,11 @@
 	    case "insert":
 	    	$sql = "insert into " . $table . "(" . implode(", ", array_keys($values)) . ") values (" . implode(", ", array_values($values)) . ");";
 	        pg_query($conn, $sql);
-	        $result = pg_query($conn, "select currval('" . $table . "_" . $json_object->table . "_id_seq');");
+	        try {
+	        	$result = pg_query($conn, "select currval('" . $table . "_" . $json_object->table . "_id_seq');");
+	        } catch (Exception $e) {
+    			echo 'Caught exception: ',  $e->getMessage(), "\n";
+			}
 	        break;
 	    case "update":
 	        $result = pg_update($conn, $table, $values, $conditions);     
