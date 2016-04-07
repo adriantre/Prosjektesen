@@ -23,6 +23,8 @@ function manageLocation(operation) {
                     var jsonData = JSON.parse(xmlhttp.responseText);
                     location_id = jsonData.currval;
                     alert('location_id = ' + location_id);
+                    localStorage.setItem("new_location_id", location_id);
+                    manageLocation('addLocationUser');
                     break;
                 case 'getLocation':
                     var jsonData = JSON.parse(xmlhttp.responseText);
@@ -39,7 +41,7 @@ function manageLocation(operation) {
                     break;
                 default:
                     var success = xmlhttp.responseText == "true" ? true : false;
-                    alert(success + " locationDbHead");
+                    alert(success + " locationDbHead" + operation);
                     break;
             }
         } catch(e) {
@@ -65,6 +67,22 @@ function manageLocation(operation) {
                     },
                     {
                         'column': 'creator_id',
+                        'data': localStorage.getItem("my_user_id")
+                    },
+                ]
+            };
+            break;
+        case 'addLocationUser':
+            var location = {
+                'sqlopt': 'insert',
+                'table': 'location_user',
+                'values': [
+                    {
+                        'column': 'location_id',
+                        'data': localStorage.getItem("new_location_id")
+                    },
+                    {
+                        'column': 'user_id',
                         'data': localStorage.getItem("my_user_id")
                     },
                 ]
@@ -107,7 +125,7 @@ function manageLocation(operation) {
                     {
                         'column': "'t'",
                         'data': "ST_Contains(" + "geofence" + ", ST_GeomFromText('POINT(" + localStorage.getItem('myCurrentCoords') + ")')) order by ST_Area(geofence) asc limit 1"
-                    } //returner bare én
+                    }
                 ],
             }; 
             break;    
