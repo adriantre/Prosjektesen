@@ -22,7 +22,7 @@ function manageLocation(operation) {
                 case 'newLocation':
                     var jsonData = JSON.parse(xmlhttp.responseText);
                     location_id = jsonData.currval;
-                    alert('location_id = ' + location_id);
+                    // alert('location_id = ' + location_id);
                     localStorage.setItem("new_location_id", location_id);
                     manageLocation('addLocationUser');
                     break;
