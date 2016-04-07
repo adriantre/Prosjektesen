@@ -48,6 +48,7 @@ function manageUser(operation) {
       }
     }
     
+    
     switch(operation) {
         case 'newUser':
             user_name = document.getElementById("new_user_name").value;
