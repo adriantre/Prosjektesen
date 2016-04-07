@@ -52,7 +52,7 @@
 	        	$result = pg_query($conn, $sql);
 	        try {
 	        	$result = pg_query($conn, "select currval('" . $table . "_" . $json_object->table . "_id_seq');");
-	        } catch (Exception $e) {
+	        } catch (UncategorizedSQLException $e) {
     			echo 'Caught exception: ',  $e->getMessage(), "\n";
 			}
 	        break;
