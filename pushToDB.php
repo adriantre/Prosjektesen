@@ -50,7 +50,7 @@
 	    case "insert":
 	    	$sql = "insert into " . $table . "(" . implode(", ", array_keys($values)) . ") values (" . implode(", ", array_values($values)) . ");";
 	        $result = pg_query($conn, $sql);
-	        if ($table == 'public.location_user' || $table == 'public.group_user')
+	        if ($table == 'public.location_user' || $table == 'public.group_user') {
 	        	break;
 	        }
         	$result = pg_query($conn, "select currval('" . $table . "_" . $json_object->table . "_id_seq');");
