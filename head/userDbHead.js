@@ -34,7 +34,7 @@ function manageUser(operation) {
                     current_location_id = jsonData.current_location_id;
                     geomessage = jsonData.geomessage;
                     localStorage.setItem("my_user_id", user_id);
-                    window.open("mainmenu.html", "_self");
+                    window.open("mapPage.html", "_self");
                     break;
                 default:
                     var success = xmlhttp.responseText == "false" ? false : true;
