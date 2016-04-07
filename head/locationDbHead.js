@@ -41,7 +41,7 @@ function manageLocation(operation) {
                     break;
                 default:
                     var success = xmlhttp.responseText == "true" ? true : false;
-                    alert(success + " locationDbHead" + operation);
+                    alert(success + " " + xmlhttp.responseText + " locationDbHead" + operation);
                     break;
             }
         } catch(e) {
