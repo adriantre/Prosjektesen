@@ -37,10 +37,10 @@ function manageUser(operation) {
                     window.open("mainmenu.html", "_self");
                     break;
                 default:
-                    var success = xmlhttp.responseText == "true" ? true : false;
-                    alert(success + " userDbHead");
-                    break;
-            }
+                    var success = xmlhttp.responseText == "false" ? false : true;
+                    // alert(success + " error?: [" + xmlhttp.responseText + "] userDbHead " + operation);
+                    break;            
+                }
         } catch(e) {
             alert('Kunne ikke evaluere svaret fra DB' + xmlhttp.responseText);
 

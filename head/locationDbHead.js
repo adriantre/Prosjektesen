@@ -30,7 +30,7 @@ function manageLocation(operation) {
                     var jsonData = JSON.parse(xmlhttp.responseText);
                     // current_location_id = jsonData.current_location_id;
                     // geomessage = jsonData.geomessage;  
-                    alert('location_id = ' + location_id);                    
+                    // alert('location_id = ' + location_id);                    
                     break;
                 case 'getCurrentLocation':
                     //hvis flere geofences inneholder currentPosition må man plukke ut ett.
@@ -38,10 +38,11 @@ function manageLocation(operation) {
                     location_id = jsonData.location_id;
                     location_name = jsonData.location_name;
                     localStorage.setItem("current_location_id", location_id);
+                    alert('You are now sharing your location: ' + location_name);
                     break;
                 default:
                     var success = xmlhttp.responseText == "false" ? false : true;
-                    alert(success + " Feilmelding: " + xmlhttp.responseText + " locationDbHead " + operation);
+                    // alert(success + " error?: [" + xmlhttp.responseText + "] locationDbHead " + operation);
                     break;
             }
         } catch(e) {

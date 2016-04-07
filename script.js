@@ -52,6 +52,10 @@ function initializeMapPage() {
           marker: false,
           polygon: {
             allowIntersection: false,
+            drawError: {
+            color: 'orange',
+            timeout: 1000
+          },
             showArea: true
           }
         }
@@ -60,7 +64,7 @@ function initializeMapPage() {
     L.drawLocal.draw.handlers.polygon.tooltip.start = 'Sett førse punkt';
     // map.addControl(drawControl);
   	navigator.geolocation.getCurrentPosition(getUserPosition)
-
+    manageUser('updateUserLocation');
     // Det som skjer når man har laget et polygon:
     map.on('draw:created', function (e) {
     var type = e.layerType;
@@ -118,8 +122,7 @@ function submitLocation() {
 }
 
 function drawPolygon() {
-  polygonDrawer = new L.Draw.Polygon(map, drawControl.options.polygon);
-  polygonDrawer.enable();
+  polygonDrawer = new L.Draw.Polygon(map, drawControl.options.polygon).enable();
 }
 
 function viewPolygons() {
