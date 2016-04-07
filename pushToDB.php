@@ -49,7 +49,7 @@
     switch ($sqlopt) {
 	    case "insert":
 	    	$sql = "insert into " . $table . "(" . implode(", ", array_keys($values)) . ") values (" . implode(", ", array_values($values)) . ");";
-	        	pg_query($conn, $sql);
+	        	$result = pg_query($conn, $sql);
 	        try {
 	        	$result = pg_query($conn, "select currval('" . $table . "_" . $json_object->table . "_id_seq');");
 	        } catch (Exception $e) {
