@@ -50,11 +50,9 @@
 	    case "insert":
 	    	$sql = "insert into " . $table . "(" . implode(", ", array_keys($values)) . ") values (" . implode(", ", array_values($values)) . ");";
 	        	$result = pg_query($conn, $sql);
-	        try {
+	        if (!($table = 'location_user' || $table = 'group_user'))
 	        	$result = pg_query($conn, "select currval('" . $table . "_" . $json_object->table . "_id_seq');");
-	        } catch (UncategorizedSQLException $e) {
-    			echo 'Caught exception: ',  $e->getMessage(), "\n";
-			}
+	        }
 	        break;
 	    case "update":
 	        $result = pg_update($conn, $table, $values, $conditions);     
