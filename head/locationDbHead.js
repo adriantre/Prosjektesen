@@ -40,8 +40,8 @@ function manageLocation(operation) {
                     localStorage.setItem("current_location_id", location_id);
                     break;
                 default:
-                    var success = xmlhttp.responseText == "true" ? true : false;
-                    alert(success + " " + xmlhttp.responseText + " locationDbHead " + operation);
+                    var success = xmlhttp.responseText == "false" ? false : true;
+                    alert(success + " Feilmelding: " + xmlhttp.responseText + " locationDbHead " + operation);
                     break;
             }
         } catch(e) {

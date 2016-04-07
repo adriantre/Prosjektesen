@@ -52,8 +52,6 @@
 	        $result = pg_query($conn, $sql);
 	        if ($result == false) {
 	        	$result = pg_last_error();
-	        } else {
-	        	$result = true;
 	        }
 	        if ($table == 'public.location_user' || $table == 'public.group_user') {
 	        	break;
