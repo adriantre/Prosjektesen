@@ -39,8 +39,6 @@ function manageLocation(operation) {
                     location_name = jsonData.location_name;
                     localStorage.setItem("current_location_id", location_id);
                     break;
-                case 'addLocationUser':
-                    alert(xmlhttp.responseText);
                 default:
                     var success = xmlhttp.responseText == "true" ? true : false;
                     alert(success + " locationDbHead" + operation);

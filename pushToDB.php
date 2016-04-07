@@ -49,10 +49,11 @@
     switch ($sqlopt) {
 	    case "insert":
 	    	$sql = "insert into " . $table . "(" . implode(", ", array_keys($values)) . ") values (" . implode(", ", array_values($values)) . ");";
-	        	$result = pg_query($conn, $sql);
-	        if (!($table == 'public.location_user' || $table == 'public.group_user'))
-	        	$result = pg_query($conn, "select currval('" . $table . "_" . $json_object->table . "_id_seq');");
+	        $result = pg_query($conn, $sql);
+	        if ($table == 'public.location_user' || $table == 'public.group_user')
+	        	break;
 	        }
+        	$result = pg_query($conn, "select currval('" . $table . "_" . $json_object->table . "_id_seq');");
 	        break;
 	    case "update":
 	        $result = pg_update($conn, $table, $values, $conditions);     
