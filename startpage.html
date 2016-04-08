@@ -77,6 +77,19 @@
 
 
 }
+
+#LoginButton {
+    /*background-color: #ffffff;*/
+    background-color: rgba(50, 175, 255, 0.5);
+    color: #ffffff;
+    border-color: #000000;
+  }
+
+#NewUserButton {
+    background-color: rgba(50, 175, 255, 0.5);
+    color: #ffffff;
+    border-color: #000000;
+}
     </style>
 </head>
 <script>
@@ -104,7 +117,7 @@ function clearFunction(){
 <h2 style="color:#FFFFFF"> Welcome to Mapal </h2>      
       <div class="text-center">
 <div class="btn-group-lg">
-        <button type="button" id="Log in" class="btn btn-primary" style="width: 150px" data-toggle="modal" data-target="#myLogInModal">Log in
+        <button type="button" id="LoginButton" class="btn btn-primary" style="width: 150px" data-toggle="modal" data-target="#myLogInModal">Log in
         </button>
   <!-- Modal -->
   <div class="modal fade" id="myLogInModal" role="dialog">
@@ -149,7 +162,7 @@ function clearFunction(){
       
     </div>
   </div> 
-        <button type="button" id="New User" class="btn btn-primary" style="width: 150px" data-toggle="modal" data-target="#myNewUserModal">New User</button>
+        <button type="button" id="NewUserButton" class="btn btn-primary" style="width: 150px" data-toggle="modal" data-target="#myNewUserModal">New User</button>
         <!-- Modal -->
   <div class="modal fade" id="myNewUserModal" role="dialog">
     <div class="modal-dialog">
