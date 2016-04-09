@@ -65,6 +65,7 @@ function initializeMapPage() {
             showArea: true
         }
     });
+    map.addControl(drawControl);
     // L.drawLocal.draw.toolbar.buttons.polygon = 'Avgrens et område med punkter';
     L.drawLocal.draw.handlers.polygon.tooltip.start = 'Sett førse punkt';
     // map.addControl(drawControl);
