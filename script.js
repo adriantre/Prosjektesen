@@ -64,7 +64,7 @@ function initializeMapPage() {
   	navigator.geolocation.getCurrentPosition(getUserPosition)
     manageUser('updateUserLocation');
     // Det som skjer når man har laget et polygon:
-    map.on('draw:created', function (e) {
+    map.on('draw:created', function (e)) {
     var type = e.layerType;
     layer = e.layer;
     wkt = new Wkt.Wkt();
