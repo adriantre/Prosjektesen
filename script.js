@@ -59,12 +59,12 @@ function initializeMapPage() {
               timeout: 1000
             },
             showArea: true,
-            metric: true,
+            metric: false,
             repeatMode: true
           },
             showArea: true
         }
-    }).addTo(map);
+    });
     // L.drawLocal.draw.toolbar.buttons.polygon = 'Avgrens et område med punkter';
     L.drawLocal.draw.handlers.polygon.tooltip.start = 'Sett førse punkt';
     // map.addControl(drawControl);
@@ -81,7 +81,7 @@ function initializeMapPage() {
       drawnItems.addLayer(layer);
     });
 }
-  
+
 
 function getUserPosition(position) {
     coords =[];
