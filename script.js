@@ -63,7 +63,6 @@ function initializeMapPage() {
             repeatMode: true
           },
             showArea: true
-          }
         }
     }).addTo(map);
     // L.drawLocal.draw.toolbar.buttons.polygon = 'Avgrens et område med punkter';
