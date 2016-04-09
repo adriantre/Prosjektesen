@@ -20,9 +20,7 @@ var polygonDrawer;
 function initializeMapPage() {
 
     initSideMenu();
-// });
 
-  // $("#success-alert").hide();
 	  osmLayer = L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
       {subdomains: "abc", maxZoom: 20});
     mapSettings = {layers: [osmLayer], attributionControl: false};
@@ -59,7 +57,7 @@ function initializeMapPage() {
             showArea: true
           }
         }
-    });
+    }).addTo(map);
     // L.drawLocal.draw.toolbar.buttons.polygon = 'Avgrens et område med punkter';
     L.drawLocal.draw.handlers.polygon.tooltip.start = 'Sett førse punkt';
     // map.addControl(drawControl);
