@@ -33,6 +33,8 @@ function manageGroup(operation) {
                     //window.open("mainmenu.html", "_self");
                     alert(group_id);
                     break;
+                case 'getGroupMembers':
+                    alert(xmlhttp.responseText);
                 default:
                     var success = xmlhttp.responseText == "true" ? true : false;
                     alert(success);
@@ -77,6 +79,23 @@ function manageGroup(operation) {
                 ]
             };
             break;
+        case 'getGroupMembers':
+            var group = {
+                'sqlopt': 'select',
+                'table': 'group_user',
+                'to_select': [
+                    {
+                        'column': 'user_id'
+                    }
+                ],
+                'conditions': [
+                    {
+                        'column': 'group_id',
+                        'data': "'" + group_id + "'"
+                    }
+                ]
+            };
+            break;    
         case 'deleteGroup':
             var group = {
                 'sqlopt': 'delete',
