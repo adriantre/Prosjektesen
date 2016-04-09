@@ -79,8 +79,9 @@ function initializeMapPage() {
       // storeGeofence(wkt.write());
       $("#myLocation").modal();
       drawnItems.addLayer(layer);
-    };
+    });
 }
+  
 
 function getUserPosition(position) {
     coords =[];
