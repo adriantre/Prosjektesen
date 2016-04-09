@@ -50,10 +50,17 @@ function initializeMapPage() {
           circle: false,
           marker: false,
           polygon: {
+            shapeOptions: {
+              color: 'purple'
+            },
             allowIntersection: false,
             drawError: {
-            color: 'orange',
-            timeout: 1000
+              color: 'orange',
+              timeout: 1000
+            },
+            showArea: true,
+            metric: true,
+            repeatMode: true
           },
             showArea: true
           }
