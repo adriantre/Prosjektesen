@@ -71,8 +71,7 @@ function initializeMapPage() {
   	navigator.geolocation.getCurrentPosition(getUserPosition);
     manageUser('updateUserLocation');
     // Det som skjer når man har laget et polygon:
-    map.on('draw:created', showPolygonArea);
-    map.on('draw:edited', showPolygonAreaEdited);
+    map.on('draw:created', function(e));
     var type = e.layerType;
     layer = e.layer;
     wkt = new Wkt.Wkt();
@@ -82,18 +81,6 @@ function initializeMapPage() {
     $("#myLocation").modal();
     drawnItems.addLayer(layer);
 };
-
-function showPolygonAreaEdited(e) {
-  e.layers.eachLayer(function(layer) {
-    showPolygonArea({ layer: layer });
-  });
-}
-function showPolygonArea(e) {
-  featureGroup.clearLayers();
-  featureGroup.addLayer(e.layer);
-  e.layer.bindPopup((LGeo.area(e.layer) / 1000000).toFixed(2) + ' km<sup>2</sup>');
-  e.layer.openPopup();
-}
 
 function getUserPosition(position) {
     coords =[];
