@@ -38,11 +38,14 @@ function manageLocation(operation) {
                     location_id = jsonData.location_id;
                     location_name = jsonData.location_name;
                     localStorage.setItem("current_location_id", location_id);
-                    alert('You are now sharing your location: ' + location_name);
+                    // alert('You are now sharing your location: ' + location_name);
                     break;
+                case 'getMyLocations':
+                    alert(xmlhttp.responseText);
+                    // var jsonData = JSON.parse(xmlhttp.responseText);
                 default:
                     var success = xmlhttp.responseText == "false" ? false : true;
-                    // alert(success + " error?: [" + xmlhttp.responseText + "] locationDbHead " + operation);
+                    alert(success + " error?: [" + xmlhttp.responseText + "] locationDbHead " + operation);
                     break;
             }
         } catch(e) {

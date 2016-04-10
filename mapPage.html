@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- CDN og lokal source leaflet -->
-<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css">
-<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
 <link rel="stylesheet" type="text/css" href="Leaflet/Leaflet.draw/dist/leaflet.draw.css">
 <script src="Leaflet/Leaflet.draw/dist/leaflet.draw.js"></script>
 
@@ -42,6 +42,7 @@
           <button type="button" id="drawPoly" class="btn btn-primary btn-lg" style="width: 10em; height: 6em; font-size: 17px" onclick="drawPolygon()"><span id="polyIcon" class="glyphicon glyphicon-pencil"></span> Draw Location</button>
           <button type="button" id="viewPoly" class="btn btn-warning btn-lg" style="width: 10em; height: 6em; font-size: 17px" onclick="viewPolygons()"><span id="polyIcon2" class="glyphicon glyphicon-eye-open"></span> View Locations</button>
           <button type="button" id="currentLoc" class="btn btn-warning btn-lg" style="width: 10em; height: 6em; font-size: 17px" onclick="manageUser('updateUserLocation')"><span id="polyIcon2" class="glyphicon glyphicon-eye-open"></span> Update loc</button>
+          <button type="button" id="showLoc" class="btn btn-warning btn-lg" style="width: 10em; height: 6em; font-size: 17px" onclick="manageUser('getMyLocations')"><span id="polyIcon2" class="glyphicon glyphicon-eye-open"></span> Show my locs</button>
       </div>
   </div>
 </div> 
