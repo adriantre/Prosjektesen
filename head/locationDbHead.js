@@ -34,13 +34,18 @@ function manageLocation(operation) {
                     break;
                 case 'getCurrentLocation':
                     //hvis flere geofences inneholder currentPosition må man plukke ut ett.
-                    var jsonData = JSON.parse(xmlhttp.responseText);
+                    var response = xmlhttp.responseText;
+                    if (!response) {
+                        break;
+                    }
+                    var jsonData = JSON.parse(response);
                     location_id = jsonData.location_id;
                     location_name = jsonData.location_name;
                     localStorage.setItem("current_location_id", location_id);
                     // alert('You are now sharing your location: ' + location_name);
                     break;
                 case 'getMyLocations':
+                    var response = xmlhttp.responseText;
                     alert(xmlhttp.responseText);
                     // var jsonData = JSON.parse(xmlhttp.responseText);
                 default:
