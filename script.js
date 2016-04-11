@@ -57,10 +57,7 @@ function initializeMapPage() {
             drawError: {
               color: 'orange',
               timeout: 1000
-            },
-            showArea: true,
-            metric: false,
-            repeatMode: true
+            }
           },
             showArea: true
         }
