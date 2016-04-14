@@ -21,7 +21,7 @@ function initializeMapPage() {
 
     initSideMenu();
 
-	  osmLayer = L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+	  osmLayer = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
       {subdomains: "abc", maxZoom: 20});
     mapSettings = {layers: [osmLayer], attributionControl: false};
     map = L.map('map',mapSettings);
