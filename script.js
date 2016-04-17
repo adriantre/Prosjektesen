@@ -66,18 +66,19 @@ function initializeMapPage() {
     // L.drawLocal.draw.toolbar.buttons.polygon = 'Avgrens et område med punkter';
     L.drawLocal.draw.handlers.polygon.tooltip.start = 'Sett førse punkt';
     // map.addControl(drawControl);
-  	navigator.geolocation.getCurrentPosition(getUserPosition);
+    navigator.geolocation.getCurrentPosition(getUserPosition)
     manageUser('updateUserLocation');
     // Det som skjer når man har laget et polygon:
-    map.on('draw:created', function(e) {
-      var type = e.layerType, layer = e.layer;
-      wkt = new Wkt.Wkt();
-      wkt.fromObject(layer);
-      console.log(wkt.components);
-      // storeGeofence(wkt.write());
-      drawnItems.addLayer(layer);
-      $("#myLocation").modal();
-    });
+    map.on('draw:created', function (e) {
+    var type = e.layerType;
+    layer = e.layer;
+    wkt = new Wkt.Wkt();
+    wkt.fromObject(layer);
+    console.log(wkt.components);
+    // storeGeofence(wkt.write());
+    $("#myLocation").modal();
+    drawnItems.addLayer(layer);
+});
 }
 
 
