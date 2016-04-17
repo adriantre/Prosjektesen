@@ -66,7 +66,7 @@ function initializeMapPage() {
     // L.drawLocal.draw.toolbar.buttons.polygon = 'Avgrens et område med punkter';
     L.drawLocal.draw.handlers.polygon.tooltip.start = 'Sett førse punkt';
     // map.addControl(drawControl);
-    navigator.geolocation.getCurrentPosition(getUserPosition)
+    navigator.geolocation.getCurrentPosition(getUserPosition);
     manageUser('updateUserLocation');
     // Det som skjer når man har laget et polygon:
     map.on('draw:created', function (e) {
