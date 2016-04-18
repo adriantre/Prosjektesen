@@ -51,7 +51,7 @@ function manageLocation(operation) {
                 default:
                     var success = xmlhttp.responseText == "false" ? false : true;
                     if (!succes) {
-                        alert(success + " error?: [" + xmlhttp.responseText + "] locationDbHead " + operation);
+                        alert(success + " error: [" + xmlhttp.responseText + "] locationDbHead " + operation);
                     }
                     break;
             }

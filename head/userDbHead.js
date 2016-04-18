@@ -43,7 +43,6 @@ function manageUser(operation) {
                 }
         } catch(e) {
             alert('Kunne ikke evaluere svaret fra DB' + xmlhttp.responseText + ' user');
-
         }
       }
     }
