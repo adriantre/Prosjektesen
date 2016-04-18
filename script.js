@@ -76,8 +76,8 @@ function initializeMapPage() {
     wkt.fromObject(layer);
     console.log(wkt.components);
     // storeGeofence(wkt.write());
-    $("#myLocation").modal();
     drawnItems.addLayer(layer);
+    $("#myLocation").modal();
 });
 }
 
