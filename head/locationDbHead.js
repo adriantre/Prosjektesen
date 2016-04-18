@@ -20,7 +20,6 @@ function manageLocation(operation) {
         try{
             switch(operation) {
                 case 'newLocation':
-                    alert(xmlhttp.responseText);
                     var jsonData = JSON.parse(xmlhttp.responseText);
                     location_id = jsonData.currval;
                     // alert('location_id = ' + location_id);
@@ -57,7 +56,7 @@ function manageLocation(operation) {
                     break;
             }
         } catch(e) {
-            alert('Kunne ikke evaluere svaret fra DB' + xmlhttp.responseText);
+            alert('Kunne ikke evaluere svaret fra DB' + xmlhttp.responseText + ' location');
 
         }
       }
