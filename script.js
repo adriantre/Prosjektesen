@@ -135,6 +135,11 @@ function viewPolygons() {
     }
 }
 
+// tooltips
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
 //--------------------SIDE MENU---------------------------//
 
 function initSideMenu() {

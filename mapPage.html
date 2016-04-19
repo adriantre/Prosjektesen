@@ -16,7 +16,7 @@
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script> -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script> -->
 <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-
+<script src="tether/dist/js/tether.min.js"></script>
 <script src="bootstrap/js/jquery-1.12.3.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 
@@ -44,9 +44,9 @@
 <div id="mapwrapper">
   <div id="map">
       <div style="position: absolute; z-index: 1; left:0.3em; top:6em" class="btn-group-vertical"> <!-- z=1 button is in front of map, but under overlay !-->
-          <button type="button" id="drawPoly" class="btn btn-s bg-info" onclick="drawPolygon()"><span id="polyIcon1" class="glyphicon glyphicon-plus"></span></button>
-          <button type="button" id="currentLoc" class="btn btn-s bg-success" onclick="manageUser('updateUserLocation')"><span id="polyIcon2" class="glyphicon glyphicon-retweet"></span></button>
-          <button type="button" id="showLoc" class="btn btn-s bg-warning" onclick="manageUser('getMyLocations')"><span id="polyIcon3" class="glyphicon glyphicon-eye-open"></span></button>
+          <button type="button" id="drawPoly" class="btn btn-s bg-info" data-toggle"tooltip" data-placement="right" title="Legg til et nytt område" onclick="drawPolygon()"><span id="polyIcon1" class="glyphicon glyphicon-plus"></span></button>
+          <button type="button" id="currentLoc" class="btn btn-s bg-success" data-toggle"tooltip" data-placement="right" title="Oppdater ditt nåværende område" onclick="manageUser('updateUserLocation')"><span id="polyIcon2" class="glyphicon glyphicon-retweet"></span></button>
+          <button type="button" id="showLoc" class="btn btn-s bg-warning" data-toggle"tooltip" data-placement="right" title="Se dine områder" onclick="manageUser('getMyLocations')"><span id="polyIcon3" class="glyphicon glyphicon-eye-open"></span></button>
       </div>
   </div>
 </div> 
