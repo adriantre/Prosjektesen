@@ -42,6 +42,10 @@ function manageLocation(operation) {
                     location_id = jsonData.location_id;
                     location_name = jsonData.location_name;
                     localStorage.setItem("current_location_id", location_id);
+
+                    var locName = document.createElement('div');
+                    locName.innerHTML = location_name;
+                    document.getElementById("myLoc").appendChild(locName);
                     // alert('You are now sharing your location: ' + location_name);
                     break;
                 case 'getMyLocations':
@@ -118,7 +122,7 @@ function manageLocation(operation) {
                     },
                 ]
             };
-            
+
             //return user_id, current_location_id, 
             break;
         case 'getCurrentLocation':

@@ -39,13 +39,17 @@
 </head>
 <body onload="initializeMapPage()">     
  <div class="jumbotron text-center">
+  <div class="container">
+    <label id="myLoc"><span id="myLocIcon" class="glyphicon glyphicon-map-marker"></span></label>
+  </div>
 </div>
 <div id="mapwrapper">
   <div id="map">
       <div style="position: absolute; z-index: 1; left:0.55em; top:7em" class="btn-group-vertical"> <!-- z=1 button is in front of map, but under overlay !-->
           <button type="button" id="drawPoly" class="btn btn-s bg-info" title="Draw a polygon!" data-toggle="tooltip" data-placement="right" onclick="drawPolygon()"><span id="polyIcon1" class="glyphicon glyphicon-plus"></span></button>
-          <button type="button" id="currentLoc" class="btn btn-s bg-success" onclick="manageUser('updateUserLocation')" title="Update your current location!" data-toggle="tooltip" data-placement="right"><span id="polyIcon2" class="glyphicon glyphicon-retweet"></span></button>
+          <button type="button" id="currentLoc" class="btn btn-s bg-success" onclick="manageUser('updateUserLocation')" title="Update your current location!" data-toggle="tooltip" data-placement="right"><span id="polyIcon2" class="glyphicon glyphicon-map-marker"></span></button>
           <button type="button" id="showLoc" class="btn btn-s bg-warning" onclick="manageUser('getMyLocations')" title="View your polygons!" data-toggle="tooltip" data-placement="right"><span id="polyIcon3" class="glyphicon glyphicon-eye-open"></span></button>
+          <button type="button" id="geoMessage" class="btn btn-s bg-danger" onclick="manageUser('updateUserGeomessage')" title="Update your GeoMessage!" data-toggle="tooltip" data-placement="right"><span id="polyIcon4" class="glyphicon glyphicon-comment"></span></button>
       </div>
   </div>
 </div> 

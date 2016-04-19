@@ -335,6 +335,12 @@ body,
       border: 2px solid white;
    }
 
+   #myLoc {
+    position: absolute; 
+    top: 0.5em; 
+    right: 0.5em;
+   }
+
    /*-----------------Main Menu----------------------*/
 
 

@@ -60,6 +60,7 @@ function initializeMapPage() {
           },
         },
     }
+
     drawControl = new L.Control.Draw(options);
     L.drawLocal.draw.handlers.polygon.tooltip.start = 'Plasser førse punkt';
     L.drawLocal.draw.handlers.polygon.tooltip.cont = 'Omring området med punkter';
