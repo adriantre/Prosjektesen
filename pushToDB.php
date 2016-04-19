@@ -77,5 +77,4 @@
     while ($result_row = pg_fetch_assoc($result)) {
     	echo json_encode($result_row);
     }
-
 ?>
