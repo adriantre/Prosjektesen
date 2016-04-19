@@ -53,9 +53,6 @@ function manageLocation(operation) {
                     alert(xmlhttp.responseText);
                     // var jsonData = JSON.parse(xmlhttp.responseText);
                     break;
-                case 'addLocationUser':
-                    alert(xmlhttp.responseText);
-                    break;
                 default:
                     var success = xmlhttp.responseText == "false" ? false : true;
                     if (!succes) {
