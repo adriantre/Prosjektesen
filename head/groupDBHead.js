@@ -79,6 +79,23 @@ function manageGroup(operation) {
                 ]
             };
             break;
+         case 'getMyGroups':
+            var group = {
+                'sqlopt': 'select',
+                'table': 'group_user',
+                'to_select': [
+                    {
+                        'column': 'group_id'
+                    }
+                ],
+                'conditions': [
+                    {
+                        'column': 'user_id',
+                        'data': "'" + localStorage.getItem("my_user_id") + "'"
+                    }
+                ]
+            };
+            break;
         case 'getGroupMembers':
             var group = {
                 'sqlopt': 'select',

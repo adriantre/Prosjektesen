@@ -215,7 +215,50 @@ function myOutFunction(){
    demo.removeChild(linebreak);
     demo.className ="glyphicon glyphicon-off";
 }
+function showMyGroups(){
+  var myGroups = manageGroup('getMyGroups');
+  // document.getElementById("demo").innerHTML = "myGroups";
+  var groupArray = new Array();
+  // for (var i = 0; i < myGroups.length; i++) {
+  //     var members = showMembersInGroup(myGroups(i));
+  //     groupArray.push()
+  // };
 
+  // ikke ferdig
+  // var members = showMembersInGroup(myGroups[1]);
+  // for (var i = 0; i < members.length; i++) {
+  //   groupArray.push([]);
+  // };
+}
 
+function showMembersInGroup(group_id) {
+  return manageGroup("getGroupMembers");
+}
+
+function generateTable(groupArray) {
+   //Create a HTML Table element.
+  var table = document.createElement("TABLE");
+  table.border = "1";
+  var columnCount = groupArray[0].length; //det er to kolonner
+  //Add the header row.
+  var row = table.insertRow(-1);
+  var headerCell = document.createElement("TH");
+  headerCell.innerHTML = "User";
+  row.appendChild(headerCell);
+  headerCell.innerHTML = "Location";
+  row.appendChild(headerCell);  
+  //Add the data rows.
+  for (var i = 0; i < groupArray.length; i++) {
+      row = table.insertRow(-1);
+      for (var j = 0; j < columnCount; j++) {
+          var cell = row.insertCell(-1);
+          cell.innerHTML = groupArray[i][j];
+      }
+  }
+  var dvTable = document.getElementById("table1");
+  dvTable.innerHTML = "";
+  dvTable.appendChild(table);
+
+}
 
 //------------------------------------------------------------//

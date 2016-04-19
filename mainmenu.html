@@ -29,7 +29,8 @@
     <script src="groupDBHead.js" type="text/javascript"></script>
     <style>
     body {
-      background-color: #CCFFFF;
+      background-color: #505050;
+      /*opacity: 0.9;*/
 ;
     }
 
@@ -91,24 +92,78 @@
 @-moz-keyframes fadeIn { from { opacity:0; opacity: 1\9; /* IE9 only */ } to { opacity:1; } }
 @keyframes fadeIn { from { opacity:0; opacity: 1\9; /* IE9 only */ } to { opacity:1; } }
     </style>
+    <script>
+    $(document).ready(function(){
+        showMyGroups();
+    });
+    </script>
 </head>
 <body onload="initSideMenu()">
 <div class="jumbotron container">
 </div>
-<div class="text-center fade-in">
+
+<!-- kode med carousel -->
+<div id="carouselContainer" class="container-fluid text-center">
+  <div id="myCarousel" class="carousel slide text-center">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <h2>My Group</h2>
+        <div class="col-sm-4" id="demo">
+          <table id="table1"></table>
+        </div>
+        <div class="col-sm-4" id="demo">
+          hei
+        </div>
+        <div class="col-sm-4" id="demo">
+          hei
+        </div>
+      </div>
+      <div class="item">
+        <h4>"One word... WOW!!"</h4>
+      </div>
+      <div class="item">
+        <h4>"Could I... BE any more happy with this company?"</h4>
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+
+</div>
+
+
+<!--           GAMMEL kode med knapper          -->
+<!-- <div class="text-center fade-in">
 <div class="container">
             <div class="row top-buffer">
             <div class="col-sm-12">
                 <div class"dropdown">
 <button type="button" id="ViewGroup" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#viewGroupModal" style="width: 400px"> View Group
-        </button>
+        </button> -->
         <!--
           <div id="collap" class="collapse">
             <button type="button" id="ViewGroup1" class="btn btn-standard">Group 1 goes here</button>
                 <button type="button" id="ViewGroup2" class="btn btn-standard">Group 2 goes here</button>
         </div>
     -->
-        </div>
+        <!-- </div>
         </div>
         </div>
         <div class="row top-buffer">
@@ -135,8 +190,16 @@
         </button>
     </div>
 </div>
+<div class="row top-buffer">
+        <div class="col-sm-12">
+<button type="button" id="Credits" onClick="showMyGroups()" class="btn btn-primary btn-lg" style="width: 400px"> View my groups
+        </button>
+    </div>
 </div>
 </div>
+<div id="demo"></div>
+</div> -->
+
 <button type="button"id="Logout"class="btn btn-danger btn-lg pull-right bottomright"style="width: 100px; height: 100px" onmouseover="myInnFunction()" onmouseout="myOutFunction()" onclick= window.open("startpage.html","_self")><span id="demo" class="glyphicon glyphicon-off"></span>
         </button>
 
