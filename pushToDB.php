@@ -51,9 +51,9 @@
 	    case "insert":
 	    	$sql = "insert into " . $table . "(" . implode(", ", array_keys($values)) . ") values (" . implode(", ", array_values($values)) . ");";
 	        $result = pg_query($conn, $sql);
-	        if ($result == false) {
-	        	$result = pg_last_error();
-	        }
+	        // if ($result == false) {
+	        // 	$result = pg_last_error();
+	        // }
 	        if ($table == 'public.location_user' || $table == 'public.group_user') {
 	        	break; //realsjonstabeller skal ikke returnere noen id
 	        }
