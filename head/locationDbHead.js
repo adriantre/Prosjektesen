@@ -61,7 +61,7 @@ function manageLocation(operation) {
                     break;
             }
         } catch(err) {
-            alert('Kunne ikke evaluere svaret fra DB ' + xmlhttp.responseText + ' ' + err.message +' location');
+            alert('Kunne ikke evaluere svaret fra DB. Respons: [' + xmlhttp.responseText + '] err.message: [' + err.message +'] @ location');
         }
       }
     }
