@@ -38,8 +38,7 @@ function initializeMapPage() {
     map.addLayer(drawnItems);
 
     // Initialise the draw control and pass it the FeatureGroup of editable layers
-    drawControl = new L.Control.Draw(
-    {
+    var options = {
         edit: {
           featureGroup: drawnItems,
           edit: false
@@ -59,13 +58,14 @@ function initializeMapPage() {
               timeout: 1000
             }
           },
-            showArea: true
-        }
-    });
-    map.addControl(drawControl);
-    // L.drawLocal.draw.toolbar.buttons.polygon = 'Avgrens et område med punkter';
-    L.drawLocal.draw.handlers.polygon.tooltip.start = 'Sett førse punkt';
-    // map.addControl(drawControl);
+        },
+    }
+    drawControl = new L.Control.Draw(options);
+    L.drawLocal.draw.handlers.polygon.tooltip.start = 'Plasser førse punkt';
+    L.drawLocal.draw.handlers.polygon.tooltip.cont = 'Omring området med punkter';
+    L.drawLocal.draw.handlers.polygon.tooltip.end = 'Når du er ferdig, avslutt i startpunktet';
+
+
     navigator.geolocation.getCurrentPosition(getUserPosition);
     manageUser('updateUserLocation');
     // Det som skjer når man har laget et polygon:
@@ -124,7 +124,7 @@ function submitLocation() {
 }
 
 function drawPolygon() {
-  polygonDrawer = new L.Draw.Polygon(map, drawControl.options.polygon).enable();
+  polygonDrawer = new L.Draw.Polygon(map, drawControl.options.draw.polygon).enable();
 }
 
 function viewPolygons() {
