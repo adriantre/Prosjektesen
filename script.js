@@ -216,7 +216,7 @@ function myOutFunction(){
     demo.className ="glyphicon glyphicon-off";
 }
 function showMyGroups(){
-  var myGroups = manageGroup('getMyGroups');
+  // var myGroups = manageGroup('getMyGroups');
   // document.getElementById("demo").innerHTML = "myGroups";
   var groupArray = new Array();
   // for (var i = 0; i < myGroups.length; i++) {
@@ -229,22 +229,28 @@ function showMyGroups(){
   // for (var i = 0; i < members.length; i++) {
   //   groupArray.push([]);
   // };
+
+  // bare tester generateTable()
+  generateTable([["Lars", "Skole"], ["Adrian", "Hjemme"], ["David", "Hjemme"]], "table1");
+  generateTable([["Øystein", "Skole"], ["Tormod", "Jobb"], ["Herman", "Hjemme"]], "table2");
+  generateTable([["Eivind", "Trening"], ["Sindre", "Skole"], ["Elias", "Hjemme"]], "table3");
 }
 
 function showMembersInGroup(group_id) {
   return manageGroup("getGroupMembers");
 }
 
-function generateTable(groupArray) {
+function generateTable(groupArray, chosen_table) {
    //Create a HTML Table element.
-  var table = document.createElement("TABLE");
-  table.border = "1";
+  var table = document.createElement("table");
+  table.style.width='100%';
   var columnCount = groupArray[0].length; //det er to kolonner
   //Add the header row.
   var row = table.insertRow(-1);
   var headerCell = document.createElement("TH");
   headerCell.innerHTML = "User";
   row.appendChild(headerCell);
+  var headerCell = document.createElement("TH");
   headerCell.innerHTML = "Location";
   row.appendChild(headerCell);  
   //Add the data rows.
@@ -255,9 +261,10 @@ function generateTable(groupArray) {
           cell.innerHTML = groupArray[i][j];
       }
   }
-  var dvTable = document.getElementById("table1");
+  var dvTable = document.getElementById(chosen_table);
   dvTable.innerHTML = "";
   dvTable.appendChild(table);
+  // return table;
 
 }
 
