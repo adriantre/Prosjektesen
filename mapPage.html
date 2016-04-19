@@ -43,11 +43,10 @@
 </div>
 <div id="mapwrapper">
   <div id="map">
-      <div style="position: absolute; z-index: 1; right:1em; top:1em" class="btn-group-vertical"> <!-- z=1 button is in front of map, but under overlay !-->
-          <button type="button" id="drawPoly" class="btn btn-primary btn-lg" style="width: 10em; height: 6em; font-size: 17px" onclick="drawPolygon()"><span id="polyIcon" class="glyphicon glyphicon-pencil"></span> Draw Location</button>
-          <button type="button" id="viewPoly" class="btn btn-warning btn-lg" style="width: 10em; height: 6em; font-size: 17px" onclick="viewPolygons()"><span id="polyIcon2" class="glyphicon glyphicon-eye-open"></span> View Locations</button>
-          <button type="button" id="currentLoc" class="btn btn-warning btn-lg" style="width: 10em; height: 6em; font-size: 17px" onclick="manageUser('updateUserLocation')"><span id="polyIcon2" class="glyphicon glyphicon-eye-open"></span> Update loc</button>
-          <button type="button" id="showLoc" class="btn btn-warning btn-lg" style="width: 10em; height: 6em; font-size: 17px" onclick="manageUser('getMyLocations')"><span id="polyIcon2" class="glyphicon glyphicon-eye-open"></span> Show my locs</button>
+      <div style="position: absolute; z-index: 1; left:0.3em; top:6em" class="btn-group-vertical"> <!-- z=1 button is in front of map, but under overlay !-->
+          <button type="button" id="drawPoly" class="btn btn-s bg-info" onclick="drawPolygon()"><span id="polyIcon1" class="glyphicon glyphicon-plus"></span></button>
+          <button type="button" id="currentLoc" class="btn btn-s bg-success" onclick="manageUser('updateUserLocation')"><span id="polyIcon2" class="glyphicon glyphicon-retweet"></span></button>
+          <button type="button" id="showLoc" class="btn btn-s bg-warning" onclick="manageUser('getMyLocations')"><span id="polyIcon3" class="glyphicon glyphicon-eye-open"></span></button>
       </div>
   </div>
 </div> 
