@@ -54,7 +54,7 @@ function manageLocation(operation) {
                     // var jsonData = JSON.parse(xmlhttp.responseText);
                     break;
                 default:
-                    var success = xmlhttp.responseText == true ? true : false;
+                    var success = xmlhttp.responseText == 'true' ? true : false;
                     if (!success) {
                         alert(success + " error: [" + xmlhttp.responseText + "] locationDbHead " + operation);
                     }
