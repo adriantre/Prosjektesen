@@ -56,8 +56,7 @@
 	        }
 	        if ($table == 'public.location_user' || $table == 'public.group_user') {
 	        	break; //realsjonstabeller skal ikke returnere noen id
-	        }
-        	$result = pg_query($conn, "select currval('" . $table . "_" . $json_object->table . "_id_seq');");
+    		$result = pg_query($conn, "select currval('" . $table . "_" . $json_object->table . "_id_seq');");
 	        break;
 	    case "update":
 	        $result = pg_update($conn, $table, $values, $conditions);     
@@ -71,13 +70,13 @@
 	        break;
     }
 
-
-	if (is_bool($result)) {
-		echo $result ? 'true' : 'false';
-		exit;
-	}
-    while ($result_row = pg_fetch_assoc($result)) {
-    	echo json_encode($result_row);
-    }
+    echo $result;
+	// if (is_bool($result)) {
+	// 	echo $result ? 'true' : 'false';
+	// 	exit;
+	// }
+ //    while ($result_row = pg_fetch_assoc($result)) {
+ //    	echo json_encode($result_row);
+ //    }
 
 ?>
