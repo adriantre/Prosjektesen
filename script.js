@@ -69,9 +69,9 @@ function initializeMapPage() {
     navigator.geolocation.getCurrentPosition(getUserPosition);
     manageUser('updateUserLocation');
       // tooltips
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip()
-    })
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();   
+    });
     // Det som skjer når man har laget et polygon:
     map.on('draw:created', function (e) {
     var type = e.layerType;
