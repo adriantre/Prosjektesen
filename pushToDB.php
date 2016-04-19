@@ -53,9 +53,11 @@
 	        $result = pg_query($conn, $sql);
 	        if ($result == false) {
 	        	$result = pg_last_error();
+	        } else {
+	        	$result = true;
 	        }
 	        if ($table == 'public.location_user' || $table == 'public.group_user') {
-	        	break 2; //realsjonstabeller skal ikke returnere noen id
+	        	break; //realsjonstabeller skal ikke returnere noen id
 	        }
     		$result = pg_query($conn, "select currval('" . $table . "_" . $json_object->table . "_id_seq');");
 	        break;
