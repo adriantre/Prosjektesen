@@ -118,6 +118,7 @@ function manageLocation(operation) {
                     },
                 ]
             };
+            
             //return user_id, current_location_id, 
             break;
         case 'getCurrentLocation':
