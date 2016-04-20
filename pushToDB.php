@@ -86,15 +86,16 @@
 		echo $result ? 'true' : 'false';
 		exit;
 	}
-	if ($table == 'public.location_user' || $table == 'public.group_user') {
-		$result_array = array();
-		while ($result_row = pg_fetch_row($result)) {
-			$result_array[] = $result_row;
-    	}
-    	echo json_encode($result_array);
-	} else {
-	    while ($result_row = pg_fetch_assoc($result)) {
-	    	echo json_encode($result_row);
-	    }
-	}
+
+	// if ($table == 'public.location_user' || $table == 'public.group_user') {
+	// 	$result_array = array();
+	// 	while ($result_row = pg_fetch_row($result)) {
+	// 		$result_array[] = $result_row;
+ //    	}
+ //    	echo json_encode($result_array);
+	// } else {
+    while ($result_row = pg_fetch_assoc($result)) {
+    	echo json_encode($result_row) . "\n";
+    }
+	// }
 ?>
