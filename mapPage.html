@@ -38,11 +38,16 @@
 
 </head>
 <body onload="initializeMapPage()">     
- <div class="jumbotron text-center">
-  <div class="container">
-    <label id="myLoc"><span id="myLocIcon" class="glyphicon glyphicon-map-marker"></span></label>
+  <div class="jumbotron text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                  <span id="myLocIcon" class="glyphicon glyphicon-map-marker"></span>
+                  <label id="myLoc"></label>
+                </div>
+            </div>
+        </div>
   </div>
-</div>
 <div id="mapwrapper">
   <div id="map">
       <div style="position: absolute; z-index: 1; left:0.55em; top:7em" class="btn-group-vertical"> <!-- z=1 button is in front of map, but under overlay !-->

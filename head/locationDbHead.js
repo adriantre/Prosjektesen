@@ -45,7 +45,8 @@ function manageLocation(operation) {
 
                     var locName = document.createElement('div');
                     locName.innerHTML = location_name;
-                    document.getElementById("myLoc").appendChild(locName);
+                    // document.getElementById("myLoc").appendChild(locName);
+                    document.getElementById("myLoc").innerHTML = location_name;
                     // alert('You are now sharing your location: ' + location_name);
                     break;
                 case 'getMyLocations':

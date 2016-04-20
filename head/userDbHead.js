@@ -2,6 +2,7 @@ function manageUser(operation) {
 
     var xmlhttp = new XMLHttpRequest();
     var url = 'http://folk.ntnu.no/adrianto/prosjektesen/pushToDB.php/';
+    var my_user_id;
     var user_id;
     var user_name;
     var email;
@@ -23,16 +24,16 @@ function manageUser(operation) {
             switch(operation) {
                 case 'newUser':
                     var jsonData = JSON.parse(xmlhttp.responseText);
-                    user_id = jsonData.currval;
-                    localStorage.setItem("my_user_id", user_id);
+                    my_user_id = jsonData.currval;
+                    localStorage.setItem("my_user_id", my_user_id);
                     window.open("mapPage.html", "_self");
                     break;
                 case 'getUser':
                     var jsonData = JSON.parse(xmlhttp.responseText);
-                    user_id = jsonData.user_id;
+                    my_user_id = jsonData.user_id;
                     current_location_id = jsonData.current_location_id;
                     geomessage = jsonData.geomessage;
-                    localStorage.setItem("my_user_id", user_id);
+                    localStorage.setItem("my_user_id", my_user_id);
                     window.open("mapPage.html", "_self");
                     break;
                 default:
@@ -104,6 +105,31 @@ function manageUser(operation) {
             var user = {
                 'sqlopt': 'delete',
                 'table': table,
+                'to_select': [
+                    {
+                        'column': 'user_name'
+                    },
+                ]
+                'conditions': [
+                    {
+                        'column': 'user_id',
+                        'data': my_user_id
+                    }
+                ]
+            };
+            break;
+        case 'getOtherUser':
+            var user = {
+                'sqlopt': 'select',
+                'table': table,
+                'to_select': [
+                    {
+                        'column': 'user_name'
+                    },
+                    {
+                        'column': 'current_location_id'
+                    }
+                ]
                 'conditions': [
                     {
                         'column': 'user_id',
@@ -114,7 +140,7 @@ function manageUser(operation) {
             break;
         case 'updateUserLocation':
             //Bruker locationDbHead sin getCurrentLocation-funksjon
-            user_id =localStorage.getItem("my_user_id");
+            my_user_id =localStorage.getItem("my_user_id");
             manageLocation('getCurrentLocation');
             current_location_id = localStorage.getItem("current_location_id");
             var user = {
@@ -129,7 +155,7 @@ function manageUser(operation) {
                 'conditions': [
                     {
                         'column': 'user_id',
-                        'data': user_id
+                        'data': my_user_id
                     }
                 ]
             };
@@ -147,7 +173,7 @@ function manageUser(operation) {
                 'conditions': [
                     {
                         'column': 'user_id',
-                        'data': user_id
+                        'data': my_user_id
                     }
                 ]
             };

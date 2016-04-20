@@ -335,11 +335,15 @@ body,
       border: 2px solid white;
    }
 
-   #myLoc {
+/*   #myLoc {
     position: absolute; 
     top: 0.5em; 
     right: 0.5em;
-   }
+   }*/
+.container {
+    text-align: right;
+    top:0.5em;
+}
 
    /*-----------------Main Menu----------------------*/
 

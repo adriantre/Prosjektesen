@@ -27,11 +27,18 @@ function manageGroup(operation) {
                 case 'getGroup':
                     var jsonData = JSON.parse(xmlhttp.responseText);
                     group_id = jsonData.group_id;
-                    //current_location_id = jsonData.current_location_id;
-                    //geomessage = jsonData.geomessage;  
-                    // alert('user_id = ' + user_id + ' current_location_id = ' + current_location_id + 'geomessage = ' + geomessage);                    
-                    //window.open("mainmenu.html", "_self");
                     alert(group_id);
+                    break;
+                case 'getMyGroups':
+                    var jsonData = JSON.parse(xmlhttp.responseText);
+                    for(var i=0;i<jsonData.length;i++){
+                        var obj = jsonData[i];
+                        for(var key in obj){
+                            var attrName = key;
+                            var attrValue = obj[key];
+                            alert(attrName + ' ' + attrValue);
+                        }
+                    }
                     break;
                 case 'getGroupMembers':
                     alert(xmlhttp.responseText);
@@ -41,7 +48,7 @@ function manageGroup(operation) {
                     break;
             }
         } catch(e) {
-            alert('Kunne ikke evaluere svaret fra DB' + xmlhttp.responseText);
+            alert('Kunne ikke evaluere svaret fra DB' + xmlhttp.responseText + ' group');
 
         }
       }
@@ -61,20 +68,36 @@ function manageGroup(operation) {
                 ]
             };
             break;
-        case 'getGroup':
-            group_name = document.getElementById("check_group_name").value;
+        case 'addMember':
+            group_name = document.getElementById("new_group_name").value;
+            var group = {
+                'sqlopt': 'insert',
+                'table': table+'_user',
+                'conditions': [
+                    {
+                        'column': 'group_id',
+                        'data': "'" + group_id + "'"
+                    },
+                    {
+                        'column': 'user_id',
+                        'data': "'" + user_id + "'"
+                    }
+                ]
+            };
+            break;
+        case 'getGroupName':
             var group = {
                 'sqlopt': 'select',
                 'table': table,
                 'to_select': [
                     {
-                        'column': 'group_id'
+                        'column': 'group_name'
                     }
                 ],
                 'conditions': [
                     {
-                        'column': 'group_name',
-                        'data': "'" + group_name + "'"
+                        'column': 'group_id',
+                        'data': "'" + group_id + "'"
                     }
                 ]
             };
