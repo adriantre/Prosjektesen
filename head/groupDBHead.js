@@ -30,16 +30,7 @@ function manageGroup(operation) {
                     alert(group_id);
                     break;
                 case 'getFriendLocations':
-                    alert(xmlhttp.responseText);
-                    // var jsonData = JSON.parse(xmlhttp.responseText);
-                    // for(var i=0;i<jsonData.length;i++){
-                    //     var obj = jsonData[i];
-                    //     for(var key in obj){
-                    //         var attrName = key;
-                    //         var attrValue = obj[key];
-                    //         alert(attrName + ' ' + attrValue);
-                    //     }
-                    // }
+                    localStorage.setItem("FriendLocations", xmlhttp.responseText);
                     break;
                 default:
                     var success = xmlhttp.responseText == "true" ? true : false;

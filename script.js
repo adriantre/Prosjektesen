@@ -216,6 +216,15 @@ function myOutFunction(){
     demo.className ="glyphicon glyphicon-off";
 }
 function showMyGroups(){
+  manageGroup('getFriendLocations');
+  var response = JSON.parse(localStorage.getItem("FriendLocations"));
+  for(var i = 0; i < response.length; i++){
+      var group_name = response[i].group_name;
+      var user_name = response[i].user_name;
+      var location_name = response[i].location_name;
+      alert(group_name + " " + user_name + " " + location_name);
+  }
+
   // var myGroups = manageGroup('getMyGroups');
   // document.getElementById("demo").innerHTML = "myGroups";
   var groupArray = new Array();
