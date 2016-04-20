@@ -145,13 +145,12 @@ function manageUser(operation) {
             current_location_id = localStorage.getItem("current_location_id");
             var check = function(){
                 if(current_location_id != null){
-                    continue;
+                    manageLocation('getCurrentLocation');
                 }
                 else {
                     setTimeout(check, 1000); // check again in a second
                 }
             }
-            manageLocation('getCurrentLocation');
             check();
             var user = {
                 'sqlopt': 'update',
