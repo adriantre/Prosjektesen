@@ -20,6 +20,7 @@
 	$conditions = array();
 	$to_select = array();
 	$conditions_array = array();
+	$table ="";
 	$sqlopt = $json_object->sqlopt;
 	if (array_key_exists('table', $json_object)) 
 	{
