@@ -2,6 +2,7 @@ function manageUser(operation) {
 
     var xmlhttp = new XMLHttpRequest();
     var url = 'http://folk.ntnu.no/adrianto/prosjektesen/pushToDB.php/';
+    // var url = 'https://still-coast-34661.herokuapp.com/pushToDB.php/';
     var my_user_id;
     var user_id;
     var user_name;
