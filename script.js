@@ -246,9 +246,12 @@ function showMyGroups(){
   for (var i = 0; i < myGroups.length; i++) {
       var membersArray = new Array();
       for (var j = 0; j < response.length; j++) {
-          if(response[j].group_name = myGroups[i]) {
+          if(response[j].group_name == myGroups[i]) {
             var user_name = response[i].user_name;
             var location_name = response[i].location_name;
+            if(location_name == null) {
+              location_name = "Ikke delt";
+            }
             membersArray.push([user_name, location_name]);
           }
       };
