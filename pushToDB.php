@@ -80,6 +80,12 @@
 	        break;
         case "sql":
         	$result = pg_query($conn, $sql);
+        	$str ="[";
+    	    while ($result_row = pg_fetch_assoc($result)) {
+    			$str .= json_encode($result_row);
+    		}
+    		$str .= "]";
+    		exit;
     }
 
 	if (is_bool($result)) {
