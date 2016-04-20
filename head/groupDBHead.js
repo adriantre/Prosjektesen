@@ -30,14 +30,7 @@ function manageGroup(operation) {
                     alert(group_id);
                     break;
                 case 'getFriendLocations':
-                    var str = xmlhttp.responseText;
-                    var strLines = str.split("\n");
-                    for (var i in strLines) {
-                        if (i!=null) {
-                            var obj = JSON.parse(strLines[i]);
-                            alert(obj);
-                        }
-                    }
+                    alert(xmlhttp.responseText);
                     // var jsonData = JSON.parse(xmlhttp.responseText);
                     // for(var i=0;i<jsonData.length;i++){
                     //     var obj = jsonData[i];

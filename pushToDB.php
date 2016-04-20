@@ -85,6 +85,7 @@
     			$str .= json_encode($result_row);
     		}
     		$str .= "]";
+    		echo $str;
     		exit;
     }
 
