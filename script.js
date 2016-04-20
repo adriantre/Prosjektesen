@@ -247,8 +247,8 @@ function showMyGroups(){
       var membersArray = new Array();
       for (var j = 0; j < response.length; j++) {
           if(response[j].group_name == myGroups[i]) {
-            var user_name = response[i].user_name;
-            var location_name = response[i].location_name;
+            var user_name = response[j].user_name;
+            var location_name = response[j].location_name;
             if(location_name == null) {
               location_name = "Ikke delt";
             }
