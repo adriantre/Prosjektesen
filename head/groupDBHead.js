@@ -91,6 +91,7 @@ function manageGroup(operation) {
                             select group_id\
                             from public.group_user\
                             where user_id =' + localStorage.getItem("my_user_id") +')\
+                            and u.user_id <> ' + localStorage.getItem("my_user_id") +'\
                         order by g.group_name asc;'
                     }
             break; 
