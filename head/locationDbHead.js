@@ -1,6 +1,7 @@
 function manageLocation(operation) {
 
     var xmlhttp = new XMLHttpRequest();
+    // var url = 'http://folk.ntnu.no/adrianto/prosjektesen/pushToDB.php/';
     var url = 'https://still-coast-34661.herokuapp.com/pushToDB.php/';
     // var location_name = document.getElementById("location_name").value;
     // var geofence = wkt.write();
