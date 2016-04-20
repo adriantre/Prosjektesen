@@ -233,7 +233,6 @@ function showMyGroups(){
   var response = JSON.parse(localStorage.getItem("FriendLocations"));
   var myGroups = new Array();
 
-  alert(response);
   if(!(response.length > 0)) {
     alert("noe gikk galt");
   }
@@ -243,7 +242,6 @@ function showMyGroups(){
           myGroups.push(group_name);
       }
   }
-  alert(myGroups);
 
   for (var i = 0; i < myGroups.length; i++) {
       var membersArray = new Array();
@@ -251,9 +249,9 @@ function showMyGroups(){
           if(response[j].group_name == myGroups[i]) {
             var user_name = response[j].user_name;
             var location_name = response[j].location_name;
-            if(location_name == null) {
-              location_name = "Ikke delt";
-            }
+            // if(location_name == null) {
+            //   location_name = "Ikke delt";
+            // }
             membersArray.push([user_name, location_name]);
           }
       };
