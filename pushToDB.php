@@ -95,7 +95,7 @@
  //    	echo json_encode($result_array);
 	// } else {
     while ($result_row = pg_fetch_assoc($result)) {
-    	echo json_encode($result_row) . "\n";
+    	echo json_encode($result_row);
     }
 	// }
 ?>

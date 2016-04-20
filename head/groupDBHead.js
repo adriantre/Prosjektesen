@@ -30,26 +30,31 @@ function manageGroup(operation) {
                     alert(group_id);
                     break;
                 case 'getFriendLocations':
-                    alert(xmlhttp.responseText);
-                    var jsonData = JSON.parse(xmlhttp.responseText);
-                    for(var i=0;i<jsonData.length;i++){
-                        var obj = jsonData[i];
-                        for(var key in obj){
-                            var attrName = key;
-                            var attrValue = obj[key];
-                            alert(attrName + ' ' + attrValue);
+                    var str = xmlhttp.responseText;
+                    var strLines = str.split("\n");
+                    for (var i in strLines) {
+                        if (i!=null) {
+                            var obj = JSON.parse(strLines[i]);
+                            alert(obj);
                         }
                     }
+                    // var jsonData = JSON.parse(xmlhttp.responseText);
+                    // for(var i=0;i<jsonData.length;i++){
+                    //     var obj = jsonData[i];
+                    //     for(var key in obj){
+                    //         var attrName = key;
+                    //         var attrValue = obj[key];
+                    //         alert(attrName + ' ' + attrValue);
+                    //     }
+                    // }
                     break;
-                case 'getGroupMembers':
-                    alert(xmlhttp.responseText);
                 default:
                     var success = xmlhttp.responseText == "true" ? true : false;
                     alert(success);
                     break;
             }
         } catch(e) {
-            alert('Kunne ikke evaluere svaret fra DB ' + xmlhttp.responseText + ' group');
+            alert('Kunne ikke evaluere svaret fra DB ' + xmlhttp.responseText + ' ' + e.message + ' group');
 
         }
       }
@@ -86,23 +91,6 @@ function manageGroup(operation) {
                 ]
             };
             break;
-        case 'getGroupName':
-            var group = {
-                'sqlopt': 'select',
-                'table': table,
-                'to_select': [
-                    {
-                        'column': 'group_name'
-                    }
-                ],
-                'conditions': [
-                    {
-                        'column': 'group_id',
-                        'data': "'" + localStorage.getItem("group_id") + "'"
-                    }
-                ]
-            };
-            break;
          case 'getFriendLocations':
             var group = {
                 'sqlopt': 'sql',
@@ -120,24 +108,7 @@ function manageGroup(operation) {
                             where user_id =' + localStorage.getItem("my_user_id") +')\
                         order by g.group_name asc;'
                     }
-            break;
-        case 'getGroupMembers':
-            var group = {
-                'sqlopt': 'select',
-                'table': 'group_user',
-                'to_select': [
-                    {
-                        'column': 'user_id'
-                    }
-                ],
-                'conditions': [
-                    {
-                        'column': 'group_id',
-                        'data': "'" + group_id + "'"
-                    }
-                ]
-            };
-            break;    
+            break; 
         case 'deleteGroup':
             var group = {
                 'sqlopt': 'delete',
