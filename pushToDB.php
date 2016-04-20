@@ -78,9 +78,11 @@
 		exit;
 	}
 	if ($table == 'public.location_user' || $table == 'public.group_user') {
+		$result_array = array();
 		while ($result_row = pg_fetch_row($result, null)) {
-    		echo json_encode($result_row);
+			array_push($result_array, $result_array);
     	}
+    	echo json_encode($result_array);
 	} else {
 	    while ($result_row = pg_fetch_assoc($result)) {
 	    	echo json_encode($result_row);
