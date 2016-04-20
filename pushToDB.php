@@ -78,7 +78,7 @@
 		exit;
 	}
 	if ($table == 'public.location_user' || $table == 'public.group_user') {
-		while ($result_row = pg_fetch_array($result, null, PGSQL_NUM) {
+		while ($result_row = pg_fetch_array($result, null, $result_type=PGSQL_NUM) {
     		echo json_encode($result_row);
     	}
 	} else {

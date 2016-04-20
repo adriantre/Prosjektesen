@@ -109,7 +109,7 @@ function manageUser(operation) {
                     {
                         'column': 'user_name'
                     },
-                ]
+                ],
                 'conditions': [
                     {
                         'column': 'user_id',
@@ -129,7 +129,7 @@ function manageUser(operation) {
                     {
                         'column': 'current_location_id'
                     }
-                ]
+                ],
                 'conditions': [
                     {
                         'column': 'user_id',
