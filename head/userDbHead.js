@@ -144,7 +144,6 @@ function manageUser(operation) {
             my_user_id =localStorage.getItem("my_user_id");
             current_location_id = localStorage.getItem("current_location_id");
             manageLocation('getCurrentLocation');
-            setTimeout(check, 1000);
             var user = {
                 'sqlopt': 'update',
                 'table': table,
