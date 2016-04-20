@@ -233,6 +233,7 @@ function showMyGroups(){
   var response = JSON.parse(localStorage.getItem("FriendLocations"));
   var myGroups = new Array();
 
+  alert(response);
   if(!(response.length > 0)) {
     alert("noe gikk galt");
   }
@@ -242,6 +243,7 @@ function showMyGroups(){
           myGroups.push(group_name);
       }
   }
+  alert(myGroups);
 
   for (var i = 0; i < myGroups.length; i++) {
       var membersArray = new Array();
