@@ -151,6 +151,7 @@ function manageUser(operation) {
                     setTimeout(check, 1000); // check again in a second
                 }
             }
+            check();
             var user = {
                 'sqlopt': 'update',
                 'table': table,
@@ -167,7 +168,6 @@ function manageUser(operation) {
                     }
                 ]
             };
-            check();
             break;
         case 'updateUserGeomessage':
             var user = {
