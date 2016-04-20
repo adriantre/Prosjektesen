@@ -218,31 +218,30 @@ function myOutFunction(){
 function showMyGroups(){
   manageGroup('getFriendLocations');
   var response = JSON.parse(localStorage.getItem("FriendLocations"));
+  var myGroups = new Array();
+
   for(var i = 0; i < response.length; i++){
       var group_name = response[i].group_name;
-      var user_name = response[i].user_name;
-      var location_name = response[i].location_name;
-      alert(group_name + " " + user_name + " " + location_name);
+      if(!(myGroups.indexOf(group_name) > -1)) {
+          myGroups.push(group_name);
+      }
   }
 
-  // var myGroups = manageGroup('getMyGroups');
-  // document.getElementById("demo").innerHTML = "myGroups";
-  var groupArray = new Array();
-  // for (var i = 0; i < myGroups.length; i++) {
-  //     var members = showMembersInGroup(myGroups(i));
-  //     groupArray.push()
-  // };
-
-  // ikke ferdig
-  // var members = showMembersInGroup(myGroups[1]);
-  // for (var i = 0; i < members.length; i++) {
-  //   groupArray.push([]);
-  // };
-
-  // bare tester generateTable()
-  generateTable([["Lars", "Skole"], ["Adrian", "Hjemme"], ["David", "Hjemme"]], "table1");
-  generateTable([["Øystein", "Skole"], ["Tormod", "Jobb"], ["Herman", "Hjemme"]], "table2");
-  generateTable([["Eivind", "Trening"], ["Sindre", "Skole"], ["Elias", "Hjemme"]], "table3");
+  for (var i = 0; i < myGroups.length; i++) {
+      var membersArray = new Array();
+      for (var j = 0; j < response.length; j++) {
+          if(response[j].group_name = myGroups[i]) {
+            var user_name = response[i].user_name;
+            var location_name = response[i].location_name;
+            membersArray.push([user_name, location_name]);
+          }
+      };
+      document.getElementById("groupName".concat(i)).innerHTML = myGroups[i];
+      generateTable(membersArray, "Table".concat(i));
+  };
+  // generateTable([["Lars", "Skole"], ["Adrian", "Hjemme"], ["David", "Hjemme"]], "table1");
+  // generateTable([["Øystein", "Skole"], ["Tormod", "Jobb"], ["Herman", "Hjemme"]], "table2");
+  // generateTable([["Eivind", "Trening"], ["Sindre", "Skole"], ["Elias", "Hjemme"]], "table3");
 }
 
 function showMembersInGroup(group_id) {
