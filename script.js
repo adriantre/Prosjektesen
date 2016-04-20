@@ -233,6 +233,9 @@ function showMyGroups(){
   var response = JSON.parse(localStorage.getItem("FriendLocations"));
   var myGroups = new Array();
 
+  if(!(response.length > 0)) {
+    alert("noe gikk galt");
+  }
   for(var i = 0; i < response.length; i++){
       var group_name = response[i].group_name;
       if(!(myGroups.indexOf(group_name) > -1)) {
