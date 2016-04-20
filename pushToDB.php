@@ -84,7 +84,7 @@
     	    while ($result_row = pg_fetch_assoc($result)) {
     			$str .= json_encode($result_row) . ",";
     		}
-    		trim($str, ",");
+    		substr($str, 0, -1);
     		$str .= "]";
     		echo $str;
     		exit;
