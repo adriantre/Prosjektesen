@@ -39,11 +39,13 @@
 </head>
 <body onload="initializeMapPage()">     
   <div class="jumbotron text-center">
-        <div class="container">
+        <div class="container upper-right">
             <div class="row">
                 <div class="col-xs-12">
+                  <div class="myLoc">
                   <span id="myLocIcon" class="glyphicon glyphicon-map-marker"></span>
                   <label id="myLoc"></label>
+                </div>
                 </div>
             </div>
         </div>
@@ -167,15 +169,15 @@
 </div>
 
 <div class="container">
-  <!-- Modal -->
+  <!-- log out modal -->
   <div class="modal fade" id="logOutModal" role="dialog">
    <div class="vertical-alignment-helper">
     <div class="modal-dialog vertical-align-center">
     
       <!-- Modal content-->
       <div class="modal-content">
-        <div class="modal-body" style="padding:40px 50px;">
-          <h4>Are you sure you want to log out?</h4>
+        <div class="modal-body" style="padding:1em 3em 3em 3em;">
+          <h3 style="text-align: center">Are you sure you want to log out?</h3>
           <button type="button" class="btn btn-danger btn-default pull-right" data-dismiss="modal" ><span class="glyphicon glyphicon-remove"></span> Cancel</button>
           <button type="button" class="btn btn-primary btn-default pull-left" data-dismiss="modal" onclick=window.open("startpage.html", "_self")><span class="glyphicon glyphicon-ok"></span> Yes</button>
         </div>
