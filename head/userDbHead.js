@@ -142,8 +142,16 @@ function manageUser(operation) {
         case 'updateUserLocation':
             //Bruker locationDbHead sin getCurrentLocation-funksjon
             my_user_id =localStorage.getItem("my_user_id");
-            manageLocation('getCurrentLocation');
+            check();
+            var check = function(){
             current_location_id = localStorage.getItem("current_location_id");
+                if(current_location_id != null){
+                    manageLocation('getCurrentLocation');
+                }
+                else {
+                    setTimeout(check, 1000); // check again in a second
+                }
+            }
             var user = {
                 'sqlopt': 'update',
                 'table': table,
