@@ -19,10 +19,12 @@
 	$values = array();
 	$conditions = array();
 	$to_select = array();
-	$sqlopt = $json_object->sqlopt;
-	$table = "public." . $json_object->table;
 	$conditions_array = array();
-
+	$sqlopt = $json_object->sqlopt;
+	if (array_key_exists('table', $json_object)) 
+	{
+		$table = "public." . $json_object->table;
+	}
 	if (array_key_exists('values', $json_object)) 
 	{
 		foreach ($json_object->values as $column)

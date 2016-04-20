@@ -30,8 +30,16 @@ function manageGroup(operation) {
                     alert(group_id);
                     break;
                 case 'getFriendLocations':
+                    alert(xmlhttp.responseText);
                     var jsonData = JSON.parse(xmlhttp.responseText);
-                    alert(jsonData);
+                    for(var i=0;i<jsonData.length;i++){
+                        var obj = jsonData[i];
+                        for(var key in obj){
+                            var attrName = key;
+                            var attrValue = obj[key];
+                            alert(attrName + ' ' + attrValue);
+                        }
+                    }
                     break;
                 case 'getGroupMembers':
                     alert(xmlhttp.responseText);
@@ -96,8 +104,8 @@ function manageGroup(operation) {
             };
             break;
          case 'getFriendLocations':
-            var group ={
-                'sqlopt': 'sql'
+            var group = {
+                'sqlopt': 'sql',
                 'sql':'select g.group_name, u.user_name, l.location_name \
                         from public.group as g \
                             inner join public.group_user as gu\
@@ -109,8 +117,8 @@ function manageGroup(operation) {
                         where g.group_id in (\
                             select group_id\
                             from public.group_user\
-                            where user_id = +' localStorage.getItem("my_user_id") '+)\
-                        order by g.group_name asc;';
+                            where user_id =' + localStorage.getItem("my_user_id") +')\
+                        order by g.group_name asc;'
                     }
             break;
         case 'getGroupMembers':
