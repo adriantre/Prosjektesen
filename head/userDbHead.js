@@ -144,7 +144,7 @@ function manageUser(operation) {
             my_user_id =localStorage.getItem("my_user_id");
             var check = function(){
             current_location_id = localStorage.getItem("current_location_id");
-                if(current_location_id != null){
+                if(current_location_id){
                     manageLocation('getCurrentLocation');
                 }
                 else {
