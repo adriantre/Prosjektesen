@@ -192,6 +192,19 @@ function getLogOutModal() {
     $("#logOutModal").modal();
 }
 
+function logOutFunction() {
+  localStorage.clear();
+  window.open("startpage.html", "_self");
+}
+
+function openMainMenu() {
+  window.open("mainmenu.html", "_self");
+}
+
+function openMapPage() {
+  window.open("mapPage.html", "_self")
+}
+
 //--------------------MAIN MENU---------------------------//
 
 // var demo = "Logout";
