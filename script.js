@@ -237,7 +237,7 @@ function showMyGroups(){
           }
       };
       document.getElementById("groupName".concat(i)).innerHTML = myGroups[i];
-      generateTable(membersArray, "Table".concat(i));
+      generateTable(membersArray, "table".concat(i));
   };
   // generateTable([["Lars", "Skole"], ["Adrian", "Hjemme"], ["David", "Hjemme"]], "table1");
   // generateTable([["Øystein", "Skole"], ["Tormod", "Jobb"], ["Herman", "Hjemme"]], "table2");
