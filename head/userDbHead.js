@@ -142,7 +142,6 @@ function manageUser(operation) {
         case 'updateUserLocation':
             //Bruker locationDbHead sin getCurrentLocation-funksjon
             my_user_id =localStorage.getItem("my_user_id");
-            check();
             var check = function(){
             current_location_id = localStorage.getItem("current_location_id");
                 if(current_location_id != null){
@@ -168,6 +167,7 @@ function manageUser(operation) {
                     }
                 ]
             };
+            check();
             break;
         case 'updateUserGeomessage':
             var user = {
