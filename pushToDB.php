@@ -46,6 +46,10 @@
 			array_push($to_select, $column->column);
 		}
 	}
+	if (array_key_exists('sql', $json_object))
+	{
+		$sql = $json_object->sql;
+	}
 
     switch ($sqlopt) {
 	    case "insert":
@@ -71,6 +75,8 @@
 	    case "delete":
 	        $result = pg_delete($conn, $table, $conditions);
 	        break;
+        case "sql":
+        	$result = pg_query($conn, $sql);
     }
 
 	if (is_bool($result)) {

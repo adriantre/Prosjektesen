@@ -29,16 +29,9 @@ function manageGroup(operation) {
                     group_id = jsonData.group_id;
                     alert(group_id);
                     break;
-                case 'getMyGroups':
+                case 'getFriendLocations':
                     var jsonData = JSON.parse(xmlhttp.responseText);
-                    for(var i=0;i<jsonData.length;i++){
-                        var obj = jsonData[i];
-                        for(var key in obj){
-                            var attrName = key;
-                            var attrValue = obj[key];
-                            alert(attrName + ' ' + attrValue);
-                        }
-                    }
+                    alert(jsonData);
                     break;
                 case 'getGroupMembers':
                     alert(xmlhttp.responseText);
@@ -48,7 +41,7 @@ function manageGroup(operation) {
                     break;
             }
         } catch(e) {
-            alert('Kunne ikke evaluere svaret fra DB' + xmlhttp.responseText + ' group');
+            alert('Kunne ikke evaluere svaret fra DB ' + xmlhttp.responseText + ' group');
 
         }
       }
@@ -97,27 +90,28 @@ function manageGroup(operation) {
                 'conditions': [
                     {
                         'column': 'group_id',
-                        'data': "'" + group_id + "'"
+                        'data': "'" + localStorage.getItem("group_id") + "'"
                     }
                 ]
             };
             break;
-         case 'getMyGroups':
-            var group = {
-                'sqlopt': 'select',
-                'table': 'group_user',
-                'to_select': [
-                    {
-                        'column': 'group_id'
+         case 'getFriendLocations':
+            var group ={
+                'sqlopt': 'sql'
+                'sql':'select g.group_name, u.user_name, l.location_name \
+                        from public.group as g \
+                            inner join public.group_user as gu\
+                                on gu.group_id = g.group_id\
+                            inner join public.user as u\
+                                on gu.user_id = u.user_id\
+                            inner join public.location as l\
+                                on u.current_location_id = l.location_id\
+                        where g.group_id in (\
+                            select group_id\
+                            from public.group_user\
+                            where user_id = +' localStorage.getItem("my_user_id") '+)\
+                        order by g.group_name asc;';
                     }
-                ],
-                'conditions': [
-                    {
-                        'column': 'user_id',
-                        'data': "'" + localStorage.getItem("my_user_id") + "'"
-                    }
-                ]
-            };
             break;
         case 'getGroupMembers':
             var group = {
