@@ -108,7 +108,8 @@
 <div class="jumbotron container">
 </div>
 <div style="position: absolute; z-index: 1; left:0.55em; top:7em" class="btn-group-vertical"> <!-- z=1 button is in front of map, but under overlay !-->
-    <button type="button" id="newGroup" class="btn btn-s bg-info" title="Make a group!" data-toggle="tooltip" data-placement="right" onclick="newGroup()"><span id="drawIcon" class="glyphicon glyphicon-plus"></span></button>
+    <button type="button" id="newGroup" class="btn btn-s bg-info" data-toggle="modal" data-target="#createGroupModal"><span id="drawIcon" class="glyphicon glyphicon-plus"></span></button>
+    <button type="button" id="joinGroup" class="btn btn-s bg-info" data-toggle="modal" data-target="#joinGroupModal"><span id="drawIcon" class="glyphicon glyphicon-piggy-bank"></span></button>
 </div>  
 <!-- kode med carousel -->
 <div id="carouselContainer" class="container-fluid text-center">
@@ -274,7 +275,7 @@
 
 <div class="container">
   <!-- Modal -->
-  <div class="modal fade" id="viewGroupModal" role="dialog">
+  <div class="modal fade" id="joinGroupModal" role="dialog">
    <div class="vertical-alignment-helper">
     <div class="modal-dialog vertical-align-center">
     
@@ -282,12 +283,12 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4><span class="glyphicon glyphicon-pencil"></span> Enter groupname</h4>
+          <h4><span class="glyphicon glyphicon-pencil"></span> Enter group code</h4>
         </div>
         <div class="modal-body" style="padding:40px 50px;">
           <form role="form">
             <div class="form-group">
-              <label for="check_group_name"><span class="glyphicon glyphicon-globe"></span> Group name</label>
+              <label for="check_group_name"><span class="glyphicon glyphicon-globe"></span> Group code</label>
               <input type="text" class="form-control" id="check_group_name" placeholder="Enter group name">
             </div>
           </form>
@@ -295,7 +296,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-          <button type="submit" class="btn btn-primary btn-default pull-right" data-dismiss="modal" onclick="manageGroup('getGroup')"><span class="glyphicon glyphicon-ok"></span> Submit</button>
+          <button type="submit" class="btn btn-primary btn-default pull-right" data-dismiss="modal" onclick="joinGroup()"><span class="glyphicon glyphicon-ok"></span> Submit</button>
           
         </div>
       </div>
@@ -319,17 +320,17 @@
                 </a>
             </li>
             <li>
-                <button class="sideMenuButton" onClick="openMainMenu()"><span class="glyphicon glyphicon-home"></span> Home</button>
+                <button class="sideMenuButton" onClick="openMainMenu()"><span class="glyphicon glyphicon-home"></span> Show groups</button>
             </li>
-            <li>
+<!--             <li>
                 <button class="sideMenuButton"><span class="glyphicon glyphicon-eye-open"></span> [View groups]</button>
-            </li>
+            </li> -->
             <li>
-                <button class="sideMenuButton" onClick="openMapPage()"><span class="glyphicon glyphicon-globe"></span> Create area</button>
+                <button class="sideMenuButton" onClick="openMapPage()"><span class="glyphicon glyphicon-globe"></span> Create location</button>
             </li>
-            <li>
+<!--             <li>
                 <button class="sideMenuButton"><span class="glyphicon glyphicon-plus"></span> [Create group]</button>
-            </li>
+            </li> -->
            <!--  <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Works <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -342,10 +343,10 @@
               </ul>
             </li> -->
             <li>
-                <button class="sideMenuButton"><span class="glyphicon glyphicon-cog"></span> [Settings]</button>
+                <button class="sideMenuButton"><span class="glyphicon glyphicon-cog"></span> Settings</button>
             </li>
             <li>
-                <button class="sideMenuButton"><span class="glyphicon glyphicon-envelope"></span> [Contact]</button>
+                <button class="sideMenuButton"><span class="glyphicon glyphicon-envelope"></span> Contact</button>
             </li>
             <li>
                 <button class="sideMenuButton" onClick="getLogOutModal()"><span class="glyphicon glyphicon-log-out"></span> Log out</button>

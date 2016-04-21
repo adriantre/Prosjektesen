@@ -86,11 +86,7 @@ function initializeMapPage() {
 });
 }
 
-function newGroup(){
-  $("#new_group_name").modal();
-  manageGroup('newGroup');
 
-}
 
 
 function getUserPosition(position) {
@@ -240,7 +236,7 @@ function showMyGroups(){
   var myGroups = new Array();
 
   if(!(response.length > 0)) {
-    alert("noe gikk galt");
+    alert("Du er ikke medlem av noen grupper enda!");
   }
   for(var i = 0; i < response.length; i++){
       var group_name = response[i].group_name;
@@ -299,6 +295,11 @@ function generateTable(groupArray, chosen_table) {
   dvTable.appendChild(table);
   // return table;
 
+}
+
+function joinGroup(){
+  localStorage.setItem("group_id", document.getElementById("check_group_name").value);
+  manageGroup('joinGroup');
 }
 
 //------------------------------------------------------------//

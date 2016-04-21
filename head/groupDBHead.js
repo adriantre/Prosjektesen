@@ -19,7 +19,11 @@ function manageGroup(operation) {
         try{
             switch(operation) {
                 case 'newGroup':
-                    alert(xmlhttp.responseText);
+                    var jsonData = JSON.parse(xmlhttp.responseText);
+                    new_group_id = jsonData.currval;
+                    localStorage.setItem("group_id", new_group_id);
+                    manageGroup('joinGroup');
+                    // alert(xmlhttp.responseText);
                     // var jsonData = JSON.parse(xmlhttp.responseText);
                     // user_id = jsonData.currval;
                     // alert('user_id = ' + user_id);
@@ -35,7 +39,7 @@ function manageGroup(operation) {
                     break;
                 default:
                     var success = xmlhttp.responseText == "true" ? true : false;
-                    alert(success);
+                    // alert(success + " group");
                     break;
             }
         } catch(e) {
@@ -59,19 +63,18 @@ function manageGroup(operation) {
                 ]
             };
             break;
-        case 'addMember':
-            group_name = document.getElementById("new_group_name").value;
+        case 'joinGroup':
             var group = {
                 'sqlopt': 'insert',
                 'table': table+'_user',
-                'conditions': [
+                'values': [
                     {
                         'column': 'group_id',
-                        'data': "'" + group_id + "'"
+                        'data': "'" + localStorage.getItem("group_id") + "'"
                     },
                     {
                         'column': 'user_id',
-                        'data': "'" + user_id + "'"
+                        'data': "'" + localStorage.getItem("my_user_id") + "'"
                     }
                 ]
             };
