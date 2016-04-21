@@ -297,6 +297,12 @@ function generateTable(groupArray, chosen_table) {
 
 }
 
+function emailpage() {
+    strTitle = document.title;
+    strTitle = strTitle.replace("&","-");
+    window.location = "mailto:team@mapal.no?subject=User feedback&?body=" + strTitle + " - " + window.location + "&Body=Dear Mapal team,\n\n";
+}
+
 function joinGroup(){
   localStorage.setItem("group_id", document.getElementById("check_group_name").value);
   manageGroup('joinGroup');
