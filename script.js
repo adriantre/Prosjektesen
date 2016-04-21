@@ -86,6 +86,12 @@ function initializeMapPage() {
 });
 }
 
+function newGroup(){
+  $("#new_group_name").modal();
+  manageGroup('newGroup');
+
+}
+
 
 function getUserPosition(position) {
     coords =[];
