@@ -1,4 +1,4 @@
-function manageLocation(operation) {
+// function manageLocation(operation) {
 
     var xmlhttp = new XMLHttpRequest();
     var url = 'http://folk.ntnu.no/adrianto/prosjektesen/pushToDB.php/';
@@ -63,7 +63,7 @@ function manageLocation(operation) {
                     break;
             }
         } catch(err) {
-            alert('Kunne ikke evaluere svaret fra DB. Respons: [' + xmlhttp.responseText + '] err.message: [' + err.message +'] @ location');
+            // alert('Kunne ikke evaluere svaret fra DB. Respons: [' + xmlhttp.responseText + '] err.message: [' + err.message +'] @ location');
         }
       }
     }

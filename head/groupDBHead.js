@@ -44,7 +44,7 @@ function manageGroup(operation) {
                     break;
             }
         } catch(e) {
-            alert('Kunne ikke evaluere svaret fra DB ' + xmlhttp.responseText + ' ' + e.message + ' group');
+            // alert('Kunne ikke evaluere svaret fra DB ' + xmlhttp.responseText + ' ' + e.message + ' group');
 
         }
       }
