@@ -142,7 +142,7 @@ function manageLocation(operation) {
                 'conditions': [
                     {
                         'column': "'t'",
-                        'data': "ST_Contains(" + "geofence" + ", ST_GeomFromText('POINT(" + localStorage.getItem('myCurrentCoords') + ")')) order by ST_Area(geofence) asc limit 1"
+                        'data': "creator_id = "+ localStorage.getItem("my_user_id") + " and ST_Contains(" + "geofence" + ", ST_GeomFromText('POINT(" + localStorage.getItem('myCurrentCoords') + ")')) order by ST_Area(geofence) asc limit 1"
                     }
                 ],
             }; 
