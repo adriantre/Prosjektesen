@@ -22,6 +22,7 @@ function manageGroup(operation) {
                     var jsonData = JSON.parse(xmlhttp.responseText);
                     new_group_id = jsonData.currval;
                     localStorage.setItem("group_id", new_group_id);
+                    alert('The new group code is ' + new_group_id + '. Give it to your friends so they can join!')
                     manageGroup('joinGroup');
                     // alert(xmlhttp.responseText);
                     // var jsonData = JSON.parse(xmlhttp.responseText);
@@ -62,7 +63,7 @@ function manageGroup(operation) {
                     }
                 ]
             };
-            break;
+            break;            
         case 'joinGroup':
             var group = {
                 'sqlopt': 'insert',
@@ -78,7 +79,7 @@ function manageGroup(operation) {
                     }
                 ]
             };
-            break;
+            break;   
          case 'getFriendLocations':
             var group = {
                 'sqlopt': 'sql',

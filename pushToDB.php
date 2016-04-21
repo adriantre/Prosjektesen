@@ -64,7 +64,7 @@
 	        	$result = true;
 	        }
 	        if ($table == 'public.location_user' || $table == 'public.group_user') {
-	        	break; //realsjonstabeller skal ikke returnere noen id
+	        	break; //relasjonstabeller skal ikke returnere noen id
 	        }
     		$result = pg_query($conn, "select currval('" . $table . "_" . $json_object->table . "_id_seq');");
 	        break;
