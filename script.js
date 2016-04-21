@@ -131,6 +131,7 @@ function submitLocation() {
 }
 
 function drawPolygon() {
+  alert('Sett første punkt!');
   polygonDrawer = new L.Draw.Polygon(map, drawControl.options.draw.polygon).enable();
 }
 
