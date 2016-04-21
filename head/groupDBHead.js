@@ -113,5 +113,4 @@ function manageGroup(operation) {
     }
     var grouptext = JSON.stringify(group);
     xmlhttp.send(grouptext);
-
 }
