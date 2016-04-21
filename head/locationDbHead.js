@@ -181,5 +181,5 @@ function manageLocation(operation) {
     var locationText = JSON.stringify(location);
     // document.getElementById('polygonCoords').innerHTML=locationText;
     xmlhttp.send(locationText);
-
     // document.location.href = "http://folk.ntnu.no/adrianto/prosjektesen/mapPage.html";
+}
