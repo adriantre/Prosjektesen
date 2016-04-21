@@ -1,4 +1,4 @@
-// function manageLocation(operation) {
+function manageLocation(operation) {
 
     var xmlhttp = new XMLHttpRequest();
     var url = 'http://folk.ntnu.no/adrianto/prosjektesen/pushToDB.php/';
