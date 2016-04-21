@@ -236,7 +236,7 @@ function showMyGroups(){
   var myGroups = new Array();
 
   if(!(response.length > 0)) {
-    alert("Du er ikke medlem av noen grupper enda!");
+    alert("Du har ingen venner å vise!");
   }
   for(var i = 0; i < response.length; i++){
       var group_name = response[i].group_name;
