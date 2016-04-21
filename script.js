@@ -231,9 +231,6 @@ var t2;
 //     demo.className ="glyphicon glyphicon-off";
 // }
 
-$('#myCarousel').carousel({
-  interval: false;
-});
 
 function showMyGroups(){
   manageGroup('getFriendLocations');
